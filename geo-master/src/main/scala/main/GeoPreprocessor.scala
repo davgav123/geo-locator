@@ -75,9 +75,13 @@ object GeoPreprocessor {
   }
 
   def attachPointsToCountry(spark: SparkSession): DataFrame = {
-    val borders = GeoNamesPreprocessor.prepareBorderData(spark)
+    val borders = prepareBorderData(spark)
 
-    var osmData: DataFrame = getNodes(spark, getClass.getResource("path_to_OSM_file").getPath)
+//    var osmData: DataFrame = getNodes(spark, getClass.getResource("path_to_OSM_file").getPath)
+//      .sample(0.20) // sample for performance reasons
+//      .withColumn("belongs_to", lit("x"))
+
+    var osmData: DataFrame = getNodes(spark, getClass.getResource("serbia-latest.osm.pbf").getPath)
       .sample(0.20) // sample for performance reasons
       .withColumn("belongs_to", lit("x"))
 
