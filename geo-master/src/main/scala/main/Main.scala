@@ -25,8 +25,8 @@ object Main {
   def countryPoints(spark: SparkSession, targetCountry: String): DataFrame = {
     val filePath: String = getClass.getResource("/" + targetCountry + "-latest.osm.pbf").getPath
 
-    val borders = GeoNamesPreprocessor.prepareBorderData(spark)
-      .where("Country = \'" + targetCountry.head.toUpper + targetCountry.tail + "\'")
+    val borders = GeoPreprocessor.prepareBorderData(spark)
+      .where("lower(Country) = \'" + targetCountry + "\'")
 
     val polygonType: String = borders.first.getAs("type").toString
     if (polygonType == "Polygon") {
@@ -76,7 +76,7 @@ object Main {
   }
 
   def pointsOfCountry(spark: SparkSession, filePath: String, containsFunction: (Double, Double) => Boolean): DataFrame = {
-    val countrySampled = OSMDataPreprocessor.getNodes(spark, filePath)
+    val countrySampled = GeoPreprocessor.getNodes(spark, filePath)
       .sample(0.2)
       .cache()
 
