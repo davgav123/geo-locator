@@ -14,7 +14,14 @@ object Main {
       .appName("geo-master")
       .getOrCreate()
 
-    prepareBorderData(spark).show()
+    val country = mapCoordinatesToCountry(
+      spark,
+      "/in/path/"
+    )
+
+    filterCountry(country, "village")
+      .write
+      .parquet("/out/path/")
 
     spark.close()
   }

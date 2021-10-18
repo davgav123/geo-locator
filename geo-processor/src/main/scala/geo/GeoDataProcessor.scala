@@ -1,7 +1,7 @@
 package geo
 
 import com.wolt.osm.spark.OsmSource.OsmSource
-import org.apache.spark.sql.functions.{col, flatten, lower, monotonically_increasing_id, udf}
+import org.apache.spark.sql.functions.{array_intersect, col, flatten, lit, lower, map_values, monotonically_increasing_id, size, udf}
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 import org.apache.spark.sql.types.StringType
 import utils.Polygon
@@ -64,21 +64,22 @@ object GeoDataProcessor {
     val osm: DataFrame = spark.read
       .format(OsmSource.OSM_SOURCE_NAME)
       .load(pathToCountryFile)
-      .sample(0.05) // TODO remove this
+      .sample(0.15) // TODO remove this
 
     val nodes: DataFrame = osm.select(
       col("LAT").as("latitude"),
       col("LON").as("longitude"),
       col("TAG").as("tag")
     )
+      .where("latitude is not null and longitude is not null")
 
     nodes
   }
 
-  def pairCoordinatesAndCountries(spark: SparkSession): DataFrame = {
+  def mapCoordinatesToCountry(spark: SparkSession, countryFilePath: String): DataFrame = {
     val iterableBorders = makeBordersIterable(prepareBorderData(spark))
 
-    val countryFunction: (Double, Double) => String = (lat: Double, lon: Double) => {
+    val belongsToCountryFunction: (Double, Double) => String = (lat: Double, lon: Double) => {
       var belongs_to = "-"
       for ((country, borders) <- iterableBorders) {
         if (isInsideBorder(lat, lon, borders)) {
@@ -90,10 +91,10 @@ object GeoDataProcessor {
       belongs_to
     }
 
-    val belongsToCountry = udf(countryFunction, StringType)
+    val belongsToCountry = udf(belongsToCountryFunction, StringType)
 
-    val osmData = getNodes(spark, "add path") // TODO add path to SOM file
-      .sample(0.1) // sample for performance reasons TODO: remove it
+    val osmData = getNodes(spark, countryFilePath)
+//      .sample(0.05) // sample for performance reasons TODO: remove it
       .withColumn(
         "belongs_to",
         belongsToCountry(
@@ -137,5 +138,41 @@ object GeoDataProcessor {
   private def isInsideBorder(lat: Double, lon: Double, borders: Array[Array[Array[Double]]]): Boolean = {
     val polygons = for (polygon <- borders) yield new Polygon(polygon)
     polygons.exists(polygon => polygon.containsPointRayCastingImpl2(Array(lon, lat)))
+  }
+
+  def filterCountry(spark: SparkSession, pathToCountryFile: String, condition: String): DataFrame = {
+    val country: DataFrame = spark
+      .read
+      .format("parquet")
+      .option("inferSchema", "true")
+      .load(pathToCountryFile)
+
+    filterCountry(country, condition)
+  }
+
+  def filterCountry(country: DataFrame, condition: String): DataFrame = {
+    val filters = mapCondition(condition)
+
+    country
+      .withColumn("tag_values", map_values(col("tag")))
+      .where(size(col("tag_values")) =!= 0)
+      .where(size(array_intersect(col("tag_values"), lit(filters))) =!= 0)
+      .select(col("latitude"), col("longitude"))
+  }
+
+  private def mapCondition(condition: String): Array[String] = {
+    condition match {
+      case "religion" => Array("church", "place_of_worship", "monastery", "christian", "muslim", "religion")
+      case "village" => Array("village", "hamlet")
+      case "hotel" => Array("hotel")
+      case "hotel_hostel" => Array("hostel", "hotel")
+      case "bars" => Array("bar", "nightclub", "pub", "cafe", "restaurant", "bakery")
+      case "health" => Array("hospital", "health", "ambulance", "pharmacy")
+      case "market" => Array("market", "supermarket")
+      case "gas" => Array("fuel", "gas", "petrol")
+      case "parking" => Array("parking")
+      case "culture" => Array("monument", "museum", "memorial", "library", "castle")
+      case _ => Array("")
+    }
   }
 }
