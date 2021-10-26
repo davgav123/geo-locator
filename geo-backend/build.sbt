@@ -10,8 +10,11 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
   "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
+  "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
   "ch.megard" %% "akka-http-cors" % "1.0.0"
 )
 
-
-
+libraryDependencies ++= Seq(
+  "org.apache.spark" %% "spark-core" % "2.4.5",
+  "org.apache.spark" %% "spark-sql" % "2.4.5"
+)
