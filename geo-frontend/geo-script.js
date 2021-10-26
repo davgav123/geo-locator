@@ -10,13 +10,11 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiZGF2Z2F2IiwiYSI6ImNrdTdmYjZqdTU3YXUyb25xaGhhMWlndDUifQ.GXEmjuG3NmH23uvFsOIw-g'
 }).addTo(displayMap);
 
-// addCircle([44.82, 20.45])
+var circleLayer = null;
 
-function processData() {
-    var country = document.getElementById("inputCountry").value
-    var filterCondition = document.getElementById("inputCondition").value
-
-    // TODO: check validity of inputs
+function displayPoints() {
+    var country = document.getElementById("inputCountry").value;
+    var filterCondition = document.getElementById("inputCondition").value;
 
     httpGet(
         "http://localhost:8080/selection?country=" + country + "&param=" + filterCondition,
@@ -26,15 +24,30 @@ function processData() {
                 return ;
             }
 
-            var ret = JSON.parse(returnedData)
-            ret.forEach(point => addCircle(point))
+            if (circleLayer != null) {
+                displayMap.removeLayer(circleLayer);
+            }
 
-            var xs = ret.map(e => e[0])
-            var ys = ret.map(e => e[1])
-            displayMap.setView([
+            var data = JSON.parse(returnedData);
+            var circles = createCircles(data);
+            circleLayer = L.layerGroup(circles);
+            circleLayer.addTo(displayMap);
+
+            var xs = data.map(e => e[0]);
+            var ys = data.map(e => e[1]);
+
+            viewCoords = [
                 xs.reduce((a, c) => a + c) / xs.length,
                 ys.reduce((a, c) => a + c) / ys.length
-            ], 5);
+            ];
+
+            max_x = Math.max.apply(null, xs)
+            max_y = Math.max.apply(null, ys)
+            min_x = Math.min.apply(null, xs)
+            min_y = Math.min.apply(null, ys)
+
+            displayMap.setView(viewCoords);
+            displayMap.flyToBounds(L.latLngBounds([[max_x, max_y], [min_x, min_y]]))
         }
     )
 }
@@ -57,11 +70,15 @@ function httpGet(url, callback) {
     httpReq.send();
 }
 
+function createCircles(data) {
+    return data.map(addCircle);
+}
+
 function addCircle(coord) {
-    L.circle(coord, {
+    return L.circle(coord, {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.6,
-        radius: 500
-    }).addTo(displayMap)
+        radius: 75
+    });
 }

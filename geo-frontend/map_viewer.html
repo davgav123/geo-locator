@@ -32,11 +32,29 @@
 <div class="container" id="inputForm">
     <form class="form-inline p-3 bg-light">
         <label for="inputCountry" class="mr-sm-2">Select country</label>
-        <input type="text" class="form-control mb-2 mr-sm-2" id="inputCountry" placeholder="country name">
+        <select class="form-control mb-2 mr-sm-2" id="inputCountry">
+            <option selected value="serbia">Serbia</option>
+            <option value="croatia">Croatia</option>
+            <option value="montenegro">Montenegro</option>
+            <option value="slovenia">Slovenia</option>
+        </select>
+
         <label for="inputCondition" class="mr-sm-2">What do you want to select?</label>
-        <input type="text" class="form-control mb-2 mr-sm-2" id="inputCondition" placeholder="filter condition">
-        <button type="button" class="btn btn-primary" onclick="processData()">Submit</button>
-    </form> 
+        <select class="form-control mb-2 mr-sm-2" id="inputCondition">
+            <option selected value="everything">-</option>
+            <option value="health">Healthcare</option>
+            <option value="religion">Religious objects</option>
+            <option value="village">Villages</option>
+            <option value="hotel_hostels">Hotels and hostels</option>
+            <option value="bars">Bars, Clubs and Pubs</option>
+            <option value="restaurant">Restaurants</option>
+            <option value="parking">Parking spots</option>
+            <option value="culture">Cultural heritage</option>
+            <option value="gas">Gas stations</option>
+        </select>
+
+        <button type="button" class="btn btn-primary" onclick="displayPoints()">Submit</button>
+    </form>
 </div>
 
 <div class="container" id="mapid"></div>
