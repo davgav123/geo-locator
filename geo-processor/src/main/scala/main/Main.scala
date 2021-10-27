@@ -14,14 +14,10 @@ object Main {
       .appName("geo-master")
       .getOrCreate()
 
-    val country = mapCoordinatesToCountry(
+    processGeoData(
       spark,
-      "/in/path/"
+      "/path/to/osm/dataset/"
     )
-
-    filterCountry(country, "village")
-      .write
-      .parquet("/out/path/")
 
     spark.close()
   }

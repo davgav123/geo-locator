@@ -9,7 +9,22 @@ import utils.Polygon
 import scala.collection.mutable
 
 object GeoDataProcessor {
-  def prepareBorderData(spark: SparkSession): DataFrame = {
+  def processGeoData(spark: SparkSession, pathToDataFile: String): Unit = {
+    val mapped = mapCoordinatesToCountry(spark, pathToDataFile)
+
+    val countryNames: Array[String] = prepareBorderData(spark)
+      .rdd.collect().map(row => row(0).toString)
+//    val countryNames = Array("montenegro", "croatia", "serbia", "italy", "albania", "slovenia")
+
+    for (name <- countryNames) {
+      val countryDf = mapped
+        .where(s"belongs_to == \'$name\'")
+
+      filterCountry(countryDf, name)
+    }
+  }
+
+  private def prepareBorderData(spark: SparkSession): DataFrame = {
     val pathToBordersFile = getClass.getResource("/shapes_all_low.txt").getPath
     val pathToInfoFile = getClass.getResource("/country_info.txt").getPath
 
@@ -60,22 +75,6 @@ object GeoDataProcessor {
     borders
   }
 
-  def getNodes(spark: SparkSession, pathToCountryFile: String): DataFrame = {
-    val osm: DataFrame = spark.read
-      .format(OsmSource.OSM_SOURCE_NAME)
-      .load(pathToCountryFile)
-      .sample(0.15) // TODO remove this
-
-    val nodes: DataFrame = osm.select(
-      col("LAT").as("latitude"),
-      col("LON").as("longitude"),
-      col("TAG").as("tag")
-    )
-      .where("latitude is not null and longitude is not null")
-
-    nodes
-  }
-
   def mapCoordinatesToCountry(spark: SparkSession, countryFilePath: String): DataFrame = {
     val iterableBorders = makeBordersIterable(prepareBorderData(spark))
 
@@ -94,7 +93,6 @@ object GeoDataProcessor {
     val belongsToCountry = udf(belongsToCountryFunction, StringType)
 
     val osmData = getNodes(spark, countryFilePath)
-//      .sample(0.05) // sample for performance reasons TODO: remove it
       .withColumn(
         "belongs_to",
         belongsToCountry(
@@ -104,6 +102,22 @@ object GeoDataProcessor {
       )
 
     osmData
+  }
+
+  private def getNodes(spark: SparkSession, pathToCountryFile: String): DataFrame = {
+    val osm: DataFrame = spark.read
+      .format(OsmSource.OSM_SOURCE_NAME)
+      .load(pathToCountryFile)
+      .sample(0.015) // TODO remove this
+
+    val nodes: DataFrame = osm.select(
+      col("LAT").as("latitude"),
+      col("LON").as("longitude"),
+      col("TAG").as("tag")
+    )
+      .where("latitude is not null and longitude is not null")
+
+    nodes
   }
 
   private def makeBordersIterable(borders: DataFrame): Array[(String, Array[Array[Array[Double]]])] = {
@@ -140,18 +154,28 @@ object GeoDataProcessor {
     polygons.exists(polygon => polygon.containsPointRayCastingImpl2(Array(lon, lat)))
   }
 
-  def filterCountry(spark: SparkSession, pathToCountryFile: String, condition: String): DataFrame = {
-    val country: DataFrame = spark
-      .read
-      .format("parquet")
-      .option("inferSchema", "true")
-      .load(pathToCountryFile)
+  def filterCountry(countryDF: DataFrame, countryName: String): Unit = {
+    val dataPath: String = "/path/to/data/dir/"
 
-    filterCountry(country, condition)
+    val conditions: Array[String] = Array(
+      "everything", "religion", "village", "hotel", "hotel_hostel", "bars",
+      "restaurant", "health", "market", "gas", "parking", "culture"
+    )
+
+    for (condition <- conditions) {
+      filterCountryByCondition(countryDF, condition)
+        .write
+        .parquet(dataPath + s"$countryName-$condition/")
+    }
   }
 
-  def filterCountry(country: DataFrame, condition: String): DataFrame = {
+  def filterCountryByCondition(country: DataFrame, condition: String): DataFrame = {
     val filters = mapCondition(condition)
+
+    if (filters(0) == "everything") {
+      return country
+        .select(col("latitude"), col("longitude"))
+    }
 
     country
       .withColumn("tag_values", map_values(col("tag")))
@@ -166,13 +190,14 @@ object GeoDataProcessor {
       case "village" => Array("village", "hamlet")
       case "hotel" => Array("hotel")
       case "hotel_hostel" => Array("hostel", "hotel")
-      case "bars" => Array("bar", "nightclub", "pub", "cafe", "restaurant", "bakery")
+      case "bars" => Array("bar", "nightclub", "pub", "cafe")
+      case "restaurant" => Array("restaurant")
       case "health" => Array("hospital", "health", "ambulance", "pharmacy")
       case "market" => Array("market", "supermarket")
       case "gas" => Array("fuel", "gas", "petrol")
       case "parking" => Array("parking")
       case "culture" => Array("monument", "museum", "memorial", "library", "castle")
-      case _ => Array("")
+      case _ => Array("everything")
     }
   }
 }
