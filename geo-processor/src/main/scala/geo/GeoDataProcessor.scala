@@ -11,11 +11,14 @@ import scala.collection.mutable
 object GeoDataProcessor {
   val dataPath: String = "/path/to/data/dir/"
 
-  def processGeoData(spark: SparkSession, pathToDataFile: String): Unit = {
+  def processGeoData(spark: SparkSession, pathToDataFile: String, europeanCountries: Boolean): Unit = {
     val mapped = mapCoordinatesToCountry(spark, pathToDataFile)
 
-    val countryNames: Array[String] = prepareBorderData(spark)
-      .rdd.collect().map(row => row(0).toString)
+    val countryNames: Array[String] = if (europeanCountries) {
+      getEuropeanCountries
+    } else {
+      getAllCountries(spark)
+    }
 
     for (name <- countryNames) {
       val countryDf = mapped
@@ -147,7 +150,6 @@ object GeoDataProcessor {
     val osm: DataFrame = spark.read
       .format(OsmSource.OSM_SOURCE_NAME)
       .load(pathToCountryFile)
-//      .sample(0.01) // TODO just for testing, should be removed
 
     val nodes: DataFrame = osm.select(
       col("LAT").as("latitude"),
@@ -157,6 +159,23 @@ object GeoDataProcessor {
       .where("latitude is not null and longitude is not null")
 
     nodes
+  }
+
+  private def getEuropeanCountries: Array[String] = {
+    Array(
+      "russia", "germany", "united kingdom", "france", "italy", "spain", "ukraine",
+      "poland", "romania", "netherlands", "belgium", "czechia", "greece", "portugal",
+      "sweden", "hungary", "belarus", "austria", "serbia", "switzerland", "bulgaria",
+      "denmark", "finland", "slovakia", "norway", "ireland", "croatia", "moldova",
+      "bosnia and herzegovina", "albania", "lithuania", "north macedonia", "slovenia",
+      "latvia", "estonia", "montenegro", "luxembourg", "malta", "iceland", "andorra",
+      "monaco", "liechtenstein", "san marino", "vatican",
+    )
+  }
+
+  private def getAllCountries(spark: SparkSession): Array[String] = {
+    prepareBorderData(spark)
+      .rdd.collect().map(row => row(0).toString)
   }
 
   def filterCountry(countryDF: DataFrame, countryName: String): Unit = {

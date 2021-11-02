@@ -16,7 +16,8 @@ object Main {
 
     processGeoData(
       spark,
-      "/path/to/osm/dataset/"
+      "/path/to/osm/dataset/",
+      europeanCountries = true
     )
 
     spark.close()
