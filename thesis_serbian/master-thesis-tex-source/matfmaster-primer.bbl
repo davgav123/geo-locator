@@ -1,0 +1,68 @@
+\begin{thebibliography}{10}
+
+\bibitem{spark_guide}
+Bill Chambers and Matei Zaharia.
+\newblock {\em Spark: The definitive guide}.
+\newblock 2018.
+
+\bibitem{gmr}
+Jeffrey Dean and Sanjay Ghemawat.
+\newblock Mapreduce: Simplified data processing on large clusters.
+\newblock 2004.
+\newblock online at: https://research.google/pubs/pub62/.
+
+\bibitem{hadoop_arch_guide}
+Apache Foundation.
+\newblock Hdfs architecture guide.
+\newblock online at: https://hadoop.apache.org/docs/.
+
+\bibitem{volume_data}
+Arne Horst.
+\newblock Amount of data created, consumed, and stored 2010-2025.
+\newblock 2021.
+\newblock online at:
+  https://www.statista.com/statistics/871513/worldwide-data-created/.
+
+\bibitem{scala_prog}
+Lex~Spoon Martin~Odersky and Bill Venners.
+\newblock {\em Programming in Scala, First edition}.
+\newblock 2008.
+
+\bibitem{osm_wiki}
+OpenStreetMap.
+\newblock Openstreetmap wiki.
+
+\bibitem{semantic}
+Marcus~Krotzsch Pascal~Hitzler and Sebastian Rudolph.
+\newblock {\em Foundations of Semantic web technologies}.
+\newblock 2010.
+
+\bibitem{gfs}
+Howard~Gobioff Sanjay~Ghemawat and Shun-Tak Leung.
+\newblock The google file system.
+\newblock 2003.
+\newblock online at: https://research.google/pubs/pub51/.
+
+\bibitem{spark_rdd}
+Apache Spark.
+\newblock Rdd programming guide.
+\newblock online at:
+  https://spark.apache.org/docs/latest/rdd-programming-guide.html.
+
+\bibitem{spark_streaming}
+Apache Spark.
+\newblock Structured streaming programming guide.
+\newblock online at:
+  https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html.
+
+\bibitem{hadoop_beginner}
+Garry Turkington.
+\newblock {\em Hadoop beginner's guide}.
+\newblock 2013.
+
+\bibitem{hadoop_learning}
+Garry Turkington and Gabriele Modena.
+\newblock {\em Learning Hadoop 2}.
+\newblock 2015.
+
+\end{thebibliography}
