@@ -138,7 +138,7 @@
 
 \textbf{TODO}
 
-\chapter{Програмски језик \textit{Scala}}
+\chapter{Програмски језик Скала}
 \label{chp:scala}
 
 Скала (енг. Scala) је виши програмски заснован на функционалној и објектној парадигми. Име је добила од енглеске речи \textit{scalable} јер је дизајнирана тако да се развија са потребама корисника. Има широк спектар примена и може се користити за писање једноставних скрипти али и у изградњи великих и комплексних система. \cite{scala_prog}
@@ -398,7 +398,7 @@ val res0: Int = 300
 
 У овом примеру, функција \textit{saberi()} је замењена ламбда функцијом истог понашања, што није довело до промене коначног резултата. 
 
-\section{Објектна оријентисана парадигма}
+\section{Објектнo оријентисана парадигма}
 \label{sec:scala_oop}
 
 У овој секцији ће детаљније бити описана објектно оријентисана парадигма језика Скала. 
@@ -473,7 +473,7 @@ scala> val m = new MyClass
 val m: MyClass = MyClass@5d8e4fa8
 \end{lstlisting}
 
-У претходном примеру, поље \textit{field} поседује подразумевану вредност која ђе се том пољу увек доделити приликом инстанцирања класе. Међутим, она се не мора навести и, уколико је то случај, пољима се мора експлицитно доделити вредност приликом инстанцирања. Пример је приказан у коду \ref{lst:scala_oop_field_explicit}.
+У претходном примеру, поље \textit{field} поседује подразумевану вредност која ђе се том пољу увек доделити приликом инстанцирања класе. Међутим, она се не мора навести и, уколико је то случај, пољима се мора експлицитно доделити вредност приликом инстанцирања. Пример је приказан у коду \ref{lst:scala_oop_field_explicit}. \cite{scala_prog}
 
 \begin{lstlisting}[language=Scala, caption={Инстанцирање класе без подразумеваних вредности поља}, label={lst:scala_oop_field_explicit}]
 scala> class MyClass(private val field: Int) {
@@ -492,7 +492,7 @@ val mc: MyClass = MyClass@7d332e20
 \subsection{Наслеђивање}
 \label{subsec:scala_nasled}
 
-Наслеђивање се извршава на исти начин као у Јави, преко кључне речи \textit{extends}. Инстанцирање поља надкласе из подкласе се дефинише у самој дефиницији наслеђивања, након \textit{extends} (Пример \ref{lst:scala_oop_extends_example}).
+Наслеђивање се извршава на исти начин као у Јави, преко кључне речи \textit{extends}. Инстанцирање поља надкласе из подкласе се дефинише у самој дефиницији наслеђивања, након \textit{extends} (Пример \ref{lst:scala_oop_extends_example}). \cite{scala_prog}
 
 \begin{lstlisting}[language=Scala, caption={Наслеђивање у Скали}, label={lst:scala_oop_extends_example}]
 // nadklasa
@@ -516,7 +516,7 @@ val mec: MyExtendedClass = MyExtendedClass@42ba9b22
 \subsection{Апстрактне класе}
 \label{subsec:scala_abs}
 
-Апстрактне класе се дефинишу коришћењем кључне речи \textit{abstract} која се наводи пре речи \textit{class} која означава класу, на исти начин као у Јави.
+Апстрактне класе се дефинишу коришћењем кључне речи \textit{abstract} која се наводи пре речи \textit{class} која означава класу, на исти начин као у Јави. \cite{scala_prog}
 
 \begin{lstlisting}[language=Scala, caption={Апстрактна класа у Скали}, label={lst:scala_oop_abstract_class_example}]
 scala> abstract class MyAbstractClass {
@@ -536,50 +536,71 @@ class MyAbstractClass
 scala> val mac = new MyAbstractClass
                  ^
        error: class MyAbstractClass is abstract; cannot be instantiated
-
 \end{lstlisting}
 
 \subsection{Синглтон објекти}
 \label{subsec:scala_sing_obj}
 
-У Скали не постоје статична поља. Уместо тога постоје синглтон објекти (енг. \textit{singleton object}). Објекти се дефинишу на исти начин као и класе с тим што се користи кључна реч \textit{object} уместо \textit{class}. Сви чланови објекта се понашају као статични чланови у Јави. \cite{scala_prog}
+За разлику од Јаве, у Скали не постоје статичка поља. Уместо тога постоје синглтон објекти (енг. \textit{singleton object}). Дефинишу се на исти начин као и класе, с тим што се користи кључна реч \textit{object} уместо \textit{class}. Добили су име по томе што представљају класу која има тачно једну инстанцу. Сви чланови објекта се могу посматрати као статички чланови у Јава класи. \cite{scala_prog}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Коришћење синглтон објекта}, label={lst:scala_oop_object_example}]
 scala> object MyObject {
-     |   def f() = print("Hello from object")
+     |   def hello() = print("Hello from object")
      | }
 
-scala> MyObject.f()
+scala> MyObject.hello()
 Hello from object
 \end{lstlisting}
 
-Уколико објекат дели своје име са неком класом, а при томе се налазе у истом фајлу, тај објекат називамо објекат сапутник (енг. \textit{companion object}). Тада класа и објекат могу да приступају приватним пољима оног другог.
+Уколико објекат дели своје име са неком класом, а при томе се налазе у истом фајлу, тај објекат се назива објекат пратилац (енг. \textit{companion object}). Паралелно, та класа се назива класа пратилац тог објекта. Класа или објекат који су пратиоци могу да приступе приватним члановима свог пратиоца (к\^ {о}д \ref{lst:scala_oop_companions_example}). \cite{scala_prog}
 
-Да би се једна Скала апликација покренула потребно је дефинисати објекат који у себи садржи \textit{main()} метод. Тај метод представља улазну тачку у сваку Скала апликацију.
+\begin{lstlisting}[language=Scala, caption={Пример пратиоца}, label={lst:scala_oop_companions_example}]
+object Kvadrat {
+    def izracunajPovrsinu(a: Int) = a * a
+}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+class Kvadrat(a: Int) {
+    def povrsina = Kvadrat.izracunajPovrsinu(a)
+}
+
+scala> val k = new Kvadrat(10)
+val k: Kvadrat = Kvadrat@6cb2d5ea
+
+scala> k.povrsina
+val res0: Int = 100
+
+\end{lstlisting}
+
+\subsection{Метод \textit{main()}}
+\label{subsec:scala_oop_main_app}
+
+Да би се Скала апликација покренула потребно је дефинисати објекат који у себи садржи \textit{main()} метод. Тај метод представља улазну тачку у сваку Скала апликацију. \cite{scala_prog}
+
+\begin{lstlisting}[language=Scala, caption={Пример main метода}, label={lst:scala_oop_main_method}]
 scala> object Main {
      |  def main(args: Array[String]): Unit = {
-     |      print("Hello :3")
+     |      print("Hello")
      | 	}
      | }
 \end{lstlisting}
 
-\subsection{Traits}
+\subsection{Скала интерфејси}
 \label{subsec:scala_traits}
 
-\textit{Trait} је основна јединица наслеђивања у Скали. Унутар њега наводимо поља и методе које касније можемо користити у класама које га имплементирају. Разликују се од наслеђивања по томе што класа може наследити само једну класу док са друге стране може наследити више од једног \textit{trait}-а. \cite{scala_prog}
+Основна јединица наслеђивања у Скали се назива \textit{Trait}. Унутар њих се наводе поља и методи који се могу користити у класама које их имплементирају, односно наслеђују. Разлика између наслеђивања \textit{trait}-а и класе је та што је дозвољено наследити једну класу, док је могуће наследити више од једног \textit{trait}-а. Дефинишу се на исти начин као и класе с тим што се уместо кључне речи \textit{class} користи реч \textit{trait} (к\^{o}д \ref{lst:scala_oop_trait_example}). \cite{scala_prog}
 
-Дефинише се на исти начин као и класа с тим што се уместо кључне речи \textit{class} користи \textit{trait}.
+Унутар \textit{trait}-а се декларишу и дефинишу поља и методи које класе које га имплементирају могу користити.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
-scala> trait MyTrait
+\begin{lstlisting}[language=Scala, caption={Скала \textit{trait}}, label={lst:scala_oop_trait_example}]
+scala> trait MyTrait {
+     |   def myMethod(): Unit
+     | }
 trait MyTrait
 \end{lstlisting}
 
-Додаје се класи на исти начин као када се означава наследство, помоћу речи \textit{extends}. 
+\textit{Trait} се додаје класи на исти начин као када се означава наследство, помоћу речи \textit{extends}. 
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Додавање \textit{trait}-а класи}, label={lst:scala_oop_traits_extends_example}]
 scala> trait MyTrait {
      |  val x = 10
      | }
@@ -595,16 +616,19 @@ scala> mc.x
 val res0: Int = 10
 \end{lstlisting}
 
-Уколико класа којој додељујемо \textit{trait} већ наслеђује неку класу, то се мора урадити преко кључне речи \textit{with}. Сваки нови \textit{trait} који се додаје у овом случају се мора додати након нове речи \textit{with}. \cite{scala_prog}
+Уколико класа којој се додељује \textit{trait} већ наслеђује неку класу или неки други \textit{trait}, додељивање се мора извршити преко кључне речи \textit{with}. Сваки нови \textit{trait} који се додаје у овом случају се мора додати након нове речи \textit{with}. Примери су приказани у коду \ref{lst:scala_oop_extends_traits_with}. \cite{scala_prog}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
-scala> class MyExtednedClass extends MyClass with MyTrait1 with MyTrait2
-class MyExtednedClass
+\begin{lstlisting}[language=Scala, caption={Наслеђивање више \textit{trait}-ова}, label={lst:scala_oop_extends_traits_with}]
+scala> class MyExtendedClass extends MyClass with MyTrait1 with MyTrait2
+class MyExtendedClass
+
+scala> class MyExtendedTraits extends MyTrait1 with MyTrait2
+class MyExtendedTraits
 \end{lstlisting}
 
-Поред овога, \textit{trait} се може користити и као тип, с тим што вредност променљиве која је тог типа мора бити нека класа која наслеђује тај \textit{trait}.
+Скала \textit{trait} се може користити и као тип, а вредност променљиве тог типа мора бити класа која наслеђује тај \textit{trait}.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={\textit{Trait} као тип}, label={lst:scala_oop_traits_types}]
 scala> trait MyTrait
 trait MyTrait
 
@@ -615,20 +639,20 @@ scala> val mc: MyTrait = new MyClass
 val mc: MyTrait = MyClass@339cedbb
 \end{lstlisting}
 
-Све ово значи да је Скала \textit{trait} веома сличан Јавином интерфејсу, с разликом у томе да \textit{trait} може садржати и дефиниције метода, а не само декларације. Међутим, \textit{trait} је више од тога. Штавише, унутар њега можемо урадити све исто што можемо и у Скала класи.
+Из наведених карактеристика се може закључити да је Скала \textit{trait} веома сличан Јавином интерфејсу, са разликом да \textit{trait} може садржати и дефиниције метода и поља, а не само декларације. Међутим, \textit{trait} је више од тога и унутар њега се може урадити све што се може урадити унутар Скала класе.
 
 \subsection{Case класе}
 \label{subsec:scala_case_klase}
 
-Поред обичних, у Скали постоји још једна посебна врста класе названа \textit{case} класа. Постоје три разлике између ове врсте класа и обичне:
+У језику Скала, поред стандардних, постоји још једна врста класе названа \textit{case} класа. Постоје три разлике између ове врсте класа и обичних:
 
 \begin{itemize}
 \item Променљиве ове класе се инстанцирају без кључне речи \textit{new}
 \item Свако поље ове класе мора имати префикс \textit{val}
-\item \textit{Case} класа садржи аутоматски генерисане методе $==$, \textit{toString} и \textit{hashCode} 
+\item \textit{Case} класа садржи аутоматски генерисане методе $==$, \textit{toString()} и \textit{hashCode()} 
 \end{itemize}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Пример коришћења \textit{case} класа}, label={lst:scala_oop_case_class_example}]
 scala> case class MyCaseClass(val field: Int)
 class MyCaseClass
 
@@ -639,21 +663,34 @@ scala> mcc.toString
 val res0: String = MyCaseClass(100)
 \end{lstlisting}
 
-Највећа предност ових класа је та да се могу користити у једном конструкту специфичном за функционалне језике, \textit{pattern matching}-у, о коме ће речи бити касније. \cite{scala_prog}
+Највећа предност ових класа је та да се могу користити у конструкту специфичном за функционалне језике, поклапању образаца (енг. \textit{pattern matching}), који ће бити детаљније описан у секцији \ref{sec:scala_patt_match}. \cite{scala_prog}
 
-%\subsection{Хијерархија класа}
-%\label{subsec:scala_class_hier}
-%hijerahija
+\subsection{Хијерархија класа}
+\label{subsec:scala_class_hier}
+
+Као и у Јави, у Скали постоји хијерархија наслеђивања типова (slika \ref{fig:scala_types_hier}). На врху се налази \textit{Any} и свака Скала класа је наслеђује, имплицитно или експлицитно. Овај тип поседује два подтипа, \textit{AnyVal} и \textit{AnyRef}. Први је корен свим Скала типовима који представљају вредности. То су: \textit{Byte}, \textit{Short}, \textit{Char}, \textit{Int}, \textit{Long}, \textit{Float}, \textit{Double}, \textit{Boolean} и \textit{Unit}. Друга, \textit{AnyRef}, представља корен свих референци у Скали, слично као класа \textit{Object} у Јави. Потомци овог типа се инстанцирају преко кључне речи \textit{new}. \cite{scala_prog}
+
+На дну референтних типова се налази класа \textit{Null}. Овај тип се може доделити било којој референци. Једина класа која наслеђује \textit{Null} је \textit{Nothing}. Класа \textit{Nothing} нема вредност и не може се доделити ниједној променљивој.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1\textwidth]{pictures/scala-type-hierarchy.jpg}
+  \caption{Хијерархија Скала типова}
+  \label{fig:scala_types_hier}
+\end{figure}
+
 
 \section{Скала колекције}
 \label{sec:scala_coll}
 
+Скала поседује велики број уграђених колекција, мутабилних и имутабилних. Неке од њих су низови, листе, скупови и мапе али постоје и друге.
+
 \subsection{Низови}
 \label{subsec:scala_arrays}
 
-Скала нуди велики број уграђених колекција, мутабилних и имутабилних. Скала низ (енг. \textit{Array}) је мутабилна структура која представља низ података. Мутабилна је због тога што, иако се број елемената у низу не може мењати, могу се мењати саме елементи. Сваки низ садржи елементе само једног типа и може се креирати навођењем иницијалних елемената или његове дужине. \cite{scala_prog}
+Скала низ (енг. \textit{array}) је мутабилна структура која представља низ података. Мутабилна је у смислу да се вредности елемената у низу могу мењати, док је број елемената фиксан. Сваки низ садржи елементе само једног типа и може се креирати навођењем иницијалних елемената или његове дужине. Уколико се наведе дужина, сви елементи ће бити иницијализовани на вредност нула. \cite{scala_prog}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Инстанцирање низа у Скали}, label={lst:scala_coll_array_example}]
 scala> val a1 = Array(1, 2, 3)
 val a1: Array[Int] = Array(1, 2, 3)
 
@@ -661,11 +698,11 @@ scala> val a2 = new Array[Int](3)
 val a2: Array[Int] = Array(0, 0, 0)
 \end{lstlisting}
 
-Приметимо да у другом случају инстанцирамо нову класу уз помоћ наредбе \textit{new} док у првом то не радимо. Разлог је то што се у првом случају позива метод \textit{apply()} који креира низ за нас. Приметимо и то да је у првом случају Скала закључила тип низа, на основу његових елемената, док смо у другом то морали експлицитно да назначимо. \cite{scala_prog}
+У претходном примеру се у другом случају инстанцира нова класа коришћењем наредбе \textit{new} док у првом то није случај. Разлог је тај што се у првом случају позива метод \textit{apply()} који креира инстанцу низа. Поред тога, у првом случају је Скала компајлер аутоматски закључио тип низа на основу елемената, док је у другом тип морао бити експлицитно означен. \cite{scala_prog}
 
-Елементу низа приступамо као у Јави, само што уместо $[]$ користимо $()$. На сличан начин и мењамо један елемент низа.
+Елементу низа се приступа слично као у Јави, са једином разликом што се уместо угластих заграда користе обичне. На сличан начин се извршава и мењање једног елемента.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Приступ и измена елемента}, label={lst:scala_coll_array_get_set}]
 scala> val a = Array(1, 2, 3)
 val a: Array[Int] = Array(1, 2, 3)
 
@@ -681,14 +718,16 @@ val res1: Array[Int] = Array(100, 2, 3)
 \subsection{Листе}
 \label{subsec:scala_lists}
 
-Уколико желимо да користимо имутабилалну колекцију елемената истог типа можемо користити Скала листе. Разлика листе у Скали у односу на ону у Јави је та што је Скала листа увек имутабилна, док Јава листа може бити мутабилна. Листу можемо инстанцирати навођењем њених елемената. Приступ елементу листе се врши исто као у низу, али мењање елемената није дозвољено. \cite{scala_prog}
+Скала листе представљају имутабилну колекцију елемената истог типа. Разлика листе у Скали у односу на Јавину је та што је Скала листа увек имутабилна, док Јава листа може бити мутабилна. 
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+Инстанцира се навођењем елемената. Приступ елементу листе се извршава ма исти начин као и у случају низа. Пошто су листе имутабилне, измена елемената није дозвољена. \cite{scala_prog}
+
+\begin{lstlisting}[language=Scala, caption={Пример Скала листе}, label={lst:scala_coll_lists_example}]
 scala> val l = List("a", "b", "c")
 val l: List[String] = List(a, b, c)
 
 scala> l(0)
-val res59: String = a
+val res0: String = a
 
 scala> l(0) = "try"
        ^
@@ -696,9 +735,9 @@ scala> l(0) = "try"
        did you mean updated?
 \end{lstlisting}
 
-Листе се спајају оператором $:::$. Напоменимо да се коришћењем овог оператора не додају елементи једне листе на другу, већ се креира тотално нова листа. Овај метод можемо користити да надовежемо и више од једне листе. \cite{scala_prog}
+Спајање листи се извршава оператором $:::$. Приликом позива овог оператора се не извршава додавање елемената једне листе на другу, већ је резултат нова листа. Овај метод се може користити и за спајање више од две листе. \cite{scala_prog}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Спајање листи}, label={lst:scala_coll_lists_new_list}]
 scala> val l1 = List(1, 2, 3)
 val l1: List[Int] = List(1, 2, 3)
 
@@ -712,9 +751,9 @@ scala> l1 ::: l2 ::: l3
 val res0: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
 \end{lstlisting}
 
-Још један веома користан оператор је $::$, који као аргументе прима листу и елемент од којих прави нову листу где елемент додаје на почетак листе.
+Нове листе се могу инстанцирати и коришћењем оператора $::$, који као аргументе прима елемент и листу истог типа од којих конструише нову листу где елемент додаје на почетак листе.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Пример оператора ::}, label={lst:scala_coll_lists_head_op}]
 scala> val l = List(1, 2, 3)
 val l: List[Int] = List(1, 2, 3)
 
@@ -722,9 +761,9 @@ scala> 10 :: l
 val res0: List[Int] = List(10, 1, 2, 3)
 \end{lstlisting}
 
-Још један начин иницијализације листе је надовезивање елемената на празну листу оператором $::$. Напоменимо да се у Скали празна листа означава кључном речи \textit{Nil}.
+Коришћењем овог оператора се може извршити надовезивање елемената на празну листу (пример \ref{lst:scala_coll_lists_head_op_nill}). У Скали се празна листа означава кључном речи \textit{Nil}.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Додавање елемената на празну листу}, label={lst:scala_coll_lists_head_op_nill}]
 scala> val l = 1 :: 2 :: 3 :: 4 :: Nil
 val l: List[Int] = List(1, 2, 3, 4)
 \end{lstlisting}
@@ -732,9 +771,9 @@ val l: List[Int] = List(1, 2, 3, 4)
 \subsection{Н-торке}
 \label{subsec:scala_tuple}
 
-Имутаблина колекција која садржи елементе различитог типа се назива н-торка, \textit{Tuple}. Ова структура података је корисна када, на пример, желимо да вратимо више различитих вредности из неке функције. \textit{Tuple} се инстанцира веома лако, само треба навести његове елементе између заграда. Елементу приступамо оператором \_Х где је Х редни број елемента унутар н-торке. \cite{scala_prog}
+Имутабилна колекција која садржи елементе различитог типа се назива н-торка (енг.  \textit{Tuple}). Ова структура података се може користити када је потребно вратити више различитих вредности функције. \textit{Tuple} се инстанцира навођењем елемената између заграда. Елементу се приступа оператором \_Х где је \textit{Х} редни број елемента унутар н-торке. \cite{scala_prog}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Н-торка у Скали}, label={lst:scala_coll_tuple_example}]
 scala> val t = (1, "string123", Array(1, 2, 3))
 val t: (Int, String, Array[Int]) = (1,string123,Array(1, 2, 3))
 
@@ -745,35 +784,38 @@ scala> t._3
 val res1: Array[Int] = Array(1, 2, 3)
 \end{lstlisting}
 
-\subsection{Скупови и мапе}
-\label{subsec:scala_sets_maps}
+\subsection{Скупови}
+\label{subsec:scala_sets}
 
-Поред поменутих, у Скали постоје и друге структуре података. Скуп користимо када желимо колекцију која садржи све елементе истог типа, с тим што сваки елемент колекције мора бити јединствен. Постоје две врсте скупа, имутабилни, \textit{collection.immutable.Set} и мутабилни, \textit{collection.mutable.Set}.
+Скуп је таква колекција за коју важи да садржи елементе истог типа, са тим што сваки елемент колекције мора бити јединствен. Постоје две врсте скупова, имутабилни, \textit{collection.immutable.Set} и мутабилни, \textit{collection.mutable.Set}.
 
-Инстанцирају се на исти начин, навођењем елемената. Уколико током навођења наведемо неки елемент више од један пут нећемо добити грешку већ ће се дупликат уклонити. Да бисмо додали елемент у скуп користимо оператор $+$. Код мутабилних скупова $+$ додаје вредност на постојећи скуп, док код имутабилних креира тотално нови скуп. \cite{scala_prog}
+Инстанцирају се на исти начин, навођењем елемената. Уколико се током навођења наведе неки елемент више од једног пута, не добија се грешка, већ се дупликат аутоматски уклања. Елемент се додаје оператором $+$. Код мутабилних скупова $+$ додаје елемент на постојећи скуп, док код имутабилних производи тотално нови скуп. \cite{scala_prog}
 
-Поред скупова, Скала има структуре за рад са кључ-вредност паровима. Такве структуре података су назване мапе и у Скали постоје мутабилне, \textit{collection.mutable.Map} и имутабилне, \textit{collection.immutable.Map}, које су подразумевани тип.
+\subsection{Мапе}
+\label{subsec:scala_maps}
 
-Мапу дефинишемо низом кључ $->$ вредност парова који могу бити било ког типа. Једино битно је да су сви кључеви и све вредности међусобно истог типа. Приступ вредностима се врши преко назива кључа, методом $()$.
+Скала садржи структуре за рад са кључ-вредност паровима. Оне су назване мапе и у Скали постоје мутабилне, \textit{collection.mutable.Map} и имутабилне, \textit{collection.immutable.Map}. Имутабилне су подразумеване и користе се уколико се експлицитно не наведе супротно.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+Мапе се дефинишу навођењем низа кључ-вредност парова, раздвојених знаком $->$. Битно је да су сву кључеви и све вредности међусобно истог типа. Приступ вредностима се врши преко назива кључа, методом $()$.
+
+\begin{lstlisting}[language=Scala, caption={Мапе у Скали}, label={lst:scala_app_maps_example}]
 scala> val m1 = Map("k1" -> "v1", "k2" -> "v2")
 val m1: scala.collection.Map[String,String] = Map(k1 -> v1, k2 -> v2)
 
 scala> m1("k1")
-val res36: String = v1
+val res0: String = v1
 
 scala> val m2 = Map(1 -> Array(1, 2), 2 -> Array(3, 4))
 val m2: scala.collection.Map[Int,Array[Int]] = Map(1 -> Array(1, 2), 2 -> Array(3, 4))
 
 scala> m2(1)
-val res40: Array[Int] = Array(1, 2)
+val res1: Array[Int] = Array(1, 2)
 \end{lstlisting}
 
-Разлика између мутабилних и имутабилних мапа је та што је код мутабилниџ могуће изменити број елемената, као и саме елементе, док имутабилна мапа то не подржава.
+Разлика између мутабилних и имутабилних мапа је та што је код мутабилних могуће изменити број елемената, као и саме елементе, док имутабилна мапа то не подржава.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
-scala> // mutable
+\begin{lstlisting}[language=Scala, caption={Измена елемента код мутабилних и имутабилних мапа}, label={lst:scala_coll_maps_mutable_immutable}]
+scala> // mutable map
 
 scala> val mutableM = mutable.Map("k1" -> "v1")
 val mutableM: scala.collection.mutable.Map[String,String] = HashMap(k1 -> v1)
@@ -783,7 +825,7 @@ scala> mutableM("k1") = "vred1"
 scala> mutableM("k2") = "vred2"
 
 scala> mutableM
-val res52: scala.collection.mutable.Map[String,String] = HashMap(k1 -> vred1, k2 -> vred2)
+val res0: scala.collection.mutable.Map[String,String] = HashMap(k1 -> vred1, k2 -> vred2)
 
 scala> // immutable map
 
@@ -800,8 +842,7 @@ scala> immutableM("k2") = "vred2"
 
 \end{lstlisting}
 
-
-\section{Pattern matching}
+\section{Поклапање образаца}
 \label{sec:scala_patt_match}
 
 Скалин \textit{pattern matching} се може посматрати као побољшана верзија \textit{switch} наредбе у Јави. Састоји се од селектора, који представља некакав израз или променљиву, кључне речи \textit{match} и низа случајева унутар ${}$ који могу да одговарају селектору. Сваки израз се састоји од знака $=>$ који се налази између неке вредности и кључне речи \textit{case} са леве стране и израза који ће бити резултат са десне. \cite{scala_prog}
@@ -908,6 +949,8 @@ val res8: Int = 11
 scala> generalSize(12)
 val res9: Int = -1
 \end{lstlisting}
+
+ако нема додати део за КЕЈС класе
 
 %\section{Optional и Either}
 %\label{sec:scala_opt_eith}=
