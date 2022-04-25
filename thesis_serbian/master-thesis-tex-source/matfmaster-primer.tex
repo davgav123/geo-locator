@@ -668,9 +668,9 @@ val res0: String = MyCaseClass(100)
 \subsection{Хијерархија класа}
 \label{subsec:scala_class_hier}
 
-Као и у Јави, у Скали постоји хијерархија наслеђивања типова (slika \ref{fig:scala_types_hier}). На врху се налази \textit{Any} и свака Скала класа је наслеђује, имплицитно или експлицитно. Овај тип поседује два подтипа, \textit{AnyVal} и \textit{AnyRef}. Први је корен свим Скала типовима који представљају вредности. То су: \textit{Byte}, \textit{Short}, \textit{Char}, \textit{Int}, \textit{Long}, \textit{Float}, \textit{Double}, \textit{Boolean} и \textit{Unit}. Друга, \textit{AnyRef}, представља корен свих референци у Скали, слично као класа \textit{Object} у Јави. Потомци овог типа се инстанцирају преко кључне речи \textit{new}. \cite{scala_prog}
+Као и у Јави, у Скали постоји хијерархија наслеђивања типова (слика \ref{fig:scala_types_hier}). На врху се налази класа \textit{Any} коју свака Скала наслеђује, имплицитно или експлицитно. Овај тип поседује два подтипа, \textit{AnyVal} и \textit{AnyRef}. Први је корен свим Скала типовима који представљају вредности. То су \textit{Byte}, \textit{Short}, \textit{Char}, \textit{Int}, \textit{Long}, \textit{Float}, \textit{Double}, \textit{Boolean} и \textit{Unit}. Друга, \textit{AnyRef}, представља родитељску класу свим референцама у Скали, слично као класа \textit{Object} у Јави. Потомци овог типа се инстанцирају преко кључне речи \textit{new}. \cite{scala_prog}
 
-На дну референтних типова се налази класа \textit{Null}. Овај тип се може доделити било којој референци. Једина класа која наслеђује \textit{Null} је \textit{Nothing}. Класа \textit{Nothing} нема вредност и не може се доделити ниједној променљивој.
+На дну референтних типова се налази класа \textit{Null}. Вредност овог типа се може доделити било којој референци. Једина класа која наслеђује \textit{Null} је \textit{Nothing}. Класа \textit{Nothing} нема вредност и не може се доделити ниједној променљивој.
 
 \begin{figure}[!ht]
   \centering
@@ -679,16 +679,15 @@ val res0: String = MyCaseClass(100)
   \label{fig:scala_types_hier}
 \end{figure}
 
-
 \section{Скала колекције}
 \label{sec:scala_coll}
 
-Скала поседује велики број уграђених колекција, мутабилних и имутабилних. Неке од њих су низови, листе, скупови и мапе али постоје и друге.
+Скала поседује велики број уграђених колекција, мутабилних и имутабилних. Неке од њих су низови, листе, скупови и мапе.
 
 \subsection{Низови}
 \label{subsec:scala_arrays}
 
-Скала низ (енг. \textit{array}) је мутабилна структура која представља низ података. Мутабилна је у смислу да се вредности елемената у низу могу мењати, док је број елемената фиксан. Сваки низ садржи елементе само једног типа и може се креирати навођењем иницијалних елемената или његове дужине. Уколико се наведе дужина, сви елементи ће бити иницијализовани на вредност нула. \cite{scala_prog}
+Скала низ (енг. \textit{array}) је мутабилна структура која представља низ података. Мутабилна је у смислу да се вредности елемената у низу могу мењати, док је број елемената фиксан. Сваки низ садржи елементе једног типа и може се креирати навођењем иницијалних елемената или његове дужине. Уколико се наведе дужина, сви елементи ће бити иницијализовани на вредност нула. \cite{scala_prog}
 
 \begin{lstlisting}[language=Scala, caption={Инстанцирање низа у Скали}, label={lst:scala_coll_array_example}]
 scala> val a1 = Array(1, 2, 3)
@@ -698,9 +697,9 @@ scala> val a2 = new Array[Int](3)
 val a2: Array[Int] = Array(0, 0, 0)
 \end{lstlisting}
 
-У претходном примеру се у другом случају инстанцира нова класа коришћењем наредбе \textit{new} док у првом то није случај. Разлог је тај што се у првом случају позива метод \textit{apply()} који креира инстанцу низа. Поред тога, у првом случају је Скала компајлер аутоматски закључио тип низа на основу елемената, док је у другом тип морао бити експлицитно означен. \cite{scala_prog}
+У претходном примеру се у другом случају инстанцира нова класа коришћењем наредбе \textit{new} док у првом то није случај. Разлог је тај што се у првом случају позива метод \textit{apply()} који креира инстанцу низа. Поред тога, у првом случају је Скала компајлер аутоматски закључио тип низа на основу прослеђених елемената, док је у другом тип морао бити експлицитно означен. \cite{scala_prog}
 
-Елементу низа се приступа слично као у Јави, са једином разликом што се уместо угластих заграда користе обичне. На сличан начин се извршава и мењање једног елемента.
+Елементу низа се приступа слично као у Јави, са тим што се уместо угластих заграда користе обичне. На сличан начин се извршава и мењање једног елемента.
 
 \begin{lstlisting}[language=Scala, caption={Приступ и измена елемента}, label={lst:scala_coll_array_get_set}]
 scala> val a = Array(1, 2, 3)
@@ -720,7 +719,7 @@ val res1: Array[Int] = Array(100, 2, 3)
 
 Скала листе представљају имутабилну колекцију елемената истог типа. Разлика листе у Скали у односу на Јавину је та што је Скала листа увек имутабилна, док Јава листа може бити мутабилна. 
 
-Инстанцира се навођењем елемената. Приступ елементу листе се извршава ма исти начин као и у случају низа. Пошто су листе имутабилне, измена елемената није дозвољена. \cite{scala_prog}
+Инстанцира се навођењем елемената. Приступ елементу листе се извршава на исти начин као и у случају низа. Пошто су листе имутабилне, измена вредности елемената није дозвољена. \cite{scala_prog}
 
 \begin{lstlisting}[language=Scala, caption={Пример Скала листе}, label={lst:scala_coll_lists_example}]
 scala> val l = List("a", "b", "c")
@@ -771,7 +770,7 @@ val l: List[Int] = List(1, 2, 3, 4)
 \subsection{Н-торке}
 \label{subsec:scala_tuple}
 
-Имутабилна колекција која садржи елементе различитог типа се назива н-торка (енг.  \textit{Tuple}). Ова структура података се може користити када је потребно вратити више различитих вредности функције. \textit{Tuple} се инстанцира навођењем елемената између заграда. Елементу се приступа оператором \_Х где је \textit{Х} редни број елемента унутар н-торке. \cite{scala_prog}
+Имутабилна колекција која садржи елементе различитог типа се назива н-торка (енг \textit{Tuple}). Ова структура података се може користити када је потребно вратити више различитих вредности функције. \textit{Tuple} се инстанцира навођењем елемената између заграда. Елементу се приступа оператором \_Х где је \textit{Х} редни број елемента унутар н-торке. \cite{scala_prog}
 
 \begin{lstlisting}[language=Scala, caption={Н-торка у Скали}, label={lst:scala_coll_tuple_example}]
 scala> val t = (1, "string123", Array(1, 2, 3))
@@ -787,16 +786,21 @@ val res1: Array[Int] = Array(1, 2, 3)
 \subsection{Скупови}
 \label{subsec:scala_sets}
 
-Скуп је таква колекција за коју важи да садржи елементе истог типа, са тим што сваки елемент колекције мора бити јединствен. Постоје две врсте скупова, имутабилни, \textit{collection.immutable.Set} и мутабилни, \textit{collection.mutable.Set}.
+Скуп је колекција за коју важи да садржи елементе истог типа, са тим што сваки елемент колекције мора бити јединствен. Постоје две врсте скупова, имутабилни, \textit{collection.immutable.Set} и мутабилни, \textit{collection.mutable.Set}.
 
-Инстанцирају се на исти начин, навођењем елемената. Уколико се током навођења наведе неки елемент више од једног пута, не добија се грешка, већ се дупликат аутоматски уклања. Елемент се додаје оператором $+$. Код мутабилних скупова $+$ додаје елемент на постојећи скуп, док код имутабилних производи тотално нови скуп. \cite{scala_prog}
+Инстанцирају се на исти начин, навођењем елемената. Уколико се током навођења наведе неки елемент више од једног пута, не добија се грешка, већ се дупликат аутоматски уклања. Елемент се додаје оператором $+$. Код мутабилних скупова $+$ додаје елемент на постојећи скуп, док код имутабилних производи нови скуп са додатим елементом. \cite{scala_prog}
+
+\begin{lstlisting}[language=Scala, caption={Инстанцирање скупа у Скали}, label={lst:scala_coll_set_example}]
+scala> val s = Set(1, 1, 1, 1, 2, 2)
+val s: scala.collection.immutable.Set[Int] = Set(1, 2)
+\end{lstlisting}
 
 \subsection{Мапе}
 \label{subsec:scala_maps}
 
-Скала садржи структуре за рад са кључ-вредност паровима. Оне су назване мапе и у Скали постоје мутабилне, \textit{collection.mutable.Map} и имутабилне, \textit{collection.immutable.Map}. Имутабилне су подразумеване и користе се уколико се експлицитно не наведе супротно.
+Мапе су колекције за рад са кључ-вредност паровима. Постоје мутабилне, \textit{collection.mutable.Map} и имутабилне, \textit{collection.immutable.Map}. Имутабилне су подразумеване и користе се уколико се експлицитно не наведе супротно.
 
-Мапе се дефинишу навођењем низа кључ-вредност парова, раздвојених знаком $->$. Битно је да су сву кључеви и све вредности међусобно истог типа. Приступ вредностима се врши преко назива кључа, методом $()$.
+Дефинишу се навођењем низа кључ-вредност парова, раздвојених знаком $->$. Битно је да су сву кључеви и све вредности међусобно истог типа. Приступ вредностима се врши преко назива кључа, методом $()$.
 
 \begin{lstlisting}[language=Scala, caption={Мапе у Скали}, label={lst:scala_app_maps_example}]
 scala> val m1 = Map("k1" -> "v1", "k2" -> "v2")
@@ -814,9 +818,8 @@ val res1: Array[Int] = Array(1, 2)
 
 Разлика између мутабилних и имутабилних мапа је та што је код мутабилних могуће изменити број елемената, као и саме елементе, док имутабилна мапа то не подржава.
 
-\begin{lstlisting}[language=Scala, caption={Измена елемента код мутабилних и имутабилних мапа}, label={lst:scala_coll_maps_mutable_immutable}]
-scala> // mutable map
-
+\begin{lstlisting}[language=Scala, caption={Измена и додавање елемента код мутабилних и имутабилних мапа}, label={lst:scala_coll_maps_mutable_immutable}]
+// mutable map
 scala> val mutableM = mutable.Map("k1" -> "v1")
 val mutableM: scala.collection.mutable.Map[String,String] = HashMap(k1 -> v1)
 
@@ -827,8 +830,7 @@ scala> mutableM("k2") = "vred2"
 scala> mutableM
 val res0: scala.collection.mutable.Map[String,String] = HashMap(k1 -> vred1, k2 -> vred2)
 
-scala> // immutable map
-
+// immutable map
 scala> val immutableM = Map("k1" -> "v1")
 val immutableM: scala.collection.Map[String,String] = Map(k1 -> v1)
 
@@ -845,9 +847,9 @@ scala> immutableM("k2") = "vred2"
 \section{Поклапање образаца}
 \label{sec:scala_patt_match}
 
-Скалин \textit{pattern matching} се може посматрати као побољшана верзија \textit{switch} наредбе у Јави. Састоји се од селектора, који представља некакав израз или променљиву, кључне речи \textit{match} и низа случајева унутар ${}$ који могу да одговарају селектору. Сваки израз се састоји од знака $=>$ који се налази између неке вредности и кључне речи \textit{case} са леве стране и израза који ће бити резултат са десне. \cite{scala_prog}
+Поклапање образаца (енг. \textit{pattern matching}) је честа карактеристика функционалних језика. Слична је наредби \textit{switch} из Јаве, али нуди више могућности од ње. Састоји се од селектора, који представља израз или променљиву, кључне речи \textit{match} и низа случајева унутар витичастих заграда. Сваки случај се састоји од знака $=>$ који се налази између вредности са којом се селектор поклапа и кључне речи \textit{case} са леве стране и израза који ће бити резултат поклапања са десне. \cite{scala_prog}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Поклапање образаца у Скали}, label={lst:scala_coll_patt_match}]
 selector match {
 	case value1 => result1
 	case value2 => result2
@@ -856,48 +858,20 @@ selector match {
 }
 \end{lstlisting}
 
-Разлике између ове нарадбе и Јавине наредбе \textit{switch} су:
+Разлике између ове нарeдбе и Јавине наредбе \textit{switch} су:
 
 \begin{itemize}
 \item \textit{match} наредба увек резултује неком вредношћу
-\item Када пронађемо одговарајућу вредност у Скали, ту се заустављамо и не разматрамо даље
-\item Уколико ниједна вредност не одговара селектору, појавиће се \textit{MatchError}. То значи да увек морамо да пазимо на то да покријемо све могуће вредности селектора
+\item Када се пронађе одговарајућа вредност, друге вредности након ње се не разматрају. Није потребно користити наредбу \textit{break}
+\item Уколико ниједна вредност не одговара селектору, појављује се \textit{MatchError}. То значи да увек треба покрити све могуће вредности селектора
 \end{itemize}
-
-\subsection{Џокери}
-\label{subsec:scala_match_wildcard}
-
-У Скали постоји џокер (енг. \textit{wildcard}) који одговара било којој вредности селектора. Његова ознака је $\_$. Може се користити у случају да се селектор спаја са неком вредношћу или, уколико је селектор класа, уколико се врши спајање поља те класе са неком вредношћу. Погледајмо примере: \cite{scala_prog}
-
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
-scala> val x = 10
-val x: Int = 10
-
-scala> x match {
-     | case 10 => print("x je 10")
-     | case _  => print("x nije 10")
-     | }
-x je 10
-
-scala> case class MyClass(val x: Int)
-class MyClass
-
-scala> val mc = MyClass(10)
-val mc: MyClass = MyClass(10)
-
-scala> mc match {
-     | case MyClass(10) => print("x unutar klase je 10")
-     | case MyClass(_)  => print("x unutar klase nije 10")
-     | }
-x unutar klase je 10
-\end{lstlisting}
 
 \subsection{Примери коришћења}
 \label{subsec:scala_match_exaples}
 
-Скалин \textit{pattern matching} је веома моћан механизам и може се користити у великом броју случајева. Можемо вршити поклапање константи:
+Поклапање образаца је веома моћан механизам и користи се у великом броју случајева. Један од њих је поклапање константи:
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Поклапање константи}, label={lst:scala_patt_match_match_const_example}]
 scala> def describe(x: Any) = x match {
      | case 5 => "five"
      | case true => "truth"
@@ -905,37 +879,78 @@ scala> def describe(x: Any) = x match {
      | case Nil => "the empty list"
      | case _ => "something else"
      | }
+     
+scala> describe(5)
+val res1: String = five
+
+scala> describe(Nil)
+val res2: String = the empty list
+
+scala> describe(1001)
+val res3: String = something else
 \end{lstlisting}
 
-Такође се користи и за поклапање променљивих. У следећем случају, променљива \textit{something} ће одговарати било којој вредности, која ће се уз помоћ ње пренети на десну страну знака $=>$. \cite{scala_prog}
+У претходном примеру се у последњем случају користи ознака $\_$. Назива се џокер (енг. \textit{wildcard}) и поклапа се са било којом вредношћу селектора.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
-scala> val expr = "this is some expression"
-val expr: String = this is some expression
+\begin{lstlisting}[language=Scala, caption={Џокер у поклапању образаца}, label={lst:scala_patt_match_wildcard}]
+scala> def describe(x: Int) = x match {
+     | case 10 => "x je 10"
+     | case _ => "x nije 10"
+     | }
+def describe(x: Int): String
+
+scala> describe(10)
+val res1: String = x je 10
+
+scala> describe(100)
+val res2: String = x nije 10
+
+scala> describe(-100)
+val res3: String = x nije 10
+\end{lstlisting}
+
+Поклапање образаца се користи и за поклапање променљивих. У примеру \ref{lst:scala_patt_match_variable_match_example} променљива \textit{something} одговара било којој вредности селектора, слично као џокер, али се преко ње та вредност преноси са десне стране ознаке $=>$. \cite{scala_prog}
+
+\begin{lstlisting}[language=Scala, caption={Поклапање променљивих}, label={lst:scala_patt_match_variable_match_example}]
+scala> val expr = "some expression"
+val expr: String = some expression
 
 scala> expr match {
-     | case ""        => print("matched empty string")
+     | case ""        => print("empty string")
      | case something => print("matched: " + something)
      | }
-matched: this is some expression
+matched: some expression
 \end{lstlisting}
 
-Користи се и за поклапање типова селектора, уколико желимо да дефинишемо да за различите типове користимо различито понашање.
+Поред вредности селектора, могуће је поклапати и његов тип, уколико је потребно за другачије типове имплементирати другачије понашање.
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
-scala> val expr = "this is some expression"
-val expr: String = this is some expression
+\begin{lstlisting}[language=Scala, caption={Поклапање типова}, label={lst:scala_patt_match_types_example}]
+scala> trait MyTrait
+trait MyTrait
 
-scala> expr match {
-     | case ""        => print("matched empty string")
-     | case something => print("matched: " + something)
+scala> class MyClass_1 extends MyTrait
+class MyClass_1
+
+scala> class MyClass_2 extends MyTrait
+class MyClass_2
+
+scala> def describe(x: MyTrait) = x match {
+     |   case mc1: MyClass_1 => "MyClass_1"
+     |   case mc2: MyClass_2 => "MyClass_2"
+     |   case _ => "some other class"
      | }
-matched: this is some expression
+def describe(x: MyTrait): String
+
+scala> describe(new MyClass_1)
+val res1: String = MyClass_1
+
+scala> describe(new MyClass_2)
+val res2: String = MyClass_2
 \end{lstlisting}
 
-Поред свих наведених примера, \textit{pattern matching} се користи у још великом броју случајева. На пример, користи се за поклапање секвенци, н-торки и класа. Погледајмо пример где функција \textit{generalSize(x: Any)} има различито понашање у односу на то ког типа је њен аргумент. \cite{scala_prog}
+Могуће је комбиновати претходне примере и извршити поклапања типова и променљивих уз помоћ једног поклапања образаца. Пример \ref{lst:scala_patt_match_generalSize} приказује функцију \textit{generalSize(x: Any)} која се понаша другачије у односу на то ког типа је њен аргумент. \cite{scala_prog}
 
-\begin{lstlisting}[language=Scala, caption={}, label={lst:}]
+\begin{lstlisting}[language=Scala, caption={Пример поклапања типова и променљивих}, label={lst:scala_patt_match_generalSize}]
 scala> def generalSize(x: Any) = x match {
      |   case s: String => s.length
      |   case m: Map[_, _] => m.size
@@ -944,19 +959,35 @@ scala> def generalSize(x: Any) = x match {
 def generalSize(x: Any): Int
 
 scala> generalSize("some string")
-val res8: Int = 11
+val res1: Int = 11
 
 scala> generalSize(12)
-val res9: Int = -1
+val res2: Int = -1
 \end{lstlisting}
 
-ако нема додати део за КЕЈС класе
+Поклапање конструктора се користи када је потребно извршити поклапање класа које наслеђују заједничку класу. 
+
+\begin{lstlisting}[language=Scala, caption={Поклапање конструктора}, label={lst:scala_patt_match_constr_match_example}]
+scala> abstract class Animal
+     | case class Mammal(name: String) extends Animal
+     | case class Bird(name: String) extends Animal
+class Animal
+class Mammal
+class Bird
+
+scala> def caseClassesPatternMatching(animal: Animal) = animal match {
+     |  case Mammal(name) => s"I'm a $name, a mammal"
+     |  case Bird(name) => s"I'm a $name, a bird"
+     |  case _ => "I'm an unknown animal"
+     |}
+def caseClassesPatternMatching(animal: Animal): String
+\end{lstlisting}
 
 %\section{Optional и Either}
 %\label{sec:scala_opt_eith}=
 %optional i either tipovi
 
-%\section{Impl vred}
+%\section{Implicit vred}
 %\label{sec:scala_impl_vals}
 %implicits
 %if requested

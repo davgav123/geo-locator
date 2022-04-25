@@ -26,64 +26,63 @@
 \contentsline {subsection}{Скупови}{22}{section*.16}%
 \contentsline {subsection}{Мапе}{23}{section*.17}%
 \contentsline {section}{\numberline {2.9}Поклапање образаца}{24}{section.2.9}%
-\contentsline {subsection}{Џокери}{25}{section*.18}%
-\contentsline {subsection}{Примери коришћења}{26}{section*.19}%
-\contentsline {chapter}{\chapternumberline {3}Дистрибуирани системи}{28}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Увод}{28}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Скалирање система}{29}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Особине дистрибуираних система}{30}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Хадуп}{31}{section.3.4}%
-\contentsline {section}{\numberline {3.5}ХДФС}{32}{section.3.5}%
-\contentsline {subsection}{Врсте уређаја ХДФС-а}{33}{section*.20}%
-\contentsline {subsection}{Особине}{34}{section*.21}%
-\contentsline {section}{\numberline {3.6}Мап Редјус}{35}{section.3.6}%
-\contentsline {subsection}{Мап Редјус из аспекта функција}{36}{section*.22}%
-\contentsline {section}{\numberline {3.7}Остале компоненте Хадупа}{37}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Апачи Јарн}{38}{section.3.8}%
-\contentsline {subsection}{Архитектура Јарна}{39}{section*.23}%
-\contentsline {section}{\numberline {3.9}Апачи Спарк}{41}{section.3.9}%
-\contentsline {subsection}{Недостаци Мап Редјуса}{41}{section*.24}%
-\contentsline {subsection}{Увод у Апачи Спарк}{41}{section*.25}%
-\contentsline {subsection}{Архитектура}{43}{section*.26}%
-\contentsline {subsection}{Партиције}{44}{section*.27}%
-\contentsline {subsection}{РДД}{44}{section*.28}%
-\contentsline {subsection}{Трансформације}{45}{section*.29}%
-\contentsline {subsection}{Лења евалуација}{46}{section*.30}%
-\contentsline {subsection}{Врсте РДД трансформација}{47}{section*.31}%
-\contentsline {subsection}{Акције}{48}{section*.32}%
-\contentsline {subsection}{Руковање грешкама у Спарку}{49}{section*.33}%
-\contentsline {subsection}{Кеширање}{50}{section*.34}%
-\contentsline {subsection}{Спарк Дата Фрејм}{50}{section*.35}%
-\contentsline {subsection}{Трансформације и акције дата фрејма}{51}{section*.36}%
-\contentsline {subsection}{Разлика између дата фрејма и РДД}{51}{section*.37}%
-\contentsline {subsection}{Планови извршавања}{52}{section*.38}%
-\contentsline {subsection}{Остале компоненте Спарка}{53}{section*.39}%
-\contentsline {chapter}{\chapternumberline {4}Семантички веб}{54}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Веб 1.0}{54}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Веб 2.0}{54}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Веб 3.0}{55}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Семантички веб}{55}{section.4.4}%
-\contentsline {subsubsection}{Историјат}{57}{section*.40}%
-\contentsline {subsection}{RDF језик}{58}{section*.41}%
-\contentsline {subsubsection}{Репрезентација}{60}{section*.42}%
-\contentsline {subsection}{OWL}{62}{section*.43}%
-\contentsline {subsection}{SPARQL}{62}{section*.44}%
-\contentsline {subsection}{Употреба семантичког веба}{63}{section*.45}%
-\contentsline {chapter}{\chapternumberline {5}OSM}{64}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Шта је OSM?}{64}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Елементи}{64}{section.5.2}%
-\contentsline {subsection}{Чворови}{65}{section*.46}%
-\contentsline {subsection}{Путање}{65}{section*.47}%
-\contentsline {subsection}{Релације}{66}{section*.48}%
-\contentsline {subsection}{Тагови}{67}{section*.49}%
-\contentsline {subsection}{Заједнички атрибути елемената}{67}{section*.50}%
-\contentsline {chapter}{\chapternumberline {6}App}{68}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Opis}{68}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Cloud}{68}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{68}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Подаци}{68}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Obrada OSM skupa Sparkom}{68}{section.6.5}%
-\contentsline {section}{\numberline {6.6}PolyContains}{69}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Rezultat}{69}{section.6.7}%
-\contentsline {chapter}{\chapternumberline {7}Закључак}{70}{chapter.7}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{71}{chapter*.51}%
+\contentsline {subsection}{Примери коришћења}{25}{section*.18}%
+\contentsline {chapter}{\chapternumberline {3}Дистрибуирани системи}{29}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Увод}{29}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Скалирање система}{30}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Особине дистрибуираних система}{31}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Хадуп}{32}{section.3.4}%
+\contentsline {section}{\numberline {3.5}ХДФС}{33}{section.3.5}%
+\contentsline {subsection}{Врсте уређаја ХДФС-а}{34}{section*.19}%
+\contentsline {subsection}{Особине}{35}{section*.20}%
+\contentsline {section}{\numberline {3.6}Мап Редјус}{36}{section.3.6}%
+\contentsline {subsection}{Мап Редјус из аспекта функција}{37}{section*.21}%
+\contentsline {section}{\numberline {3.7}Остале компоненте Хадупа}{38}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Апачи Јарн}{39}{section.3.8}%
+\contentsline {subsection}{Архитектура Јарна}{40}{section*.22}%
+\contentsline {section}{\numberline {3.9}Апачи Спарк}{42}{section.3.9}%
+\contentsline {subsection}{Недостаци Мап Редјуса}{42}{section*.23}%
+\contentsline {subsection}{Увод у Апачи Спарк}{42}{section*.24}%
+\contentsline {subsection}{Архитектура}{44}{section*.25}%
+\contentsline {subsection}{Партиције}{45}{section*.26}%
+\contentsline {subsection}{РДД}{45}{section*.27}%
+\contentsline {subsection}{Трансформације}{46}{section*.28}%
+\contentsline {subsection}{Лења евалуација}{47}{section*.29}%
+\contentsline {subsection}{Врсте РДД трансформација}{48}{section*.30}%
+\contentsline {subsection}{Акције}{49}{section*.31}%
+\contentsline {subsection}{Руковање грешкама у Спарку}{50}{section*.32}%
+\contentsline {subsection}{Кеширање}{51}{section*.33}%
+\contentsline {subsection}{Спарк Дата Фрејм}{51}{section*.34}%
+\contentsline {subsection}{Трансформације и акције дата фрејма}{52}{section*.35}%
+\contentsline {subsection}{Разлика између дата фрејма и РДД}{52}{section*.36}%
+\contentsline {subsection}{Планови извршавања}{53}{section*.37}%
+\contentsline {subsection}{Остале компоненте Спарка}{54}{section*.38}%
+\contentsline {chapter}{\chapternumberline {4}Семантички веб}{55}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Веб 1.0}{55}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Веб 2.0}{55}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Веб 3.0}{56}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Семантички веб}{56}{section.4.4}%
+\contentsline {subsubsection}{Историјат}{58}{section*.39}%
+\contentsline {subsection}{RDF језик}{59}{section*.40}%
+\contentsline {subsubsection}{Репрезентација}{61}{section*.41}%
+\contentsline {subsection}{OWL}{63}{section*.42}%
+\contentsline {subsection}{SPARQL}{63}{section*.43}%
+\contentsline {subsection}{Употреба семантичког веба}{64}{section*.44}%
+\contentsline {chapter}{\chapternumberline {5}OSM}{65}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Шта је OSM?}{65}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Елементи}{65}{section.5.2}%
+\contentsline {subsection}{Чворови}{66}{section*.45}%
+\contentsline {subsection}{Путање}{66}{section*.46}%
+\contentsline {subsection}{Релације}{67}{section*.47}%
+\contentsline {subsection}{Тагови}{68}{section*.48}%
+\contentsline {subsection}{Заједнички атрибути елемената}{68}{section*.49}%
+\contentsline {chapter}{\chapternumberline {6}App}{69}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Opis}{69}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Cloud}{69}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{69}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Подаци}{69}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Obrada OSM skupa Sparkom}{69}{section.6.5}%
+\contentsline {section}{\numberline {6.6}PolyContains}{70}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Rezultat}{70}{section.6.7}%
+\contentsline {chapter}{\chapternumberline {7}Закључак}{71}{chapter.7}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{72}{chapter*.50}%
