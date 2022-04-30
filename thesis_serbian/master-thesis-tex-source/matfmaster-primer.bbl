@@ -11,6 +11,16 @@ Jeffrey Dean and Sanjay Ghemawat.
 \newblock 2004.
 \newblock online at: https://research.google/pubs/pub62/.
 
+\bibitem{apache_hive}
+Apache foundation.
+\newblock Apache hive.
+\newblock online at: https://hive.apache.org/.
+
+\bibitem{apache_pig}
+Apache foundation.
+\newblock Apache pig.
+\newblock online at: https://pig.apache.org/.
+
 \bibitem{hadoop_arch_guide}
 Apache Foundation.
 \newblock Hdfs architecture guide.

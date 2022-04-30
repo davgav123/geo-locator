@@ -27,26 +27,26 @@
 \contentsline {subsection}{Мапе}{23}{section*.17}%
 \contentsline {section}{\numberline {2.9}Поклапање образаца}{25}{section.2.9}%
 \contentsline {subsection}{Примери коришћења}{25}{section*.18}%
-\contentsline {chapter}{\chapternumberline {3}Дистрибуирани системи}{29}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Увод}{29}{section.3.1}%
+\contentsline {chapter}{\chapternumberline {3}Дистрибуирана обрада података}{29}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Доба података}{29}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Скалирање система}{30}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Особине дистрибуираних система}{31}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Хадуп}{32}{section.3.4}%
-\contentsline {section}{\numberline {3.5}ХДФС}{33}{section.3.5}%
-\contentsline {subsection}{Врсте уређаја ХДФС-а}{34}{section*.19}%
+\contentsline {section}{\numberline {3.4}Систем \textit {Hadoop}}{32}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Дистрибуирани фајл систем \textit {HDFS}}{33}{section.3.5}%
+\contentsline {subsection}{Структура \textit {HDFS}-а}{34}{section*.19}%
 \contentsline {subsection}{Особине}{35}{section*.20}%
-\contentsline {section}{\numberline {3.6}Мап Редјус}{36}{section.3.6}%
+\contentsline {section}{\numberline {3.6}Алат \textit {MapReduce}}{36}{section.3.6}%
 \contentsline {subsection}{Мап Редјус из аспекта функција}{37}{section*.21}%
-\contentsline {section}{\numberline {3.7}Остале компоненте Хадупа}{38}{section.3.7}%
+\contentsline {section}{\numberline {3.7}Остале компоненте Хадупа}{39}{section.3.7}%
 \contentsline {section}{\numberline {3.8}Апачи Јарн}{39}{section.3.8}%
 \contentsline {subsection}{Архитектура Јарна}{40}{section*.22}%
 \contentsline {section}{\numberline {3.9}Апачи Спарк}{42}{section.3.9}%
 \contentsline {subsection}{Недостаци Мап Редјуса}{42}{section*.23}%
-\contentsline {subsection}{Увод у Апачи Спарк}{42}{section*.24}%
+\contentsline {subsection}{Увод у Апачи Спарк}{43}{section*.24}%
 \contentsline {subsection}{Архитектура}{44}{section*.25}%
 \contentsline {subsection}{Партиције}{45}{section*.26}%
-\contentsline {subsection}{РДД}{45}{section*.27}%
-\contentsline {subsection}{Трансформације}{46}{section*.28}%
+\contentsline {subsection}{РДД}{46}{section*.27}%
+\contentsline {subsection}{Трансформације}{47}{section*.28}%
 \contentsline {subsection}{Лења евалуација}{47}{section*.29}%
 \contentsline {subsection}{Врсте РДД трансформација}{48}{section*.30}%
 \contentsline {subsection}{Акције}{49}{section*.31}%
