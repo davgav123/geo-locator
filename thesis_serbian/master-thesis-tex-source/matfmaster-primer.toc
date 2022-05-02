@@ -36,53 +36,53 @@
 \contentsline {subsection}{Структура \textit {HDFS}-а}{34}{section*.19}%
 \contentsline {subsection}{Особине}{35}{section*.20}%
 \contentsline {section}{\numberline {3.6}Алат \textit {MapReduce}}{36}{section.3.6}%
-\contentsline {subsection}{Мап Редјус из аспекта функција}{37}{section*.21}%
-\contentsline {section}{\numberline {3.7}Остале компоненте Хадупа}{39}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Апачи Јарн}{39}{section.3.8}%
-\contentsline {subsection}{Архитектура Јарна}{40}{section*.22}%
-\contentsline {section}{\numberline {3.9}Апачи Спарк}{42}{section.3.9}%
-\contentsline {subsection}{Недостаци Мап Редјуса}{42}{section*.23}%
-\contentsline {subsection}{Увод у Апачи Спарк}{43}{section*.24}%
-\contentsline {subsection}{Архитектура}{44}{section*.25}%
+\contentsline {subsection}{\textit {MapReduce} из аспекта функција}{37}{section*.21}%
+\contentsline {section}{\numberline {3.7}Остале компоненте \textit {Hadoop}-а}{39}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Преговарач ресурса \textit {Apache Yarn}}{39}{section.3.8}%
+\contentsline {subsection}{Архитектура \textit {Yarn}-а}{40}{section*.22}%
+\contentsline {section}{\numberline {3.9}Алат \textit {Apache Spark}}{42}{section.3.9}%
+\contentsline {subsection}{Недостаци \textit {MapReduce} парадигме}{43}{section*.23}%
+\contentsline {subsection}{Увод у Апачи Спарк}{44}{section*.24}%
+\contentsline {subsection}{Архитектура}{45}{section*.25}%
 \contentsline {subsection}{Партиције}{45}{section*.26}%
 \contentsline {subsection}{РДД}{46}{section*.27}%
 \contentsline {subsection}{Трансформације}{47}{section*.28}%
-\contentsline {subsection}{Лења евалуација}{47}{section*.29}%
-\contentsline {subsection}{Врсте РДД трансформација}{48}{section*.30}%
+\contentsline {subsection}{Лења евалуација}{48}{section*.29}%
+\contentsline {subsection}{Врсте РДД трансформација}{49}{section*.30}%
 \contentsline {subsection}{Акције}{49}{section*.31}%
 \contentsline {subsection}{Руковање грешкама у Спарку}{50}{section*.32}%
 \contentsline {subsection}{Кеширање}{51}{section*.33}%
-\contentsline {subsection}{Спарк Дата Фрејм}{51}{section*.34}%
+\contentsline {subsection}{Спарк Дата Фрејм}{52}{section*.34}%
 \contentsline {subsection}{Трансформације и акције дата фрејма}{52}{section*.35}%
-\contentsline {subsection}{Разлика између дата фрејма и РДД}{52}{section*.36}%
+\contentsline {subsection}{Разлика између дата фрејма и РДД}{53}{section*.36}%
 \contentsline {subsection}{Планови извршавања}{53}{section*.37}%
 \contentsline {subsection}{Остале компоненте Спарка}{54}{section*.38}%
-\contentsline {chapter}{\chapternumberline {4}Семантички веб}{55}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Веб 1.0}{55}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Веб 2.0}{55}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Веб 3.0}{56}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Семантички веб}{56}{section.4.4}%
-\contentsline {subsubsection}{Историјат}{58}{section*.39}%
-\contentsline {subsection}{RDF језик}{59}{section*.40}%
-\contentsline {subsubsection}{Репрезентација}{61}{section*.41}%
-\contentsline {subsection}{OWL}{63}{section*.42}%
-\contentsline {subsection}{SPARQL}{63}{section*.43}%
-\contentsline {subsection}{Употреба семантичког веба}{64}{section*.44}%
-\contentsline {chapter}{\chapternumberline {5}OSM}{65}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Шта је OSM?}{65}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Елементи}{65}{section.5.2}%
-\contentsline {subsection}{Чворови}{66}{section*.45}%
-\contentsline {subsection}{Путање}{66}{section*.46}%
-\contentsline {subsection}{Релације}{67}{section*.47}%
-\contentsline {subsection}{Тагови}{68}{section*.48}%
-\contentsline {subsection}{Заједнички атрибути елемената}{68}{section*.49}%
-\contentsline {chapter}{\chapternumberline {6}App}{69}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Opis}{69}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Cloud}{69}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{69}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Подаци}{69}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Obrada OSM skupa Sparkom}{69}{section.6.5}%
-\contentsline {section}{\numberline {6.6}PolyContains}{70}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Rezultat}{70}{section.6.7}%
-\contentsline {chapter}{\chapternumberline {7}Закључак}{71}{chapter.7}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{72}{chapter*.50}%
+\contentsline {chapter}{\chapternumberline {4}Семантички веб}{56}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Веб 1.0}{56}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Веб 2.0}{56}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Веб 3.0}{57}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Семантички веб}{57}{section.4.4}%
+\contentsline {subsubsection}{Историјат}{59}{section*.39}%
+\contentsline {subsection}{RDF језик}{60}{section*.40}%
+\contentsline {subsubsection}{Репрезентација}{62}{section*.41}%
+\contentsline {subsection}{OWL}{64}{section*.42}%
+\contentsline {subsection}{SPARQL}{64}{section*.43}%
+\contentsline {subsection}{Употреба семантичког веба}{65}{section*.44}%
+\contentsline {chapter}{\chapternumberline {5}OSM}{66}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Шта је OSM?}{66}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Елементи}{66}{section.5.2}%
+\contentsline {subsection}{Чворови}{67}{section*.45}%
+\contentsline {subsection}{Путање}{67}{section*.46}%
+\contentsline {subsection}{Релације}{68}{section*.47}%
+\contentsline {subsection}{Тагови}{69}{section*.48}%
+\contentsline {subsection}{Заједнички атрибути елемената}{69}{section*.49}%
+\contentsline {chapter}{\chapternumberline {6}App}{70}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Opis}{70}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Cloud}{70}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{70}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Подаци}{70}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Obrada OSM skupa Sparkom}{70}{section.6.5}%
+\contentsline {section}{\numberline {6.6}PolyContains}{71}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Rezultat}{71}{section.6.7}%
+\contentsline {chapter}{\chapternumberline {7}Закључак}{72}{chapter.7}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{73}{chapter*.50}%
