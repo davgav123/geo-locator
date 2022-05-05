@@ -26,6 +26,11 @@ Apache Foundation.
 \newblock Hdfs architecture guide.
 \newblock online at: https://hadoop.apache.org/docs/.
 
+\bibitem{osm_wiki}
+OpenStreetMap Foundation.
+\newblock Openstreetmap wiki.
+\newblock online at: https://wiki.openstreetmap.org/.
+
 \bibitem{volume_data}
 Arne Horst.
 \newblock Amount of data created, consumed, and stored 2010-2025.
@@ -37,10 +42,6 @@ Arne Horst.
 Lex~Spoon Martin~Odersky and Bill Venners.
 \newblock {\em Programming in Scala, First edition}.
 \newblock 2008.
-
-\bibitem{osm_wiki}
-OpenStreetMap.
-\newblock Openstreetmap wiki.
 
 \bibitem{semantic}
 Marcus~Krotzsch Pascal~Hitzler and Sebastian Rudolph.

@@ -42,7 +42,7 @@
 \contentsline {subsection}{Архитектура \textit {Yarn}-а}{40}{section*.22}%
 \contentsline {section}{\numberline {3.9}Алат \textit {Apache Spark}}{42}{section.3.9}%
 \contentsline {subsection}{Недостаци \textit {MapReduce} парадигме}{43}{section*.23}%
-\contentsline {subsection}{Увод у Апачи Спарк}{44}{section*.24}%
+\contentsline {subsection}{Увод у \textit {Apache Spark}}{44}{section*.24}%
 \contentsline {subsection}{Архитектура}{45}{section*.25}%
 \contentsline {subsection}{Партиције}{45}{section*.26}%
 \contentsline {subsection}{РДД}{46}{section*.27}%

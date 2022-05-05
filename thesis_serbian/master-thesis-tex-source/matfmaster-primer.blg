@@ -11,10 +11,10 @@ Warning--empty journal in apache_pig
 Warning--empty year in apache_pig
 Warning--empty journal in hadoop_arch_guide
 Warning--empty year in hadoop_arch_guide
-Warning--empty journal in volume_data
-Warning--empty publisher in scala_prog
 Warning--empty journal in osm_wiki
 Warning--empty year in osm_wiki
+Warning--empty journal in volume_data
+Warning--empty publisher in scala_prog
 Warning--empty publisher in semantic
 Warning--empty journal in gfs
 Warning--empty journal in spark_rdd
@@ -25,16 +25,16 @@ Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
 You've used 14 entries,
             2118 wiz_defined-function locations,
-            552 strings with 5353 characters,
-and the built_in function-call counts, 3195 in all, are:
-= -- 283
+            553 strings with 5406 characters,
+and the built_in function-call counts, 3204 in all, are:
+= -- 285
 > -- 134
 < -- 0
 + -- 55
 - -- 40
 * -- 166
-:= -- 578
-add.period$ -- 44
+:= -- 580
+add.period$ -- 45
 call.type$ -- 14
 change.case$ -- 57
 chr.to.int$ -- 0
@@ -42,13 +42,13 @@ cite$ -- 34
 duplicate$ -- 150
 empty$ -- 264
 format.name$ -- 40
-if$ -- 632
+if$ -- 634
 int.to.chr$ -- 0
 int.to.str$ -- 14
 missing$ -- 19
-newline$ -- 75
+newline$ -- 76
 num.names$ -- 28
-pop$ -- 109
+pop$ -- 108
 preamble$ -- 1
 purify$ -- 48
 quote$ -- 0
@@ -63,5 +63,5 @@ type$ -- 46
 warning$ -- 20
 while$ -- 28
 width$ -- 16
-write$ -- 132
+write$ -- 134
 (There were 20 warnings)
