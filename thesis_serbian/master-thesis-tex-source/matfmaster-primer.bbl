@@ -11,15 +11,30 @@ Jeffrey Dean and Sanjay Ghemawat.
 \newblock 2004.
 \newblock online at: https://research.google/pubs/pub62/.
 
+\bibitem{apache_flume}
+Apache foundation.
+\newblock Apache flume.
+\newblock online at: https://flume.apache.org/.
+
 \bibitem{apache_hive}
 Apache foundation.
 \newblock Apache hive.
 \newblock online at: https://hive.apache.org/.
 
+\bibitem{apache_kafka}
+Apache Foundation.
+\newblock Apache kafka.
+\newblock online at: https://kafka.apache.org/.
+
 \bibitem{apache_pig}
 Apache foundation.
 \newblock Apache pig.
 \newblock online at: https://pig.apache.org/.
+
+\bibitem{apache_zookeeper}
+Apache foundation.
+\newblock Apache zookeeper.
+\newblock online at: https://zookeeper.apache.org/.
 
 \bibitem{hadoop_arch_guide}
 Apache Foundation.
@@ -30,6 +45,11 @@ Apache Foundation.
 OpenStreetMap Foundation.
 \newblock Openstreetmap wiki.
 \newblock online at: https://wiki.openstreetmap.org/.
+
+\bibitem{presto}
+Presto foundation.
+\newblock Presto.
+\newblock online at: https://prestodb.io/.
 
 \bibitem{volume_data}
 Arne Horst.
@@ -42,11 +62,6 @@ Arne Horst.
 Lex~Spoon Martin~Odersky and Bill Venners.
 \newblock {\em Programming in Scala, First edition}.
 \newblock 2008.
-
-\bibitem{semantic}
-Marcus~Krotzsch Pascal~Hitzler and Sebastian Rudolph.
-\newblock {\em Foundations of Semantic web technologies}.
-\newblock 2010.
 
 \bibitem{gfs}
 Howard~Gobioff Sanjay~Ghemawat and Shun-Tak Leung.

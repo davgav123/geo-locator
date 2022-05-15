@@ -5,17 +5,24 @@ The style file: plain.bst
 Database file #1: matfmaster-primer.bib
 Warning--empty publisher in spark_guide
 Warning--empty journal in gmr
+Warning--empty journal in apache_flume
+Warning--empty year in apache_flume
 Warning--empty journal in apache_hive
 Warning--empty year in apache_hive
+Warning--empty journal in apache_kafka
+Warning--empty year in apache_kafka
 Warning--empty journal in apache_pig
 Warning--empty year in apache_pig
+Warning--empty journal in apache_zookeeper
+Warning--empty year in apache_zookeeper
 Warning--empty journal in hadoop_arch_guide
 Warning--empty year in hadoop_arch_guide
 Warning--empty journal in osm_wiki
 Warning--empty year in osm_wiki
+Warning--empty journal in presto
+Warning--empty year in presto
 Warning--empty journal in volume_data
 Warning--empty publisher in scala_prog
-Warning--empty publisher in semantic
 Warning--empty journal in gfs
 Warning--empty journal in spark_rdd
 Warning--empty year in spark_rdd
@@ -23,45 +30,45 @@ Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 14 entries,
+You've used 17 entries,
             2118 wiz_defined-function locations,
-            553 strings with 5406 characters,
-and the built_in function-call counts, 3204 in all, are:
-= -- 285
-> -- 134
+            562 strings with 5553 characters,
+and the built_in function-call counts, 3784 in all, are:
+= -- 340
+> -- 149
 < -- 0
-+ -- 55
-- -- 40
-* -- 166
-:= -- 580
-add.period$ -- 45
-call.type$ -- 14
-change.case$ -- 57
++ -- 62
+- -- 44
+* -- 196
+:= -- 689
+add.period$ -- 54
+call.type$ -- 17
+change.case$ -- 69
 chr.to.int$ -- 0
-cite$ -- 34
-duplicate$ -- 150
-empty$ -- 264
-format.name$ -- 40
-if$ -- 634
+cite$ -- 44
+duplicate$ -- 178
+empty$ -- 310
+format.name$ -- 44
+if$ -- 742
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 19
-newline$ -- 76
-num.names$ -- 28
-pop$ -- 108
+int.to.str$ -- 17
+missing$ -- 21
+newline$ -- 91
+num.names$ -- 34
+pop$ -- 126
 preamble$ -- 1
-purify$ -- 48
+purify$ -- 56
 quote$ -- 0
-skip$ -- 92
+skip$ -- 109
 stack$ -- 0
-substring$ -- 71
-swap$ -- 5
+substring$ -- 86
+swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 46
-warning$ -- 20
-while$ -- 28
-width$ -- 16
-write$ -- 134
-(There were 20 warnings)
+type$ -- 60
+warning$ -- 27
+while$ -- 34
+width$ -- 19
+write$ -- 161
+(There were 27 warnings)
