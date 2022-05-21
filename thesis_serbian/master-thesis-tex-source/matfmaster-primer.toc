@@ -57,21 +57,20 @@
 \contentsline {subsection}{Разлика између \textit {DataFrame}-а и \textit {RDD}-ја}{54}{section*.36}%
 \contentsline {subsection}{Планови извршавања}{54}{section*.37}%
 \contentsline {subsection}{Остале компоненте Спарка}{55}{section*.38}%
-\contentsline {chapter}{\chapternumberline {4}OSM}{57}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Шта је OSM?}{57}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Елементи}{57}{section.4.2}%
+\contentsline {chapter}{\chapternumberline {4}Скуп података \textit {OpenStreetMap}}{57}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Елементи}{58}{section.4.1}%
 \contentsline {subsection}{Чворови}{58}{section*.39}%
 \contentsline {subsection}{Путање}{58}{section*.40}%
 \contentsline {subsection}{Релације}{59}{section*.41}%
 \contentsline {subsection}{Тагови}{60}{section*.42}%
-\contentsline {subsection}{Заједнички атрибути елемената}{60}{section*.43}%
-\contentsline {chapter}{\chapternumberline {5}App}{61}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Opis}{61}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Cloud}{61}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Arhitektura aplikacije}{61}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Подаци}{61}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Obrada OSM skupa Sparkom}{61}{section.5.5}%
-\contentsline {section}{\numberline {5.6}PolyContains}{62}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Rezultat}{62}{section.5.7}%
-\contentsline {chapter}{\chapternumberline {6}Закључак}{63}{chapter.6}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{64}{chapter*.44}%
+\contentsline {subsection}{Заједнички атрибути елемената}{61}{section*.43}%
+\contentsline {chapter}{\chapternumberline {5}App}{62}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Opis}{62}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Cloud}{62}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Arhitektura aplikacije}{62}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Подаци}{62}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Obrada OSM skupa Sparkom}{62}{section.5.5}%
+\contentsline {section}{\numberline {5.6}PolyContains}{63}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Rezultat}{63}{section.5.7}%
+\contentsline {chapter}{\chapternumberline {6}Закључак}{64}{chapter.6}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{65}{chapter*.44}%

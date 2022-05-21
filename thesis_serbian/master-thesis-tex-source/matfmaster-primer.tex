@@ -1044,7 +1044,7 @@ def caseClassesPatternMatching(animal: Animal): String
 
 Први успешан систем који поседује претходно наведене карактеристике је развила компанија \textit{Google} која је 2003. године објавила научни рад на ту тему \cite{gfs}. У раду је представљен дистрибуирани фајл систем, назван \textit{Google file system} или скраћено \textit{GFS}. Систем је написан у програмском језику \textit{C++}. Намена овог пројекта је да се користи за складиштење великих количина података. Већ следеће године, \textit{Google} је објавио нови научни рад о парадигми за ефикасну обраду велике количине података на кластеру \cite{gmr}. Парадигма је названа \textit{MapReduce} и њена намена је да се користи за обраду података складиштених у \textit{GFS}-у.
 
-Недуго након тога, уз помоћ научних радова компаније \textit{Google}, настао је пројекат отвореног кода (енг. \textit{оpen source}) назван \textit{Hadoop} са идејом да имплементира карактеристике које поседују \textit{Google}-ови \textit{GFS} и \textit{MapReduce} и да се као такав користи за складиштење и ефикасну обраду падатака на кластеру сачињеном од релативно јефтиних машина. Највећи делови \textit{Hadoop} система су \textit{HDFS} и \textit{MapReduce} који су заправо јавно доступни еквиваленти \textit{Google}-ових технологија. \cite{hadoop_beginner}
+Недуго након тога, уз помоћ научних радова компаније \textit{Google}, настао је пројекат отвореног кода (енг. \textit{оpen source}) назван \textit{Hadoop} са идејом да имплементира карактеристике које поседују \textit{Google}-ови \textit{GFS} и \textit{MapReduce} и да се као такав користи за складиштење и ефикасну обраду падатака на кластеру сачињеном од релативно јефтиних машина. Највећи делови \textit{Hadoop} система су \textit{HDFS} и \textit{MapReduce} који су заправо јавно доступни еквиваленти \textit{Google}-ових технологија. Њихови логои су приказани на слици \ref{fig:hdfs_mr_logo}. \cite{hadoop_beginner}
 
 Укратко, \textit{HDFS} је фајл систем који користи хоризонтално скалирање машина за складиштење огромних количина података. Због боље поузданости користи репликацију, где се сваки фајл копира неколико пута и онда се те копије чувају на различитим уређајима у систему. \cite{hadoop_beginner}
 
@@ -1735,27 +1735,24 @@ WHERE {
 \end{comment} % -------------------------------------
 % -------------------------------------
 
-\chapter{OSM}
+\chapter{Скуп података \textit{OpenStreetMap}}
 \label{chp:osm}
 
-\section{Шта је OSM?}
-\label{sec:osm_opis}
-
-\textit{OpenStreetMap}, скраћено \textit{OSM}, је бесплатна и изменљива мапа света која дозвољава приступ самим мапама, као и подацима које оне садрже. Идеја иза овог пројекта је настанак мапа које се развијају и одржавају од стране заједнице корисника и које ће представљати бесплатну алтернативу неким већ постојећим мапама, попут оних које развија Гугл. \cite{osm_wiki}
+\textit{OpenStreetMap}, скраћено \textit{OSM}, је бесплатна и изменљива мапа света која дозвољава приступ географским мапама, као и подацима које оне садрже. Идеја иза овог пројекта је настанак мапа које се развијају и одржавају од стране заједнице корисника и које ће представљати алтернативу већ постојећим мапама, попут оних које развија \textit{Google}. Пример \textit{OSM} мапе на вебу је приказан на слици \ref{fig:osm_map_example}. \cite{osm_wiki}
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.8\textwidth]{pictures/openstreetmaps_logo.png}
-  \caption{Лого \textit{OSM}-a}
-  \label{fig:osm_logo}
+  \includegraphics[width=1\textwidth]{pictures/osm_example.png}
+  \caption{Приказ Београда у \textit{OSM}-у}
+  \label{fig:osm_map_example}
 \end{figure}
 
-\textit{OSM} је иниционално основан 2004. године од стране Стива Коуста (енг. \textit{Steve Coast}) са идејом да мапира Уједињено Краљевство. У следећим годинама је пројекат постао глобалан и сада садржи податке целог света. \cite{osm_wiki}
+\textit{OSM} је 2004. године покренуо Стив Коуст (енг. \textit{Steve Coast}) са идејом мапирања Уједињеног Краљевства. У наредним годинама пројекат је постао глобалан и сада садржи податке целог света. \cite{osm_wiki}
 
 \section{Елементи}
 \label{sec:osm_elementi}
 
-Елементи су основне јединице \textit{OSM} моделовања података физичког света. Постоје три врсте и то су:
+Елементи су основне јединице моделовања \textit{OSM} података физичког света. Постоје три врсте:
 
 \begin{itemize}
 \item чворови (енг. \textit{nodes})
@@ -1763,16 +1760,16 @@ WHERE {
 \item релације (енг. \textit{relations})
 \end{itemize}
 
-Сваки од елемената може имати придружен један или више тагова (енг. \textit{tag}) чија је улога бољи опис елемента коме припада. Елементи \textit{OSM} скупа се могу представити помоћу \textit{XML} записа од којих сваки има засебан \textit{XML} таг унутар кога се налазе атрибути. \cite{osm_wiki}
+Сваки од елемената може имати придружен један или више тагова (енг. \textit{tag}) чија је улога да боље опишу елемент коме припадају. Елементи \textit{OSM} скупа се могу представити помоћу \textit{XML} записа од којих је сваки одређен засебним \textit{XML} тагом унутар ког се налазе атрибути. \cite{osm_wiki}
 
 \subsection{Чворови}
 \label{subsec:osm_nodes}
 
-Чвор представља локацију на Земљиној површини и састоји се од две координате, географске дужине и географске ширине као и идентификатора који је јединствен. Један чвор се може користити да дефинише неки објекат на мапи, попут, на пример, клупе или статуе. \cite{osm_wiki}
+Чвор представља локацију на Земљиној површини и састоји се од две координате које представљају географску дужину и ширину, као и од јединственог идентификатора. Један чвор се може користити за дефиницију објекта на мапи, попут, на пример, клупе, статуе или фонтане. \cite{osm_wiki}
 
-У \textit{XML} језику чворови су представљени \textit{XML} тагом \textit{node} унутар кога су угњеждени \textit{OSM} тагови чвора.
+У \textit{XML} језику чворови су представљени \textit{XML} тагом \textit{node} унутар ког су угњеждени \textit{OSM} тагови који му припадају. К\^{о}д \ref{lst:osm_node_xml} представља један чвор записан у \textit{XML} формату.
 
-\begin{lstlisting}[language=XML]
+\begin{lstlisting}[language=XML, caption={\textit{OSM} чвор у \textit{XML} формату}, label={lst:osm_node_xml}]
 <node id="25496583" lat="51.5173639" lon="-0.140043" version="1" changeset="203496" user="80n" uid="1238" visible="true" timestamp="2007-01-28T11:40:26Z">
     <tag k="highway" v="traffic_signals"/>
 </node>
@@ -1781,11 +1778,11 @@ WHERE {
 \subsection{Путање}
 \label{subsec:osm_ways}
 
-Путање су уређене листе које садрже између 2 и 20000 чворова и представљају линеарне објекте на мапи, попут путева или река. Такође, могу представљати и разне врсте површина, попут шума. У том случају су представљени листом којој су први и последњи елемент исти чвор. \cite{osm_wiki}
+Путање су уређене листе које садрже између 2 и 20000 чворова и представљају линеарне објекте на мапи, попут путева или река. Такође, могу представљати и разне врсте површина, попут шума. У том случају су први и последњи елемент листе исти чвор. \cite{osm_wiki}
 
-Путање се \textit{XML} форматом представљају као листа идентификатора чворова које путања садржи, као и њених тагова.
+Путање су у \textit{XML} формату представљене листом идентификатора чворова које та путања садржи. Поред иденетификатора чворова, путања може садржати и \textit{OSM} тагове. \textit{XML} таг који означава путању је \textit{way}. У коду \ref{lst:osm_way_xml} је приказан пример путање која представља ауто-пут.
 
-\begin{lstlisting}[language=XML]
+\begin{lstlisting}[language=XML, caption={\textit{OSM} путања у \textit{XML} формату}, label={lst:osm_way_xml}]
 <way id="5090250" visible="true" timestamp="2009-01-19T19:07:25Z" version="8" changeset="816806" user="Blumpsy" uid="64226">
     <nd ref="822403"/>
     <nd ref="21533912"/>
@@ -1806,36 +1803,54 @@ WHERE {
 \subsection{Релације}
 \label{subsec:osm_relations}
 
-Релације су структуре које представљају некакав однос између елемената, чворова, путања или других релација. Значења релација могу бити разна па су због тога оне описане таговима. Обично, свака релација поседује таг који се зове \textit{type} и сваки други таг релације се интерпретира на основу вредности тог тага. \cite{osm_wiki}
+Релације су структуре које представљају однос између \textit{OSM} елемената. Могу имати разна значења па су због тога описане таговима. Обично, свака релација поседује \textit{OSM} таг који се зове \textit{type} и сваки други таг те релације се интерпретира на основу његове вредности. \cite{osm_wiki}
 
-Приказ релација у \textit{XML} формату се врши приказом чланова те релације и њених тагова.
+У \textit{XML} формату, релација се означава тагом \textit{relation} и садржи чланове релације и тагове. Члан је одређен \textit{XML} тагом \textit{member} и садржи три атрибута:
 
-\begin{lstlisting}[language=XML]
- <relation id="56688" user="kmvar" uid="56190" visible="true" version="28" changeset="6947637" timestamp="2011-01-12T14:23:49Z">
-  <member type="node" ref="294942404" role=""/>
+\begin{itemize}
+	\item \textit{type}, \textit{OSM} тип члана. Може бити \textit{node}, \textit{way} или \textit{relation}
+	\item \textit{ref}, идентификатор елемента члана
+	\item \textit{role},  улога члана у релацији
+\end{itemize}
+
+\textit{XML} репрезентација релације која представља аутобуску линију приказана је у коду \ref{lst:osm_relation_xml}. У овом случају, \textit{OSM} чворови који припадају релацији представљају аутобуске станице.
+
+\begin{lstlisting}[language=XML, caption={\textit{OSM} релација у \textit{XML} формату}, label={lst:osm_relation_xml}]
+<relation id="13092746" visible="true" version="7" changeset="118825758" timestamp="2022-03-23T15:05:48Z" user="" uid="">
+  <member type="node" ref="5690770815" role="stop"/>
+  <member type="node" ref="5751940550" role="stop"/>
   ...
-  <member type="node" ref="364933006" role=""/>
-  <member type="way" ref="4579143" role=""/>
+  <member type="node" ref="1764649495" role="stop"/>
+  <member type="way" ref="96562914" role=""/>
   ...
-  <member type="node" ref="249673494" role=""/>
-  <tag k="name" v="Linie 123"/>
-  <tag k="network" v="VVW"/>
-  <tag k="operator" v="Regionalverkehr"/>
-  <tag k="ref" v="123"/>
+  <member type="way" ref="928474550" role=""/>
+  <tag k="from" v="Encre"/>
+  <tag k="name" v="9-Montagnes de Guyane"/>
+  <tag k="network" v="Agglo'bus"/>
+  <tag k="not:network:wikidata" v="Q3537943"/>
+  <tag k="operator" v="CACL"/>
+  <tag k="ref" v="9"/>
   <tag k="route" v="bus"/>
+  <tag k="to" v="Lyce Balata"/>
   <tag k="type" v="route"/>
- </relation>	
+ </relation>
+
 \end{lstlisting}
 
 \subsection{Тагови}
 \label{subsec:osm_tags}
 
-Као што је већ речено, тагови представљају опис неког елемента. Сваки елемент може имати нула, један или више тагова. Чине га две вредности, кључ, који мора бити јединствен унутар елемента ког таг описује, и вредност. \cite{osm_wiki}
+Тагови представљају опис \textit{OSM} елемента коме припадају. Сваки елемент може имати нула, један или више тагова. Чине га две вредности, кључ, који мора бити јединствен унутар елемента ког таг описује, и вредност. У коду \ref{lst:osm_tag_xml} је приказан пример тагова у \textit{XML} формату. Кључ и вредност су означени редом атрибутима \textit{k} и \textit{v}. \cite{osm_wiki}
+
+\begin{lstlisting}[language=XML, caption={\textit{OSM} тагови у \textit{XML} формату}, label={lst:osm_tag_xml}]
+<tag k="highway" v="residential"/>
+<tag k="name" v="Clipstone Street"/>
+\end{lstlisting}
 
 \subsection{Заједнички атрибути елемената}
 \label{subsec:osm_atributi}
 
-Као што се из приказаних \textit{XML} записа може закључити, сваки елемент има некакве атрибуте који га описују. Заправо, постоје одређени атрибути се налазе у сваком елементу, а то су:
+Као што се из приказаних \textit{XML} записа може закључити, сваки елемент поседује атрибуте који га описују. Постоје одређени атрибути се налазе у сваком елементу и то су:
 
 \begin{itemize}
 \item \textit{id}, јединствен идентификатор елемента
@@ -1843,9 +1858,14 @@ WHERE {
 \item \textit{uid}, идентификатор корисника који је изменио елемент
 \item \textit{timestamp}, време последње промене елемента
 \item \textit{visible}, знак који показује да ли је елемент избрисан
-\item \textit{version}, тренутна верзија елемента. Почетна вредност је 1 и сваки пут када се изврши некаква модификација тај број се инкрементира
+\item \textit{version}, тренутна верзија елемента. Почетна вредност је 1 и сваки пут када се изврши модификација елемента тај број се инкрементира
 \item \textit{changeset}, идентификатор скупа промена у коме је елемент измењен
 \end{itemize}
+
+% ============== ??? =====================
+% pomeni leaflet sa prikaz mapa. Ali to moze da se uradi u aplikacija sekciji
+% mozda pasus za semanticki veb + osm. Ali to mozda i u zakljucku: https://wiki.openstreetmap.org/wiki/OSM_Semantic_Network
+% ============== ??? =====================
 
 \chapter{App}
 \label{chp:app}
@@ -1868,7 +1888,7 @@ opis komponenti
 \section{Подаци}
 \label{sec:osm_spark_podaci}
 
-skupovi podataka koji se koriste mada je vecina toga vec napisana ranije.
+skupovi podataka koji se koriste mada je vecina toga vec napisana ranije, u OSM delu. Dakle OSM + geonames
 
 \section{Obrada OSM skupa Sparkom}
 \label{sec:osm_spark_obrada}
@@ -1878,7 +1898,7 @@ koje spark transformacije su primenjene na koje podatke
 \section{PolyContains}
 \label{sec:poly_cont}
 
-algoritmi korisceni za poly contains i rezultati (graficki prikaz)
+algoritmi korisceni za poly contains i rezultati (graficki prikaz). mozda zameniti mesta ovoj i prethodnoj sekciji...
 
 \section{Rezultat}
 \label{sec:rezultat}
@@ -1888,9 +1908,10 @@ dobijeni rezultati aplikacije, prikaz nekih selekcija itd
 \chapter{Закључак}
 \label{chp:zakljucak}
 
-zakljucak rada
+zakljucak rada. Takodje, uvod treba da se uradi
 
-% napraviti da radi za posebne gradove/regije
+% potencijalne nadogradnje:
+% napraviti da radi za posebne gradove/regije/pokrajne
 % nadograditi da radi sa semantickim vebom mozda
 
 % ------------------------------------------------------------------------------
