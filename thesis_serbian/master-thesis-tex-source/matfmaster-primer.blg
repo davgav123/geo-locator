@@ -19,8 +19,12 @@ Warning--empty journal in hadoop_arch_guide
 Warning--empty year in hadoop_arch_guide
 Warning--empty journal in osm_wiki
 Warning--empty year in osm_wiki
+Warning--empty journal in osm_xml
+Warning--empty year in osm_xml
 Warning--empty journal in presto
 Warning--empty year in presto
+Warning--empty journal in google_maps
+Warning--empty year in google_maps
 Warning--empty journal in volume_data
 Warning--empty publisher in scala_prog
 Warning--empty journal in gfs
@@ -30,45 +34,45 @@ Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 17 entries,
+You've used 19 entries,
             2118 wiz_defined-function locations,
-            562 strings with 5553 characters,
-and the built_in function-call counts, 3784 in all, are:
-= -- 340
-> -- 149
+            569 strings with 5689 characters,
+and the built_in function-call counts, 4200 in all, are:
+= -- 378
+> -- 163
 < -- 0
-+ -- 62
-- -- 44
-* -- 196
-:= -- 689
-add.period$ -- 54
-call.type$ -- 17
-change.case$ -- 69
++ -- 68
+- -- 48
+* -- 218
+:= -- 765
+add.period$ -- 60
+call.type$ -- 19
+change.case$ -- 77
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 178
-empty$ -- 310
-format.name$ -- 44
-if$ -- 742
+cite$ -- 50
+duplicate$ -- 198
+empty$ -- 344
+format.name$ -- 48
+if$ -- 822
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 21
-newline$ -- 91
-num.names$ -- 34
-pop$ -- 126
+int.to.str$ -- 19
+missing$ -- 23
+newline$ -- 101
+num.names$ -- 38
+pop$ -- 140
 preamble$ -- 1
-purify$ -- 56
+purify$ -- 62
 quote$ -- 0
-skip$ -- 109
+skip$ -- 121
 stack$ -- 0
-substring$ -- 86
+substring$ -- 96
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
-warning$ -- 27
-while$ -- 34
-width$ -- 19
-write$ -- 161
-(There were 27 warnings)
+type$ -- 68
+warning$ -- 31
+while$ -- 38
+width$ -- 21
+write$ -- 179
+(There were 31 warnings)

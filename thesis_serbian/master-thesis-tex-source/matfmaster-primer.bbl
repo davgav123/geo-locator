@@ -46,10 +46,20 @@ OpenStreetMap Foundation.
 \newblock Openstreetmap wiki.
 \newblock online at: https://wiki.openstreetmap.org/.
 
+\bibitem{osm_xml}
+OpenStreetMap Foundation.
+\newblock Osm xml.
+\newblock online at: https://wiki.openstreetmap.org/wiki/OSM\_XML.
+
 \bibitem{presto}
 Presto foundation.
 \newblock Presto.
 \newblock online at: https://prestodb.io/.
+
+\bibitem{google_maps}
+Google.
+\newblock Google maps.
+\newblock online at: https://www.google.com/maps/.
 
 \bibitem{volume_data}
 Arne Horst.

@@ -59,11 +59,10 @@
 \contentsline {subsection}{Остале компоненте Спарка}{55}{section*.38}%
 \contentsline {chapter}{\chapternumberline {4}Скуп података \textit {OpenStreetMap}}{57}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Елементи}{58}{section.4.1}%
-\contentsline {subsection}{Чворови}{58}{section*.39}%
-\contentsline {subsection}{Путање}{58}{section*.40}%
-\contentsline {subsection}{Релације}{59}{section*.41}%
-\contentsline {subsection}{Тагови}{60}{section*.42}%
-\contentsline {subsection}{Заједнички атрибути елемената}{61}{section*.43}%
+\contentsline {subsection}{Тагови}{58}{section*.39}%
+\contentsline {subsection}{Чворови}{59}{section*.40}%
+\contentsline {subsection}{Путање}{59}{section*.41}%
+\contentsline {subsection}{Релације}{60}{section*.42}%
 \contentsline {chapter}{\chapternumberline {5}App}{62}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Opis}{62}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Cloud}{62}{section.5.2}%
@@ -73,4 +72,4 @@
 \contentsline {section}{\numberline {5.6}PolyContains}{63}{section.5.6}%
 \contentsline {section}{\numberline {5.7}Rezultat}{63}{section.5.7}%
 \contentsline {chapter}{\chapternumberline {6}Закључак}{64}{chapter.6}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{65}{chapter*.44}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{65}{chapter*.43}%
