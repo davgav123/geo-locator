@@ -30,24 +30,24 @@
 \contentsline {chapter}{\chapternumberline {3}Дистрибуирана обрада података}{29}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Доба података}{29}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Скалирање система}{30}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Особине дистрибуираних система}{31}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Организација дистрибуираних система}{31}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Систем \textit {Hadoop}}{32}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Дистрибуирани фајл систем \textit {HDFS}}{34}{section.3.5}%
+\contentsline {section}{\numberline {3.5}Дистрибуирани фајл систем \textit {HDFS}}{33}{section.3.5}%
 \contentsline {subsection}{Структура \textit {HDFS}-а}{34}{section*.19}%
-\contentsline {subsection}{Особине}{34}{section*.20}%
+\contentsline {subsection}{Особине}{35}{section*.20}%
 \contentsline {section}{\numberline {3.6}Парадигма \textit {MapReduce}}{36}{section.3.6}%
 \contentsline {subsection}{\textit {MapReduce} из аспекта функција}{37}{section*.21}%
-\contentsline {section}{\numberline {3.7}Остале компоненте \textit {Hadoop}-а}{39}{section.3.7}%
+\contentsline {section}{\numberline {3.7}Остале компоненте \textit {Hadoop}-а}{38}{section.3.7}%
 \contentsline {section}{\numberline {3.8}Преговарач ресурса \textit {Apache Yarn}}{39}{section.3.8}%
 \contentsline {subsection}{Архитектура \textit {Yarn}-а}{40}{section*.22}%
-\contentsline {section}{\numberline {3.9}Алат \textit {Apache Spark}}{43}{section.3.9}%
+\contentsline {section}{\numberline {3.9}Алат \textit {Apache Spark}}{42}{section.3.9}%
 \contentsline {subsection}{Недостаци \textit {MapReduce} парадигме}{43}{section*.23}%
-\contentsline {subsection}{Увод у \textit {Apache Spark}}{43}{section*.24}%
+\contentsline {subsection}{Увод у \textit {Apache Spark}}{44}{section*.24}%
 \contentsline {subsection}{Архитектура}{44}{section*.25}%
 \contentsline {subsection}{Партиције}{45}{section*.26}%
 \contentsline {subsection}{\textit {RDD} апстракција}{46}{section*.27}%
-\contentsline {subsection}{Трансформације}{48}{section*.28}%
-\contentsline {subsection}{Лења евалуација}{48}{section*.29}%
+\contentsline {subsection}{Трансформације}{47}{section*.28}%
+\contentsline {subsection}{Лења евалуација}{49}{section*.29}%
 \contentsline {subsection}{Примери \textit {RDD} трансформација}{49}{section*.30}%
 \contentsline {subsection}{Акције}{50}{section*.31}%
 \contentsline {subsection}{Руковање грешкама}{51}{section*.32}%
@@ -56,13 +56,13 @@
 \contentsline {subsection}{Трансформације и акције \textit {DataFrame}-а}{53}{section*.35}%
 \contentsline {subsection}{Разлика између \textit {DataFrame}-а и \textit {RDD}-ја}{54}{section*.36}%
 \contentsline {subsection}{Планови извршавања}{54}{section*.37}%
-\contentsline {subsection}{Остале компоненте Спарка}{55}{section*.38}%
+\contentsline {subsection}{Остале компоненте Спарка}{56}{section*.38}%
 \contentsline {chapter}{\chapternumberline {4}Скуп података \textit {OpenStreetMap}}{57}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Елементи}{58}{section.4.1}%
 \contentsline {subsection}{Тагови}{58}{section*.39}%
-\contentsline {subsection}{Чворови}{59}{section*.40}%
-\contentsline {subsection}{Путање}{59}{section*.41}%
-\contentsline {subsection}{Релације}{60}{section*.42}%
+\contentsline {section}{\numberline {4.2}Чворови}{59}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Путање}{59}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Релације}{60}{section.4.4}%
 \contentsline {chapter}{\chapternumberline {5}App}{62}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Opis}{62}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Cloud}{62}{section.5.2}%
@@ -72,4 +72,4 @@
 \contentsline {section}{\numberline {5.6}PolyContains}{63}{section.5.6}%
 \contentsline {section}{\numberline {5.7}Rezultat}{63}{section.5.7}%
 \contentsline {chapter}{\chapternumberline {6}Закључак}{64}{chapter.6}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{65}{chapter*.43}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{65}{chapter*.40}%
