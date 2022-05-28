@@ -34,24 +34,24 @@
 \contentsline {section}{\numberline {3.4}Систем \textit {Hadoop}}{32}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Дистрибуирани фајл систем \textit {HDFS}}{33}{section.3.5}%
 \contentsline {subsection}{Структура \textit {HDFS}-а}{34}{section*.19}%
-\contentsline {subsection}{Особине}{35}{section*.20}%
+\contentsline {subsection}{Основне карактеристике \textit {HDFS}-а}{35}{section*.20}%
 \contentsline {section}{\numberline {3.6}Парадигма \textit {MapReduce}}{36}{section.3.6}%
 \contentsline {subsection}{\textit {MapReduce} из аспекта функција}{37}{section*.21}%
 \contentsline {section}{\numberline {3.7}Остале компоненте \textit {Hadoop}-а}{38}{section.3.7}%
 \contentsline {section}{\numberline {3.8}Преговарач ресурса \textit {Apache Yarn}}{39}{section.3.8}%
 \contentsline {subsection}{Архитектура \textit {Yarn}-а}{40}{section*.22}%
 \contentsline {section}{\numberline {3.9}Алат \textit {Apache Spark}}{42}{section.3.9}%
-\contentsline {subsection}{Недостаци \textit {MapReduce} парадигме}{43}{section*.23}%
+\contentsline {subsection}{Недостаци \textit {MapReduce} парадигме}{42}{section*.23}%
 \contentsline {subsection}{Увод у \textit {Apache Spark}}{44}{section*.24}%
 \contentsline {subsection}{Архитектура}{44}{section*.25}%
-\contentsline {subsection}{Партиције}{45}{section*.26}%
+\contentsline {subsection}{Партиције}{46}{section*.26}%
 \contentsline {subsection}{\textit {RDD} апстракција}{46}{section*.27}%
-\contentsline {subsection}{Трансформације}{47}{section*.28}%
+\contentsline {subsection}{Трансформације}{46}{section*.28}%
 \contentsline {subsection}{Лења евалуација}{49}{section*.29}%
 \contentsline {subsection}{Примери \textit {RDD} трансформација}{49}{section*.30}%
-\contentsline {subsection}{Акције}{50}{section*.31}%
-\contentsline {subsection}{Руковање грешкама}{51}{section*.32}%
-\contentsline {subsection}{Кеширање}{52}{section*.33}%
+\contentsline {subsection}{Акције}{49}{section*.31}%
+\contentsline {subsection}{Руковање грешкама}{50}{section*.32}%
+\contentsline {subsection}{Кеширање}{51}{section*.33}%
 \contentsline {subsection}{Апстракција \textit {Spark DataFrame}}{52}{section*.34}%
 \contentsline {subsection}{Трансформације и акције \textit {DataFrame}-а}{53}{section*.35}%
 \contentsline {subsection}{Разлика између \textit {DataFrame}-а и \textit {RDD}-ја}{54}{section*.36}%
