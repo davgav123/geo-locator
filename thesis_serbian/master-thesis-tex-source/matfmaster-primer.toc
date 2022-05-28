@@ -23,9 +23,9 @@
 \contentsline {subsection}{Низови}{19}{section*.13}%
 \contentsline {subsection}{Листе}{20}{section*.14}%
 \contentsline {subsection}{Н-торке}{22}{section*.15}%
-\contentsline {subsection}{Скупови}{23}{section*.16}%
+\contentsline {subsection}{Скупови}{22}{section*.16}%
 \contentsline {subsection}{Мапе}{23}{section*.17}%
-\contentsline {section}{\numberline {2.9}Поклапање образаца}{25}{section.2.9}%
+\contentsline {section}{\numberline {2.9}Поклапање образаца}{24}{section.2.9}%
 \contentsline {subsection}{Примери коришћења}{25}{section*.18}%
 \contentsline {chapter}{\chapternumberline {3}Дистрибуирана обрада података}{29}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Доба података}{29}{section.3.1}%
