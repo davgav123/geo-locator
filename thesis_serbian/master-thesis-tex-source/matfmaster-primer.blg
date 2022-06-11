@@ -13,6 +13,8 @@ Warning--empty journal in apache_kafka
 Warning--empty year in apache_kafka
 Warning--empty journal in apache_pig
 Warning--empty year in apache_pig
+Warning--empty journal in yarn
+Warning--empty year in yarn
 Warning--empty journal in apache_zookeeper
 Warning--empty year in apache_zookeeper
 Warning--empty journal in hadoop_arch_guide
@@ -34,45 +36,45 @@ Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 19 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            569 strings with 5689 characters,
-and the built_in function-call counts, 4200 in all, are:
-= -- 378
-> -- 163
+            571 strings with 5809 characters,
+and the built_in function-call counts, 4406 in all, are:
+= -- 397
+> -- 170
 < -- 0
-+ -- 68
-- -- 48
-* -- 218
-:= -- 765
-add.period$ -- 60
-call.type$ -- 19
-change.case$ -- 77
++ -- 70
+- -- 50
+* -- 229
+:= -- 803
+add.period$ -- 63
+call.type$ -- 20
+change.case$ -- 81
 chr.to.int$ -- 0
-cite$ -- 50
-duplicate$ -- 198
-empty$ -- 344
-format.name$ -- 48
-if$ -- 822
+cite$ -- 53
+duplicate$ -- 208
+empty$ -- 361
+format.name$ -- 50
+if$ -- 862
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 23
-newline$ -- 101
-num.names$ -- 38
-pop$ -- 140
+int.to.str$ -- 20
+missing$ -- 24
+newline$ -- 106
+num.names$ -- 40
+pop$ -- 147
 preamble$ -- 1
-purify$ -- 62
+purify$ -- 65
 quote$ -- 0
-skip$ -- 121
+skip$ -- 127
 stack$ -- 0
-substring$ -- 96
+substring$ -- 100
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 68
-warning$ -- 31
-while$ -- 38
-width$ -- 21
-write$ -- 179
-(There were 31 warnings)
+type$ -- 72
+warning$ -- 33
+while$ -- 40
+width$ -- 22
+write$ -- 188
+(There were 33 warnings)
