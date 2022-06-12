@@ -91,6 +91,12 @@ Apache Spark.
 \newblock online at:
   https://spark.apache.org/docs/latest/rdd-programming-guide.html.
 
+\bibitem{spark_rdd_transf}
+Apache Spark.
+\newblock {Spark Core}.
+\newblock online at:
+  https://spark.apache.org/docs/latest/api/python/reference/pyspark.html.
+
 \bibitem{spark_streaming}
 Apache Spark.
 \newblock {Structured Streaming Programming Guide}.

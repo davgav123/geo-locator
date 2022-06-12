@@ -32,49 +32,51 @@ Warning--empty publisher in scala_prog
 Warning--empty journal in gfs
 Warning--empty journal in spark_rdd
 Warning--empty year in spark_rdd
+Warning--empty journal in spark_rdd_transf
+Warning--empty year in spark_rdd_transf
 Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 20 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            571 strings with 5809 characters,
-and the built_in function-call counts, 4406 in all, are:
-= -- 397
-> -- 170
+            574 strings with 5918 characters,
+and the built_in function-call counts, 4614 in all, are:
+= -- 416
+> -- 177
 < -- 0
-+ -- 70
-- -- 50
-* -- 229
-:= -- 803
-add.period$ -- 63
-call.type$ -- 20
-change.case$ -- 81
++ -- 73
+- -- 52
+* -- 240
+:= -- 841
+add.period$ -- 66
+call.type$ -- 21
+change.case$ -- 85
 chr.to.int$ -- 0
-cite$ -- 53
-duplicate$ -- 208
-empty$ -- 361
-format.name$ -- 50
-if$ -- 862
+cite$ -- 56
+duplicate$ -- 218
+empty$ -- 378
+format.name$ -- 52
+if$ -- 902
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 24
-newline$ -- 106
-num.names$ -- 40
-pop$ -- 147
+int.to.str$ -- 21
+missing$ -- 25
+newline$ -- 111
+num.names$ -- 42
+pop$ -- 154
 preamble$ -- 1
-purify$ -- 65
+purify$ -- 68
 quote$ -- 0
-skip$ -- 127
+skip$ -- 133
 stack$ -- 0
-substring$ -- 100
+substring$ -- 105
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 72
-warning$ -- 33
-while$ -- 40
-width$ -- 22
-write$ -- 188
-(There were 33 warnings)
+type$ -- 76
+warning$ -- 35
+while$ -- 42
+width$ -- 23
+write$ -- 197
+(There were 35 warnings)
