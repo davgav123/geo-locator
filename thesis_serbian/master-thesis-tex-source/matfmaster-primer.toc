@@ -1,4 +1,4 @@
-\babel@toc {serbianc}{}
+\babel@toc {serbianc}{}\relax 
 \contentsline {chapter}{\chapternumberline {1}Увод}{1}{chapter.1}%
 \contentsline {chapter}{\chapternumberline {2}Програмски језик Скала}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Особине језика \textit {Scala}}{2}{section.2.1}%
@@ -68,6 +68,6 @@
 \contentsline {section}{\numberline {6.4}Подаци}{63}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Obrada OSM skupa Sparkom}{63}{section.6.5}%
 \contentsline {section}{\numberline {6.6}PolyContains}{64}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Rezultat}{64}{section.6.7}%
-\contentsline {chapter}{\chapternumberline {7}Закључак}{65}{chapter.7}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{66}{chapter*.33}%
+\contentsline {section}{\numberline {6.7}Rezultat}{67}{section.6.7}%
+\contentsline {chapter}{\chapternumberline {7}Закључак}{68}{chapter.7}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{69}{chapter*.33}%
