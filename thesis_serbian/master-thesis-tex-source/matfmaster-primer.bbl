@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{inside_polygon}
+Paul Bourke.
+\newblock Determining if a point lies on the interior of a polygon.
+\newblock 1997.
+
 \bibitem{spark_guide}
 Bill Chambers and Matei Zaharia.
 \newblock {\em Spark: The definitive guide}.
@@ -78,6 +83,12 @@ Arne Horst.
 Lex~Spoon Martin~Odersky and Bill Venners.
 \newblock {\em {Programming in Scala, First edition}}.
 \newblock 2008.
+
+\bibitem{java_awt_polygon}
+Oracle.
+\newblock {java.awt.Polygon}.
+\newblock online at:
+  https://docs.oracle.com/javase/7/docs/api/java/awt/Polygon.html.
 
 \bibitem{gfs}
 Howard~Gobioff Sanjay~Ghemawat and Shun-Tak Leung.

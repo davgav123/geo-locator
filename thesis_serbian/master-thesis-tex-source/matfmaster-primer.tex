@@ -1928,21 +1928,23 @@ opis komponenti itd
 
 skupovi podataka koji se koriste mada je vecina toga vec napisana ranije, u OSM delu. Dakle OSM + geonames
 
-\section{Obrada OSM skupa Sparkom}
-\label{sec:osm_spark_obrada}
-
-koje spark transformacije su primenjene na koje podatke
-
-\section{PolyContains}
+\section{Одређивање припадности локације држави}
 \label{sec:poly_cont}
 
-\textbf{TODO sredi tekst bolje, ovo je samo neki placeholder kao}
+Проблем одређивања припадности локације држави је еквивалентан проблему одређивања припадности тачке полигону, где је локација тачка, а граница државе полигон. Како је проблем припадности тачке полигону веома заступљен у рачунарској графици, постоји велики број алгоритама који га решавају. У овом раду су испробани \textit{Ray casting} алгоритам \cite{inside_polygon}, алгоритам који се заснива на сумирању углова \cite{inside_polygon} и алгоритам доступан у оквиру Јава \textit{awt} библиотеке, унутар \textit{Polygon} класе \cite{java_awt_polygon}.
 
-Проблем одређивања припадности локације на мапи држави је заправо еквивалентан проблему одређивања припадности тачке полигону, где је локација тачка, а границе државе полигон. За решавање овог проблема су испробана четири потенцијална решења. Две имплементације \textit{ray casting} алгоритма, алгоритам који сабира углове (\textit{sum angles}) као и алгоритам доступан унутар Јава библиотеке \textit{awt} \textbf{РЕФЕРЕНЦЕ}.
+\textit{Ray casting} алгоритам функционише исцртавањем хоризонталне дужи из жељене тачке, такве да јој се други крај налази изван полигона. Након тога се пребројава број пресека исртане дужи са свим страницама полигона. Уколико је број пресека паран, тачка се налази ван полигона, а уколико је непаран тачка се налази у полигону. Из примера алгоритма приказаног на слици \ref{fig:ray_cast_algo_example} се може закључити да се тачке \textit{А} и \textit{Д} налазе унутар полигона, док су тачке \textit{Б} и \textit{Ц} изван. Недостатак \textit{Ray casting}-а је појава грешака приликом одређивања припадности тачака које се налазе близу ивица полигона. %Може се користити за одређивање припадности тачке свакој врсти полигона.
 
-\textbf{Опис сваког приступа}. можда само један ray casting isprobaj :shrug: da ne komplikujes rad i da objasnjavas prugu implementaciju (koja ne radi heh).
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.55\textwidth]{pictures/ray_cast_pic_example.png}
+  \caption{\textit{Ray casting} алгоритам}
+  \label{fig:ray_cast_algo_example}
+\end{figure}
 
-Алгоритми су тестирани на \textit{OSM} подацима који представљају Црну Гору и Словенију. Скупови су приказани црвеном бојом на слици \ref{fig:all_map_slo_mon_example}. Оба скупа података садрже одређен број локација на мапи које не припадају државама које представљају. То их чини повољним за тестирање због тога што се добијени резултати једноставно могу проверити исцртавањем.
+Алгоритам заснован на сумирању углова сабира углове између жељене тачке и сваког пара темена полигона. Уколико је сума $2\pi$ онда се тачка налази унутар полигона, а уколико није онда се налази изван. Овај алгоритам функционише за све врсте полигона.
+
+Алгоритми су тестирани над \textit{OSM} подацима који представљају Црну Гору и Словенију који су приказани црвеном бојом на слици \ref{fig:all_map_slo_mon_example}. Оба скупа података садрже одређен број локација на мапи које не припадају државама које представљају. То их чини повољним за тестирање, због тога што се добијени резултати припадности локација једноставно могу проверити исцртавањем.
 
 \begin{figure}[!ht]
   \centering
@@ -1951,7 +1953,7 @@ koje spark transformacije su primenjene na koje podatke
   \label{fig:all_map_slo_mon_example}
 \end{figure}
 
-Резултати добијени применом алгоритама су приказани у табели \ref{tab:tabla_rez_poly_cont_algor}. \textbf{rez promenjeni od kad je ovo pisano, proveri} Означавају удео локација који се налазе унутар граница у односу на цео скуп, за сваки алгоритам. Добијени резултати су слични, али алгоритам са сабирањем скупова даје најбоље резултате. 
+Резултати добијени применом алгоритама на поменуте скупове су приказани у табели \ref{tab:tabla_rez_poly_cont_algor} и означавају удео локација које се налазе унутар граница у односу на цео скуп, за сваки алгоритам. Резултати су слични, али алгоритам заснован на сабирању углова даје најбоље резултате.
 
 \begin{table}[h!]
 \begin{center}
@@ -1959,52 +1961,50 @@ koje spark transformacije su primenjene na koje podatke
 \textbf{ } & \textbf{Удео локација које} & \textbf{Удео локација које} \\
 \textbf{Алгоритам} & \textbf{припадају Црној Гори} & \textbf{припадају Словенији} \\ \hline
 \textit{Ray casting} & 0.775 & 0.950 \\ \hline
-\textit{Awt} & 0.757 & 0.951 \\ \hline
-\textit{Sum angles} & 0.775 & 0.956 \\ \hline
+Библиотека \textit{Awt} & 0.757 & 0.951 \\ \hline
+Сумирање углова & 0.775 & 0.956 \\ \hline
 \end{tabular}
 \caption{Удео локација које се налазе унутар границе држава}
 \label{tab:tabla_rez_poly_cont_algor}
 \end{center}
 \end{table}
 
+Графички приказ локацијa за које су алгоритми одредили да не припадају границама су приказани на слици \ref{fig:all_examples_map_slo_mon}. Сва три алгоритма исправно одређују да локације далеко од граница не припадају државама. Да би се проверило да ли исто важи и за локације близу граница, приказане слике се морају увеличати (слике \ref{fig:not_slo_mon_rc}, \ref{fig:not_slo_mon_awt} и \ref{fig:not_slo_mon_sum_angles}).
+
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=1.05\textwidth]{pictures/slo_mon_contains_all_rc_awt_sa.png}
-  \caption{Локације које не припадају скуповима за редом алгоритме \textit{ray casting}, \textit{awt}, \textit{sum angles}}
+  \caption{Локације изван граница за редом \textit{Ray casting}, \textit{Awt} алгоритам и Сумирање углова}
   \label{fig:all_examples_map_slo_mon}
 \end{figure}
 
-
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=1.05\textwidth]{pictures/not_slo_mon_ray_cast_1.png}
-  \caption{ray cast zoomed}
+  \includegraphics[width=1.05\textwidth]{pictures/not_slo_mon_ray_cast.png}
+  \caption{\textit{Ray casting} за локације близу границе}
   \label{fig:not_slo_mon_rc}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=1.05\textwidth]{pictures/not_slo_mon_awt.png}
-  \caption{awt zoomed}
+  \caption{\textit{Awt} алгоритам за локације близу границе}
   \label{fig:not_slo_mon_awt}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=1.05\textwidth]{pictures/not_slo_mon_sum_angles.png}
-  \caption{sum angles zoomed}
+  \caption{Сумирање углова за локације близу границе}
   \label{fig:not_slo_mon_sum_angles}
 \end{figure}
 
+Резултати за приказане алгоритме су добри, са одређеним недостацима. Сваки алгоритам је погрешно одредио припадност неким локацијама које се налазе близу обала мора. \textit{Ray casting} је погрешно одредио припадност великом броју тачака на југоистоку Словеније. Поред тога, код сваког алгоритма постоје мање грешке за локације близу осталим деловима граница. Због приказаних резултата, у изради апликације је коришћен алгоритам заснован на сумирању углова.
 
-Намена апликације је да одреди
+\section{Obrada OSM skupa Sparkom}
+\label{sec:osm_spark_obrada}
 
-Како би се успешно одредиле тачке које припадају 
-
-Скуп чворова \textit{OSM} података је представљен координатама. 
-
-algoritmi korisceni za poly contains i rezultati (graficki prikaz). mozda zameniti mesta ovoj i prethodnoj sekciji...
-
+koje spark transformacije su primenjene na koje podatke
 
 \section{Rezultat}
 \label{sec:rezultat}

@@ -66,8 +66,8 @@
 \contentsline {section}{\numberline {6.2}Cloud}{63}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{63}{section.6.3}%
 \contentsline {section}{\numberline {6.4}Подаци}{63}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Obrada OSM skupa Sparkom}{63}{section.6.5}%
-\contentsline {section}{\numberline {6.6}PolyContains}{64}{section.6.6}%
+\contentsline {section}{\numberline {6.5}Одређивање припадности локације држави}{63}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Obrada OSM skupa Sparkom}{67}{section.6.6}%
 \contentsline {section}{\numberline {6.7}Rezultat}{67}{section.6.7}%
 \contentsline {chapter}{\chapternumberline {7}Закључак}{68}{chapter.7}%
 \contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{69}{chapter*.33}%

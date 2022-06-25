@@ -3,6 +3,7 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: matfmaster-primer.aux
 The style file: plain.bst
 Database file #1: matfmaster-primer.bib
+Warning--empty journal in inside_polygon
 Warning--empty publisher in spark_guide
 Warning--empty journal in gmr
 Warning--empty journal in apache_flume
@@ -29,6 +30,8 @@ Warning--empty journal in google_maps
 Warning--empty year in google_maps
 Warning--empty journal in volume_data
 Warning--empty publisher in scala_prog
+Warning--empty journal in java_awt_polygon
+Warning--empty year in java_awt_polygon
 Warning--empty journal in gfs
 Warning--empty journal in spark_rdd
 Warning--empty year in spark_rdd
@@ -38,45 +41,45 @@ Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 21 entries,
+You've used 23 entries,
             2118 wiz_defined-function locations,
-            574 strings with 5918 characters,
-and the built_in function-call counts, 4614 in all, are:
-= -- 416
-> -- 177
+            582 strings with 6117 characters,
+and the built_in function-call counts, 5025 in all, are:
+= -- 454
+> -- 191
 < -- 0
-+ -- 73
-- -- 52
-* -- 240
-:= -- 841
-add.period$ -- 66
-call.type$ -- 21
-change.case$ -- 85
++ -- 79
+- -- 56
+* -- 259
+:= -- 917
+add.period$ -- 72
+call.type$ -- 23
+change.case$ -- 93
 chr.to.int$ -- 0
-cite$ -- 56
-duplicate$ -- 218
-empty$ -- 378
-format.name$ -- 52
-if$ -- 902
+cite$ -- 61
+duplicate$ -- 238
+empty$ -- 412
+format.name$ -- 56
+if$ -- 982
 int.to.chr$ -- 0
-int.to.str$ -- 21
-missing$ -- 25
-newline$ -- 111
-num.names$ -- 42
-pop$ -- 154
+int.to.str$ -- 23
+missing$ -- 27
+newline$ -- 121
+num.names$ -- 46
+pop$ -- 167
 preamble$ -- 1
-purify$ -- 68
+purify$ -- 74
 quote$ -- 0
-skip$ -- 133
+skip$ -- 146
 stack$ -- 0
-substring$ -- 105
+substring$ -- 115
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 76
-warning$ -- 35
-while$ -- 42
-width$ -- 23
-write$ -- 197
-(There were 35 warnings)
+type$ -- 84
+warning$ -- 38
+while$ -- 46
+width$ -- 25
+write$ -- 215
+(There were 38 warnings)
