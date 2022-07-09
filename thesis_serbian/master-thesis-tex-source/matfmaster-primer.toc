@@ -63,11 +63,11 @@
 \contentsline {section}{\numberline {5.4}Релације}{61}{section.5.4}%
 \contentsline {chapter}{\chapternumberline {6}App}{63}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Opis}{63}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Cloud}{63}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{63}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Подаци}{63}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Одређивање припадности локације држави}{63}{section.6.5}%
+\contentsline {section}{\numberline {6.2}Облак}{63}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{64}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Подаци}{65}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Одређивање припадности локације држави}{65}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Obrada OSM skupa Sparkom}{67}{section.6.6}%
 \contentsline {section}{\numberline {6.7}Rezultat}{67}{section.6.7}%
-\contentsline {chapter}{\chapternumberline {7}Закључак}{68}{chapter.7}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{69}{chapter*.33}%
+\contentsline {chapter}{\chapternumberline {7}Закључак}{70}{chapter.7}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{71}{chapter*.33}%

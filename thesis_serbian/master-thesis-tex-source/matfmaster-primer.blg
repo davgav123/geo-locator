@@ -3,6 +3,16 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: matfmaster-primer.aux
 The style file: plain.bst
 Database file #1: matfmaster-primer.bib
+Warning--to sort, need author or key in geonames
+Warning--empty author in geonames
+Warning--empty journal in geonames
+Warning--empty year in geonames
+Warning--empty journal in emr
+Warning--empty year in emr
+Warning--empty journal in s3
+Warning--empty year in s3
+Warning--empty journal in cloud_computing
+Warning--empty year in cloud_computing
 Warning--empty journal in inside_polygon
 Warning--empty publisher in spark_guide
 Warning--empty journal in gmr
@@ -41,45 +51,45 @@ Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 23 entries,
+You've used 27 entries,
             2118 wiz_defined-function locations,
-            582 strings with 6117 characters,
-and the built_in function-call counts, 5025 in all, are:
-= -- 454
-> -- 191
+            595 strings with 6378 characters,
+and the built_in function-call counts, 5817 in all, are:
+= -- 526
+> -- 213
 < -- 0
-+ -- 79
-- -- 56
-* -- 259
-:= -- 917
-add.period$ -- 72
-call.type$ -- 23
-change.case$ -- 93
++ -- 89
+- -- 62
+* -- 306
+:= -- 1052
+add.period$ -- 83
+call.type$ -- 27
+change.case$ -- 108
 chr.to.int$ -- 0
-cite$ -- 61
-duplicate$ -- 238
-empty$ -- 412
-format.name$ -- 56
-if$ -- 982
+cite$ -- 75
+duplicate$ -- 278
+empty$ -- 481
+format.name$ -- 62
+if$ -- 1137
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 27
-newline$ -- 121
-num.names$ -- 46
-pop$ -- 167
+int.to.str$ -- 27
+missing$ -- 31
+newline$ -- 140
+num.names$ -- 52
+pop$ -- 195
 preamble$ -- 1
-purify$ -- 74
+purify$ -- 85
 quote$ -- 0
-skip$ -- 146
+skip$ -- 170
 stack$ -- 0
-substring$ -- 115
+substring$ -- 135
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 84
-warning$ -- 38
-while$ -- 46
-width$ -- 25
-write$ -- 215
-(There were 38 warnings)
+type$ -- 100
+warning$ -- 48
+while$ -- 52
+width$ -- 29
+write$ -- 249
+(There were 48 warnings)

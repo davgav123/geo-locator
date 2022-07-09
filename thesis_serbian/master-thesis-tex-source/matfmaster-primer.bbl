@@ -1,5 +1,24 @@
 \begin{thebibliography}{10}
 
+\bibitem{geonames}
+{GeoNames}.
+\newblock online at: https://www.geonames.org/.
+
+\bibitem{emr}
+{AWS}.
+\newblock {Amazon EMR}.
+\newblock online at: https://aws.amazon.com/emr/.
+
+\bibitem{s3}
+{AWS}.
+\newblock {Amazon S3}.
+\newblock online at: https://aws.amazon.com/s3/.
+
+\bibitem{cloud_computing}
+{AWS}.
+\newblock {What is cloud computing?}
+\newblock online at: https://aws.amazon.com/what-is-cloud-computing/.
+
 \bibitem{inside_polygon}
 Paul Bourke.
 \newblock Determining if a point lies on the interior of a polygon.
