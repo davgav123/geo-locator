@@ -16,6 +16,8 @@ Warning--empty year in cloud_computing
 Warning--empty journal in inside_polygon
 Warning--empty publisher in spark_guide
 Warning--empty journal in gmr
+Warning--empty journal in apache_flink
+Warning--empty year in apache_flink
 Warning--empty journal in apache_flume
 Warning--empty year in apache_flume
 Warning--empty journal in apache_hive
@@ -24,6 +26,8 @@ Warning--empty journal in apache_kafka
 Warning--empty year in apache_kafka
 Warning--empty journal in apache_pig
 Warning--empty year in apache_pig
+Warning--empty journal in apache_spark
+Warning--empty year in apache_spark
 Warning--empty journal in yarn
 Warning--empty year in yarn
 Warning--empty journal in apache_zookeeper
@@ -39,6 +43,8 @@ Warning--empty year in presto
 Warning--empty journal in google_maps
 Warning--empty year in google_maps
 Warning--empty journal in volume_data
+Warning--empty journal in scala_akka
+Warning--empty year in scala_akka
 Warning--empty publisher in scala_prog
 Warning--empty journal in java_awt_polygon
 Warning--empty year in java_awt_polygon
@@ -51,45 +57,45 @@ Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 27 entries,
+You've used 30 entries,
             2118 wiz_defined-function locations,
-            595 strings with 6378 characters,
-and the built_in function-call counts, 5817 in all, are:
-= -- 526
-> -- 213
+            605 strings with 6552 characters,
+and the built_in function-call counts, 6441 in all, are:
+= -- 583
+> -- 234
 < -- 0
-+ -- 89
-- -- 62
-* -- 306
-:= -- 1052
-add.period$ -- 83
-call.type$ -- 27
-change.case$ -- 108
++ -- 98
+- -- 68
+* -- 339
+:= -- 1166
+add.period$ -- 92
+call.type$ -- 30
+change.case$ -- 120
 chr.to.int$ -- 0
-cite$ -- 75
-duplicate$ -- 278
-empty$ -- 481
-format.name$ -- 62
-if$ -- 1137
+cite$ -- 84
+duplicate$ -- 308
+empty$ -- 532
+format.name$ -- 68
+if$ -- 1257
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 31
-newline$ -- 140
-num.names$ -- 52
-pop$ -- 195
+int.to.str$ -- 30
+missing$ -- 34
+newline$ -- 155
+num.names$ -- 58
+pop$ -- 216
 preamble$ -- 1
-purify$ -- 85
+purify$ -- 94
 quote$ -- 0
-skip$ -- 170
+skip$ -- 188
 stack$ -- 0
-substring$ -- 135
+substring$ -- 150
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
-warning$ -- 48
-while$ -- 52
-width$ -- 29
-write$ -- 249
-(There were 48 warnings)
+type$ -- 112
+warning$ -- 54
+while$ -- 58
+width$ -- 32
+write$ -- 276
+(There were 54 warnings)

@@ -35,6 +35,11 @@ Jeffrey Dean and Sanjay Ghemawat.
 \newblock 2004.
 \newblock online at: https://research.google/pubs/pub62/.
 
+\bibitem{apache_flink}
+Apache foundation.
+\newblock {Apache Flink}.
+\newblock online at: https://flink.apache.org/.
+
 \bibitem{apache_flume}
 Apache foundation.
 \newblock {Apache Flume}.
@@ -54,6 +59,11 @@ Apache foundation.
 Apache foundation.
 \newblock {Apache Pig}.
 \newblock online at: https://pig.apache.org/.
+
+\bibitem{apache_spark}
+Apache foundation.
+\newblock {Apache Spark}.
+\newblock online at: https://spark.apache.org/.
 
 \bibitem{yarn}
 Apache foundation.
@@ -97,6 +107,11 @@ Arne Horst.
 \newblock 2021.
 \newblock online at:
   https://www.statista.com/statistics/871513/worldwide-data-created/.
+
+\bibitem{scala_akka}
+Lightbend.
+\newblock akka.
+\newblock online at: https://akka.io/.
 
 \bibitem{scala_prog}
 Lex~Spoon Martin~Odersky and Bill Venners.
