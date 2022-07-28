@@ -143,7 +143,7 @@
 
 Скала (енг. Scala) је виши програмски језик заснован на функционалној и објектно оријентисаној парадигми  \cite{scala_prog}. Име је добила од енглеске речи \textit{scalable} јер је дизајнирана тако да се развија са потребама корисника. Има широк спектар примена и може се користити за писање једноставних скрипти али и у изградњи великих и комплексних система.
 
-Настала је 2001. на швајцарском федералном институту за технологију у Лозани (фра. \textit{École Polytechnique Fédérale de Lausanne}) и њен творац је Мартин Одерски (енг. \textit{Martin Odersky}). Прва званична верзија је изашла 20. јануара 2004. године. Данас је широко распростањена и веома је заступљена у заједници отвореног кода у пројектима као што су \textit{Apache Spark} \cite{apache_spark}, \textit{Apache Kafka} \cite{apache_kafka}, \textit{Apache Flink} \cite{apache_flink} и \textit{Akka} \cite{scala_akka}.
+Настала је 2001. године на швајцарском федералном институту за технологију у Лозани (фра. \textit{École Polytechnique Fédérale de Lausanne}) и њен творац је Мартин Одерски (енг. \textit{Martin Odersky}). Прва званична верзија је изашла 20. јануара 2004. године. Данас је широко распростањена и веома је заступљена у заједници отвореног кода у пројектима као што су \textit{Apache Spark} \cite{apache_spark}, \textit{Apache Kafka} \cite{apache_kafka}, \textit{Apache Flink} \cite{apache_flink} и \textit{Akka} \cite{scala_akka}.
 
 \section{Особине језика \textit{Scala}}
 \label{sec:osоб_scala}
@@ -166,11 +166,11 @@
 \subsection{Повезаност са језиком Јава}
 \label{subsec:scala_komp}
 
-\textit{Scala} се компајлира у Јавин ЈВМ бајтк\^{о}д (енг. \textit{Java JVM bytecode}) \cite{scala_prog}. То значи да \textit{Scala} може користити Јава класе, методе и типове. На пример, Скалин објектни целобројни тип у својој имплементацији користи примитивни еквивалент из Јаве. Поред тога, Скала може користити Јава к\^{о}д и обогатити га на неки начин, као на пример додавањем неке методе у већ постојећу класу. Време извршавања Скала програма приближно је једнако времену извршавања Јава програмима.
+\textit{Scala} се компајлира у Јавин ЈВМ бајтк\^{о}д (енг. \textit{Java JVM bytecode}) \cite{scala_prog}. То значи да \textit{Scala} може користити Јава класе, методе и типове. На пример, Скалин објектни целобројни тип у својој имплементацији користи примитивни еквивалент из Јаве. Поред тога, Скала може користити Јава к\^{о}д и обогатити га на неки начин, као на пример додавањем неке методе у већ постојећу класу. Време извршавања Скала програма приближно је једнако времену извршавања Јава програма.
 
 Међутим, иако се компајлирају на исти начин, програми написани у језику Скала често садрже мањи број линија од оних написаних у језику Јава. У неким случајевима се очекује да је к\^{о}д чак дупло краћи. Краћи програми доводе до тога да је к\^{о}д лакше писати и разумети, али и до мање вероватноће прављења грешака.
 
-Један од многих примера како Скала смањује број линија у односу на Јаву је приказан у кодовима \ref{lst:scala_java_class_declaration} и \ref{lst:scala_scala_class_declaration} који представљају начине декларисања класе у та два програмска језика.
+Један од многих примера како Скала смањује број линија у односу на Јаву је приказан у кодовима \ref{lst:scala_java_class_declaration} и \ref{lst:scala_scala_class_declaration} који представљају начине декларисања класе у та два програмска језика. У Скали се не мора декларисати конструктор, што доводи до смањења броја линија кода.
 
 \begin{lstlisting}[caption={Декларација класе у језику Јава}, language=Java, label={lst:scala_java_class_declaration}]
 // Java
@@ -190,8 +190,6 @@ class MyClass(index: Int, name: String)
 
 \end{lstlisting}
 
-У Скали се не мора декларисати конструктор, што доводи до смањења броја линија кода.
-
 \subsection{Статичка типизираност}
 \label{subsec:scala_stat_tip}
 
@@ -201,14 +199,14 @@ class MyClass(index: Int, name: String)
 
 Скала није само статички типизиран језик већ је и језик који аутоматски закључује типове у току компилације. На пример, када се декларише нека променљива целобројног типа, нема потребе назначити и њен тип, пошто га компајлер може аутоматски одредити. То значи да се следеће две линије кода (пример \ref{lst:scala_scala_type_declaration}) понашају еквивалентно. Исто важи и за било који други Скала тип, не само за целобројни.
 
-\begin{lstlisting}[caption={Декларација променљиве без и са аутоматским закључивањем типова}, language=Scala, label={lst:scala_scala_type_declaration}]
+\begin{lstlisting}[caption={Декларација променљиве са и без експлицитног навођења типа}, language=Scala, label={lst:scala_scala_type_declaration}]
 // primer 1
 val x: Int = 10
 // primer 2
 val x = 10
 \end{lstlisting}
 
-Скала програмер не мора експлицитно да наводи типове, али је то  често пожељно због тога што се на тај начин осигурава да ће к\^{о}д заправо користити тип који му је намењен, али ће и побољшати читљивост и допринети документацији.
+Скала програмер не мора експлицитно да наводи типове, али је то  често пожељно. Навођење типова осигурава да ће к\^{о}д заправо користити тип који му је намењен. Такође, навођење типова побољшава читљивост програма и доприноси документацији.
 
 \section{Скала интерпретер}
 \label{sec:scala_interpr}
@@ -232,20 +230,20 @@ val res0: Int = 120
 
 Излаз покренуте команде је аутоматски генерисана променљива названа \textbf{res0} типа \textit{Int} у којој ће се налазити резултат унетог израчунавања. Новонастала променљива се може користити у наставку извршавања.
 
-\begin{lstlisting}[language=Scala, caption={Коришћење резултатских променљивих}, label={lst:scala_res0_example}]
-scala> res0 + 100
-val res1: Int = 220
-\end{lstlisting}
+%\begin{lstlisting}[language=Scala, caption={Коришћење резултатских променљивих}, label={lst:scala_res0_example}]
+%scala> res0 + 100
+%val res1: Int = 220
+%\end{lstlisting}
 
-Уколико је потребно само исписати вредност у конзоли без креирања нове променљиве може се користити функција \textit{print()}.
+%Уколико је потребно само исписати вредност у конзоли без креирања нове променљиве може се користити функција \textit{print()}.
 
-\begin{lstlisting}[language=Scala, caption={Функција \textit{print}}, label={lst:scala_interpret_print_func}]
-scala> print(20 + 100)
-120
-
-scala> print("Hello!")
-Hello!
-\end{lstlisting}
+%\begin{lstlisting}[language=Scala, caption={Функција \textit{print}}, label={lst:scala_interpret_print_func}]
+%scala> print(20 + 100)
+%120
+%
+%scala> print("Hello!")
+%Hello!
+%\end{lstlisting}
 
 \section{Типови}
 \label{sec:scala_tip}
@@ -294,29 +292,28 @@ scala> x = "some string"
         required: Int
 \end{lstlisting}
 
-\section{Контрола тока}
-\label{sec:scala_kontr_toka}
-
-Скала поседује уграђене стандардне наредбе за контролу тока, \textit{if} за гранање, \textit{while} за петље и \textit{for} и \textit{foreach} за итерирање кроз колекције \cite{scala_prog}. У примеру \ref{lst:scala_flow_control} су те наредбе приказане у скалиној синтакси.
-
-\begin{lstlisting}[language=Scala, caption={Контрола тока}, label={lst:scala_flow_control}]
-
-if (bool izraz) {
-  // izraz je evaluiran u istinitu vrednost
-} else {
-  // izraz je evaluiran u neistinitu vrednost
-}
-
-while (bool izraz) {
-  // dok se izraz evaluira u istinitu vrednost
-}
-
-for (element <- kolekcija) {
-  // operacije nad elementom
-}
-
-
-\end{lstlisting}
+%\section{Контрола тока}
+%\label{sec:scala_kontr_toka}
+%
+%Скала поседује уграђене стандардне наредбе за контролу тока, \textit{if} за гранање, \textit{while} за петље и \textit{for} и \textit{foreach} за итерирање кроз колекције \cite{scala_prog}. У примеру \ref{lst:scala_flow_control} су те наредбе приказане у скалиној синтакси.
+%
+%\begin{lstlisting}[language=Scala, caption={Контрола тока}, label={lst:scala_flow_control}]
+%
+%if (bool izraz) {
+%  // izraz je evaluiran u istinitu vrednost
+%} else {
+%  // izraz je evaluiran u neistinitu vrednost
+%}
+%
+%while (bool izraz) {
+%  // dok se izraz evaluira u istinitu vrednost
+%}
+%
+%for (element <- kolekcija) {
+%  // operacije nad elementom
+%}
+%
+%\end{lstlisting}
 
 %kolekcija.foreach(funkcija koje se poziva za svaki element kolekcije)
 
@@ -341,7 +338,7 @@ def saberi(x: Int, y: Int): Int = {
 }
 \end{lstlisting}
 
-Последња линија тела функције ће увек бити њена повратна вредност али се поред тога она може назначити и наредбом \textit{return}. Уколико се функција састоји од само једне линије кода, могу се изоставити витичасте заграде које означавају почетак и крај тела фунције. Поред тога, због закључивања типова се може изоставити и тип повратне вредности. Дакле, функција \textit{sabe} из претходног примера се краће може записати на следећи начин:
+Последња линија тела функције ће увек бити њена повратна вредност али се поред тога она може назначити и наредбом \textit{return}. Уколико се функција састоји од само једне линије кода, могу се изоставити витичасте заграде које означавају почетак и крај тела фунције. Поред тога, због закључивања типова се може изоставити и тип повратне вредности. Дакле, функција \textit{saberi} из претходног примера се краће може записати на следећи начин:
 
 \begin{lstlisting}[language=Scala, caption={Краћи запис функције \textit{saberi}}, label={lst:scala_function_add_example_simplified}]
 scala> def saberi(x: Int, y: Int) = x + y
@@ -375,21 +372,21 @@ scala> visiRed(saberi, 100, 200)
 val res0: Int = 300
 \end{lstlisting}
 
-Све функције које су до сада приказане су поседовале идентификатор, односно име. Међутим, то није неопходно и могуће је дефинисати функцију без имена. Такве функције се називају ламбда функције (енг. \textit{lambda functions}). Оне се обично користе када је нека функција потребна само једном, на пример у неком изразу, и не позива се никад више у коду. Декларишу се тако што се у заградама наводи низ аргумената са типовима, знак $=>$ и након тога повратна вредност. Пример ламбда функције која сабира два броја је приказан у коду \ref{lst:scala_function_lambda_example}.
+%Све функције које су до сада приказане су поседовале идентификатор, односно име. Међутим, то није неопходно и могуће је дефинисати функцију без имена. Такве функције се називају ламбда функције (енг. \textit{lambda functions}). Оне се обично користе када је нека функција потребна само једном, на пример у неком изразу, и не позива се никад више у коду. Декларишу се тако што се у заградама наводи низ аргумената са типовима, знак $=>$ и након тога повратна вредност. Пример ламбда функције која сабира два броја је приказан у коду \ref{lst:scala_function_lambda_example}.
 
-\begin{lstlisting}[language=Scala, caption={Пример ламбда функције}, label={lst:scala_function_lambda_example}]
-scala> (x: Int, y: Int) => x + y
-val res0: (Int, Int) => Int = $Lambda$2582/1961424035@2207eb9f
-\end{lstlisting}
-
-Ламбда функције се могу проследити функцијама вишег реда, па претходно дефинисана функција \textit{visiRed} може бити позвана на следећи начин:
-
-\begin{lstlisting}[language=Scala, caption={Прослеђивање ламбда функције другој функцији}, label={lst:scala_functions_lambda_high_order}]
-scala> visiRed((x: Int, y: Int) => x + y, 100, 200)
-val res0: Int = 300
-\end{lstlisting}
-
-\noindent У овом примеру, функција \textit{saberi} је замењена ламбда функцијом истог понашања, што није довело до промене коначног резултата. 
+%\begin{lstlisting}[language=Scala, caption={Пример ламбда функције}, label={lst:scala_function_lambda_example}]
+%scala> (x: Int, y: Int) => x + y
+%val res0: (Int, Int) => Int = $Lambda$2582/1961424035@2207eb9f
+%\end{lstlisting}
+%
+%Ламбда функције се могу проследити функцијама вишег реда, па претходно дефинисана функција \textit{visiRed} може бити позвана на следећи начин:
+%
+%\begin{lstlisting}[language=Scala, caption={Прослеђивање ламбда функције другој функцији}, label={lst:scala_functions_lambda_high_order}]
+%scala> visiRed((x: Int, y: Int) => x + y, 100, 200)
+%val res0: Int = 300
+%\end{lstlisting}
+%
+%\noindent У овом примеру, функција \textit{saberi} је замењена ламбда функцијом истог понашања, што није довело до промене коначног резултата. 
 
 \section{Објектнo оријентисана својства језика}
 \label{sec:scala_oop}
@@ -399,7 +396,7 @@ val res0: Int = 300
 \subsection{Класе}
 \label{subsec:scala_klase}
 
-Као и у Јави, у Скали класа представља нацрт преко ког се производе објекти. Да би се од класе креирао објекат, користи се кључна реч \textit{new}. У коду \ref{lst:scala_oop_class_instance} је приказан  пример дефиниције и инстанцијрања класе. Напомена да усправна линија у Скала интерпретеру представља нови ред док ознака $@$ праћена знаковима након назива класе представља инстанцу класе у меморији.
+Као и у Јави, у Скали класа представља нацрт преко ког се производе објекти. Да би се од класе креирао објекат, користи се кључна реч \textit{new}. У коду \ref{lst:scala_oop_class_instance} је приказан  пример дефиниције и инстанцирања класе (напомена: усправна линија у Скала интерпретеру представља нови ред док ознака $@$ праћена знаковима након назива класе представља инстанцу класе у меморији).
 
 \begin{lstlisting}[language=Scala, caption={Дефиниција и инстанцирање класе у Скали}, label={lst:scala_oop_class_instance}]
 scala> class MyClass {
@@ -444,24 +441,25 @@ scala> class MyClass {
      |  }
 class MyClass
 
-scala> val mc = new MyClass
-val mc: MyClass = MyClass@6a6e9289
-
-scala> mc.field
-          ^
-       error: value field in class MyClass cannot be accessed as a member of MyClass from class 
 \end{lstlisting}
 
-Поља се могу дефинисати ван тела класе, што је и Скалин стандард (к\^ od \ref{lst:scala_oop_field_outside}). Због тога се класа може написати уз помоћ мањег броја линија. 
+%scala> val mc = new MyClass
+%val mc: MyClass = MyClass@6a6e9289
+%scala> mc.field
+%          ^
+%       error: value field in class MyClass cannot be accessed as a member of MyClass from class 
+
+Поља се могу дефинисати ван тела класе, што је и Скалин стандард (к\^{о}д \ref{lst:scala_oop_field_outside}). Због тога се класа може написати уз помоћ мањег броја линија. 
 
 \begin{lstlisting}[language=Scala, caption={Дефиниција поља ван тела класе}, label={lst:scala_oop_field_outside}]
 scala> class MyClass(private val field: Int = 0) {
      |    def method() = print(field)
      |  }
 
-scala> val m = new MyClass
-val m: MyClass = MyClass@5d8e4fa8
 \end{lstlisting}
+
+%scala> val m = new MyClass
+%val m: MyClass = MyClass@5d8e4fa8
 
 У претходном примеру, поље \textit{field} поседује подразумевану вредност која ђе се том пољу увек доделити приликом инстанцирања класе \cite{scala_prog}. Међутим, она се не мора навести и, уколико је то случај, пољима се мора експлицитно доделити вредност приликом инстанцирања. Пример је приказан у коду \ref{lst:scala_oop_field_explicit}.
 
@@ -497,16 +495,17 @@ scala> class MyExtendedClass(
      | ) extends MyClass(field) // prosledjivanje vrednosti nadklasi
 class MyExtendedClass
 
-scala> val mec = new MyExtendedClass(10, 20)
-val mec: MyExtendedClass = MyExtendedClass@42ba9b22
 \end{lstlisting}
+
+%scala> val mec = new MyExtendedClass(10, 20)
+%val mec: MyExtendedClass = MyExtendedClass@42ba9b22
 
 Предефинисање чланова надкласе се врши на исти начин као у Јави, преко кључне речи \textit{override}.
 
 \subsection{Апстрактне класе}
 \label{subsec:scala_abs}
 
-Апстрактне класе се дефинишу коришћењем кључне речи \textit{abstract} која се наводи пре речи \textit{class} која означава класу, на исти начин као у Јави \cite{scala_prog}.
+Апстрактне класе се дефинишу коришћењем кључне речи \textit{abstract} која се наводи пре речи \textit{class} која означава класу, на исти начин као у Јави \cite{scala_prog}. Апстрактне класе се не могу инстанцирати, али се могу наследити од стране других класа.
 
 \begin{lstlisting}[language=Scala, caption={Апстрактна класа у Скали}, label={lst:scala_oop_abstract_class_example}]
 scala> abstract class MyAbstractClass {
@@ -514,17 +513,15 @@ scala> abstract class MyAbstractClass {
 class MyAbstractClass
 \end{lstlisting}
 
-\noindent Апстрактне класе се не могу инстанцирати, али се могу наследити од стране других класа.
-
-\begin{lstlisting}[language=Scala, caption={Инстанцирање апстрактне класе}, label={lst:scala_oop_abstract_class_instance_example}]
-scala> abstract class MyAbstractClass {
-     | }
-class MyAbstractClass
-
-scala> val mac = new MyAbstractClass
-                 ^
-       error: class MyAbstractClass is abstract; cannot be instantiated
-\end{lstlisting}
+%\begin{lstlisting}[language=Scala, caption={Инстанцирање апстрактне класе}, label={lst:scala_oop_abstract_class_instance_example}]
+%scala> abstract class MyAbstractClass {
+%     | }
+%class MyAbstractClass
+%
+%scala> val mac = new MyAbstractClass
+%                 ^
+%       error: class MyAbstractClass is abstract; cannot be instantiated
+%\end{lstlisting}
 
 \subsection{Синглтон објекти}
 \label{subsec:scala_sing_obj}
@@ -540,27 +537,27 @@ scala> MyObject.hello()
 Hello from object
 \end{lstlisting}
 
-Уколико објекат дели своје име са неком класом, а при томе се налазе у истом фајлу, тај објекат се назива објекат пратилац (енг. \textit{companion object}) \cite{scala_prog}. Паралелно, та класа се назива класа пратилац тог објекта. Класа или објекат који су пратиоци могу да приступе приватним члановима свог пратиоца (к\^ {о}д \ref{lst:scala_oop_companions_example}).
+%Уколико објекат дели своје име са неком класом, а при томе се налазе у истом фајлу, тај објекат се назива објекат пратилац (енг. \textit{companion object}) \cite{scala_prog}. Паралелно, та класа се назива класа пратилац тог објекта. Класа или објекат који су пратиоци могу да приступе приватним члановима свог пратиоца (к\^ {о}д \ref{lst:scala_oop_companions_example}).
+%
+%\begin{lstlisting}[language=Scala, caption={Пример пратиоца}, %label={lst:scala_oop_companions_example}]
+%object Kvadrat {
+%    def izracunajPovrsinu(a: Int) = a * a
+%}
+%
+%class Kvadrat(a: Int) {
+%    def povrsina = Kvadrat.izracunajPovrsinu(a)
+%}
+%
+%scala> val k = new Kvadrat(10)
+%val k: Kvadrat = Kvadrat@6cb2d5ea
+%
+%scala> k.povrsina
+%val res0: Int = 100
+%
+%\end{lstlisting}
 
-\begin{lstlisting}[language=Scala, caption={Пример пратиоца}, label={lst:scala_oop_companions_example}]
-object Kvadrat {
-    def izracunajPovrsinu(a: Int) = a * a
-}
-
-class Kvadrat(a: Int) {
-    def povrsina = Kvadrat.izracunajPovrsinu(a)
-}
-
-scala> val k = new Kvadrat(10)
-val k: Kvadrat = Kvadrat@6cb2d5ea
-
-scala> k.povrsina
-val res0: Int = 100
-
-\end{lstlisting}
-
-\subsection{Метод \textit{main()}}
-\label{subsec:scala_oop_main_app}
+\subsubsection{Метод \textit{main()}}
+\label{subsubsec:scala_oop_main_app}
 
 Да би се Скала апликација покренула потребно је дефинисати објекат који у себи садржи \textit{main()} метод \cite{scala_prog}. Тај метод представља улазну тачку у сваку Скала апликацију.
 
@@ -582,18 +579,14 @@ scala> object Main {
 \begin{lstlisting}[language=Scala, caption={Скала \textit{trait}}, label={lst:scala_oop_trait_example}]
 scala> trait MyTrait {
      |   def myMethod(): Unit
+     |   val x: Int = 10
      | }
 trait MyTrait
 \end{lstlisting}
 
-\textit{Trait} се додаје класи на исти начин као када се означава наследство, помоћу речи \textit{extends}. 
+\noindent \textit{Trait} се додаје класи на исти начин као када се означава наследство, помоћу речи \textit{extends}. 
 
 \begin{lstlisting}[language=Scala, caption={Додавање \textit{trait}-а класи}, label={lst:scala_oop_traits_extends_example}]
-scala> trait MyTrait {
-     |  val x = 10
-     | }
-trait MyTrait
-
 scala> class MyClass extends MyTrait
 class MyClass
 
@@ -629,29 +622,29 @@ val mc: MyTrait = MyClass@339cedbb
 
 Из наведених карактеристика се може закључити да је Скала \textit{trait} веома сличан Јавином интерфејсу, са разликом да \textit{trait} може садржати и дефиниције метода и поља, а не само декларације. Међутим, \textit{trait} је више од тога и унутар њега се може урадити све што се може урадити унутар Скала класе.
 
-\subsection{\textit{Case} класе}
-\label{subsec:scala_case_klase}
+%\subsection{\textit{Case} класе}
+%\label{subsec:scala_case_klase}
+%
+%У језику Скала, поред стандардних, постоји још једна врста класе названа \textit{case} класа. Постоје три разлике између ове врсте класа и обичних:
 
-У језику Скала, поред стандардних, постоји још једна врста класе названа \textit{case} класа. Постоје три разлике између ове врсте класа и обичних:
-
-\begin{itemize} 
-\item Променљиве ове класе се инстанцирају без кључне речи; \textit{new}
-\item Свако поље ове класе мора имати префикс \textit{val};
-\item \textit{Case} класа садржи аутоматски генерисане методе $==$, \textit{toString()} и \textit{hashCode()}.
-\end{itemize}
-
-\begin{lstlisting}[language=Scala, caption={Пример коришћења \textit{case} класа}, label={lst:scala_oop_case_class_example}]
-scala> case class MyCaseClass(val field: Int)
-class MyCaseClass
-
-scala> val mcc = MyCaseClass(100)
-val mcc: MyCaseClass = MyCaseClass(100)
-
-scala> mcc.toString
-val res0: String = MyCaseClass(100)
-\end{lstlisting}
-
-Једна од предности ових класа је та да се могу користити у конструкту специфичном за функционалне језике, поклапању образаца (енг. \textit{pattern matching}), који ће бити детаљније описан у секцији \ref{sec:scala_patt_match}.
+%\begin{itemize} 
+%\item Променљиве ове класе се инстанцирају без кључне речи \textit{new};
+%\item Свако поље ове класе мора имати префикс \textit{val};
+%\item \textit{Case} класа садржи аутоматски генерисане методе $==$, \textit{toString()} и \textit{hashCode()}.
+%\end{itemize}
+%
+%\begin{lstlisting}[language=Scala, caption={Пример коришћења \textit{case} класа}, label={lst:scala_oop_case_class_example}]
+%scala> case class MyCaseClass(val field: Int)
+%class MyCaseClass
+%
+%scala> val mcc = MyCaseClass(100)
+%val mcc: MyCaseClass = MyCaseClass(100)
+%
+%scala> mcc.toString
+%val res0: String = MyCaseClass(100)
+%\end{lstlisting}
+%
+%Једна од предности ових класа је та да се могу користити у конструкту специфичном за функционалне језике, поклапању образаца (енг. \textit{pattern matching}), који ће бити детаљније описан у секцији \ref{sec:scala_patt_match}.
 
 \subsection{Хијерархија класа}
 \label{subsec:scala_class_hier}
@@ -670,12 +663,12 @@ val res0: String = MyCaseClass(100)
 \section{Скала колекције}
 \label{sec:scala_coll}
 
-Скала поседује велики број уграђених колекција, мутабилних и имутабилних. Неке од њих су низови, листе, скупови и мапе.
+Скала поседује велики број уграђених колекција, мутабилних и имутабилних. Неке од њих су низови, листе и мапе.
 
 \subsection{Низови}
 \label{subsec:scala_arrays}
 
-Скала низ (енг. \textit{array}) је мутабилна структура која представља низ података \cite{scala_prog}. Мутабилна је у смислу да се вредности елемената у низу могу мењати, док је број елемената фиксиран. Сваки низ садржи елементе једног типа и може се креирати навођењем иницијалних елемената или његове дужине. Уколико се наведе дужина, сви елементи ће бити иницијализовани на подразумевану вредност жељеног типа.
+Скала низ (енг. \textit{array}) је мутабилна структура која представља низ података \cite{scala_prog}. Мутабилна је у смислу да се вредности елемената у низу могу мењати, док је број елемената фиксиран. Сваки низ садржи елементе истог типа и може се креирати навођењем иницијалних елемената или његове дужине. Уколико се наведе дужина, сви елементи ће бити иницијализовани на подразумевану вредност жељеног типа.
 
 \begin{lstlisting}[language=Scala, caption={Инстанцирање низа у Скали}, label={lst:scala_coll_array_example}]
 scala> val a1 = Array(1, 2, 3)
@@ -685,9 +678,9 @@ scala> val a2 = new Array[Int](3)
 val a2: Array[Int] = Array(0, 0, 0)
 \end{lstlisting}
 
-У претходном примеру се у другом случају инстанцира нова класа коришћењем наредбе \textit{new} док у првом то није случај. Разлог је тај што се у првом случају позива метод \textit{apply()} који креира инстанцу низа. Поред тога, у првом случају је Скала компајлер аутоматски закључио тип низа на основу прослеђених елемената, док је у другом тип морао бити експлицитно назначен.
+%У претходном примеру се у другом случају инстанцира нова класа коришћењем наредбе \textit{new} док у првом то није случај. Разлог је тај што се у првом случају позива метод \textit{apply()} који креира инстанцу низа. Поред тога, у првом случају је Скала компајлер аутоматски закључио тип низа на основу прослеђених елемената, док је у другом тип морао бити експлицитно назначен.
 
-Елементу низа се приступа слично као у Јави, са тим што се уместо угластих заграда користе обичне. На сличан начин се извршава и мењање једног елемента.
+Елементу низа се приступа слично као у Јави, са тим што се уместо угластих заграда користе обичне. На сличан начин се извршава и измена једног елемента.
 
 \begin{lstlisting}[language=Scala, caption={Приступ и измена елемента низа}, label={lst:scala_coll_array_get_set}]
 scala> val a = Array(1, 2, 3)
@@ -840,35 +833,31 @@ selector match {
 Разлике између ове нарeдбе и Јавине наредбе \textit{switch} су:
 
 \begin{itemize} 
-\item \textit{match} наредба увек резултује неком вредношћу;
+\item У случају успешног поклапања, \textit{match} наредба увек резултује неком вредношћу;
 \item Када се пронађе одговарајућа вредност, друге вредности након ње се не разматрају -- није потребно користити наредбу \textit{break};
 \item Уколико ниједна вредност не одговара селектору, појављује се \textit{MatchError} (увек треба покрити све могуће вредности селектора).
 \end{itemize}
 
-\subsection{Примери коришћења}
-\label{subsec:scala_match_exaples}
+%\subsection{Примери коришћења}
+%\label{subsec:scala_match_exaples}
 
-Поклапање образаца је веома моћан механизам и користи се у великом броју случајева. Један од њих је поклапање константи:
+Поклапање образаца је веома моћан механизам и користи се у великом броју случајева. Један од њих је поклапање константи и приказан је у коду \ref{lst:scala_patt_match_match_const_example}. Поред поклапања константи, поклапање образаца се може користити за поклапање вредности променљивих, поклапање типова или поклапање конструктора.
 
 \begin{lstlisting}[language=Scala, caption={Поклапање константи}, label={lst:scala_patt_match_match_const_example}]
 scala> def describe(x: Any) = x match {
      | case 5 => "five"
      | case "hello" => "hi!"
-     | case Nil => "the empty list"
      | case _ => "something else"
      | }
      
 scala> describe(5)
 val res1: String = five
 
-scala> describe(Nil)
-val res2: String = the empty list
-
 scala> describe(1001)
-val res3: String = something else
+val res2: String = something else
 \end{lstlisting}
 
-У претходном примеру се у последњем случају користи ознака $\_$. Назива се џокер (енг. \textit{wildcard}) и поклапа се са било којом вредности селектора.
+У претходном примеру је искоришћена ознака $\_$. Назива се џокер (енг. \textit{wildcard}) и поклапа се са било којом вредности селектора.
 
 \begin{lstlisting}[language=Scala, caption={Џокер у поклапању образаца}, label={lst:scala_patt_match_wildcard}]
 scala> def describe(x: Int) = x match {
@@ -883,83 +872,81 @@ val res1: String = x je 10
 scala> describe(100)
 val res2: String = x nije 10
 
-scala> describe(-100)
-val res3: String = x nije 10
 \end{lstlisting}
 
-Поклапање образаца се користи и за поклапање променљивих \cite{scala_prog}. У примеру \ref{lst:scala_patt_match_variable_match_example} променљива \textit{something} одговара било којој вредности селектора, слично као џокер, али се преко ње та вредност преноси са десне стране ознаке $=>$.
+%Поклапање образаца се користи и за поклапање променљивих \cite{scala_prog}. У примеру \ref{lst:scala_patt_match_variable_match_example} променљива \textit{something} одговара било којој вредности селектора, слично као џокер, али се преко ње та вредност преноси са десне стране ознаке $=>$.
+%
+%\begin{lstlisting}[language=Scala, caption={Поклапање променљивих}, label={lst:scala_patt_match_variable_match_example}]
+%scala> val expr = "some expression"
+%val expr: String = some expression
+%
+%scala> expr match {
+%     | case ""        => print("empty string")
+%     | case something => print("matched: " + something)
+%     | }
+%matched: some expression
+%\end{lstlisting}
+%
+%Поред вредности селектора, могуће је поклапати и његов тип, уколико је потребно имплементирати другачије понашање за другачије типове.
+%
+%\begin{lstlisting}[language=Scala, caption={Поклапање типова}, label={lst:scala_patt_match_types_example}]
+%scala> trait MyTrait
+%trait MyTrait
+%
+%scala> class MyClass_1 extends MyTrait
+%class MyClass_1
+%
+%scala> class MyClass_2 extends MyTrait
+%class MyClass_2
+%
+%scala> def describe(x: MyTrait) = x match {
+%     |   case mc1: MyClass_1 => "MyClass_1"
+%     |   case mc2: MyClass_2 => "MyClass_2"
+%     |   case _ => "some other class"
+%     | }
+%def describe(x: MyTrait): String
+%
+%scala> describe(new MyClass_1)
+%val res1: String = MyClass_1
+%
+%scala> describe(new MyClass_2)
+%val res2: String = MyClass_2
+%\end{lstlisting}
+%
+%Могуће је комбиновати претходне примере и извршити поклапања типова и променљивих уз помоћ једног поклапања образаца \cite{scala_prog}. Пример \ref{lst:scala_patt_match_generalSize} приказује функцију \textit{generalSize(x: Any)} која се понаша другачије у односу на то ког типа је њен аргумент.
 
-\begin{lstlisting}[language=Scala, caption={Поклапање променљивих}, label={lst:scala_patt_match_variable_match_example}]
-scala> val expr = "some expression"
-val expr: String = some expression
+%\begin{lstlisting}[language=Scala, caption={Пример поклапања типова и променљивих}, label={lst:scala_patt_match_generalSize}]
+%scala> def generalSize(x: Any) = x match {
+%     |   case s: String => s.length
+%     |   case m: Map[_, _] => m.size
+%     |   case _ => -1
+%     |  }
+%def generalSize(x: Any): Int
+%
+%scala> generalSize("some string")
+%val res1: Int = 11
+%
+%scala> generalSize(12)
+%val res2: Int = -1
+%\end{lstlisting}
 
-scala> expr match {
-     | case ""        => print("empty string")
-     | case something => print("matched: " + something)
-     | }
-matched: some expression
-\end{lstlisting}
-
-Поред вредности селектора, могуће је поклапати и његов тип, уколико је потребно имплементирати другачије понашање за другачије типове.
-
-\begin{lstlisting}[language=Scala, caption={Поклапање типова}, label={lst:scala_patt_match_types_example}]
-scala> trait MyTrait
-trait MyTrait
-
-scala> class MyClass_1 extends MyTrait
-class MyClass_1
-
-scala> class MyClass_2 extends MyTrait
-class MyClass_2
-
-scala> def describe(x: MyTrait) = x match {
-     |   case mc1: MyClass_1 => "MyClass_1"
-     |   case mc2: MyClass_2 => "MyClass_2"
-     |   case _ => "some other class"
-     | }
-def describe(x: MyTrait): String
-
-scala> describe(new MyClass_1)
-val res1: String = MyClass_1
-
-scala> describe(new MyClass_2)
-val res2: String = MyClass_2
-\end{lstlisting}
-
-Могуће је комбиновати претходне примере и извршити поклапања типова и променљивих уз помоћ једног поклапања образаца \cite{scala_prog}. Пример \ref{lst:scala_patt_match_generalSize} приказује функцију \textit{generalSize(x: Any)} која се понаша другачије у односу на то ког типа је њен аргумент.
-
-\begin{lstlisting}[language=Scala, caption={Пример поклапања типова и променљивих}, label={lst:scala_patt_match_generalSize}]
-scala> def generalSize(x: Any) = x match {
-     |   case s: String => s.length
-     |   case m: Map[_, _] => m.size
-     |   case _ => -1
-     |  }
-def generalSize(x: Any): Int
-
-scala> generalSize("some string")
-val res1: Int = 11
-
-scala> generalSize(12)
-val res2: Int = -1
-\end{lstlisting}
-
-Поклапање конструктора се користи када је потребно извршити поклапање класа које наслеђују заједничку класу. 
-
-\begin{lstlisting}[language=Scala, caption={Поклапање конструктора}, label={lst:scala_patt_match_constr_match_example}]
-scala> abstract class Animal
-     | case class Mammal(name: String) extends Animal
-     | case class Bird(name: String) extends Animal
-class Animal
-class Mammal
-class Bird
-
-scala> def caseClassesPatternMatching(animal: Animal) = animal match {
-     |  case Mammal(name) => s"I'm a $name, a mammal"
-     |  case Bird(name) => s"I'm a $name, a bird"
-     |  case _ => "I'm an unknown animal"
-     |}
-def caseClassesPatternMatching(animal: Animal): String
-\end{lstlisting}
+%Поклапање конструктора се користи када је потребно извршити поклапање класа које наслеђују заједничку класу. 
+%
+%\begin{lstlisting}[language=Scala, caption={Поклапање конструктора}, label={lst:scala_patt_match_constr_match_example}]
+%scala> abstract class Animal
+%     | case class Mammal(name: String) extends Animal
+%     | case class Bird(name: String) extends Animal
+%class Animal
+%class Mammal
+%class Bird
+%
+%scala> def caseClassesPatternMatching(animal: Animal) = animal match {
+%     |  case Mammal(name) => s"I'm a $name, a mammal"
+%     |  case Bird(name) => s"I'm a $name, a bird"
+%     |  case _ => "I'm an unknown animal"
+%     |}
+%def caseClassesPatternMatching(animal: Animal): String
+%\end{lstlisting}
 
 %\section{Optional и Either}
 %\label{sec:scala_opt_eith}=
@@ -1935,9 +1922,17 @@ opis komponenti, ss frontenda itd
 \section{Одређивање припадности локације држави}
 \label{sec:poly_cont}
 
-Проблем одређивања припадности локације држави је еквивалентан проблему одређивања припадности тачке полигону, где је локација тачка, а граница државе полигон. Како је проблем припадности тачке полигону веома заступљен у рачунарској графици, постоји велики број алгоритама који га решавају. У овом раду су испробани \textit{Ray casting} алгоритам \cite{inside_polygon}, алгоритам који се заснива на сумирању углова \cite{inside_polygon} и алгоритам доступан у оквиру Јава \textit{awt} библиотеке, унутар \textit{Polygon} класе \cite{java_awt_polygon}.
+Проблем одређивања припадности локације држави је еквивалентан проблему одређивања припадности тачке полигону, где је локација тачка, а граница државе полигон. Како је проблем припадности тачке полигону веома заступљен у рачунарској графици, постоји велики број алгоритама који га решавају. У овом раду су испробана три алгоритма:
 
-\textit{Ray casting} алгоритам функционише исцртавањем хоризонталне дужи из жељене тачке, такве да јој се други крај налази изван полигона. Након тога се пребројава број пресека исртане дужи са свим страницама полигона. Уколико је број пресека паран, тачка се налази ван полигона, а уколико је непаран тачка се налази у полигону. Из примера алгоритма приказаног на слици \ref{fig:ray_cast_algo_example} се може закључити да се тачке \textit{А} и \textit{Д} налазе унутар полигона, док су тачке \textit{Б} и \textit{Ц} изван. Недостатак \textit{Ray casting}-а је појава грешака приликом одређивања припадности тачака које се налазе близу ивица полигона. %Може се користити за одређивање припадности тачке свакој врсти полигона.
+\begin{itemize}
+	\item \textit{Ray casting} алгоритам \cite{inside_polygon};
+	\item алгоритам заснован на сумирању углова \cite{inside_polygon};
+	\item алгоритам доступан у оквиру Јава \textit{awt} библиотеке, унутар \textit{Polygon} класе \cite{java_awt_polygon}.
+\end{itemize}
+
+%\textit{Ray casting} алгоритам \cite{inside_polygon}, алгоритам који се заснива на сумирању углова \cite{inside_polygon} и алгоритам доступан у оквиру Јава \textit{awt} библиотеке, унутар \textit{Polygon} класе \cite{java_awt_polygon}.
+
+\textit{Ray casting} алгоритам исцртава хоризонталне дужи из жељене тачке, такве да јој се други крај налази изван полигона. Након тога се пребројава број пресека исцртане дужи са свим страницама полигона. Уколико је број пресека паран, тачка се налази ван полигона, а уколико је непаран тачка се налази у полигону. Из примера алгоритма приказаног на слици \ref{fig:ray_cast_algo_example} се може закључити да се тачке \textit{А} и \textit{Д} налазе унутар полигона, док су тачке \textit{Б} и \textit{Ц} изван. Недостатак алгоритма \textit{Ray casting} је појава грешака приликом одређивања припадности тачака које се налазе близу ивица полигона. %Може се користити за одређивање припадности тачке свакој врсти полигона.
 
 \begin{figure}[!ht]
   \centering
