@@ -1,9 +1,8 @@
 package geo
 
-import com.wolt.osm.spark.OsmSource.OsmSource
-import org.apache.spark.sql.functions.{array_intersect, col, flatten, lit, lower, map_values, monotonically_increasing_id, size, udf}
+import org.apache.spark.sql.functions.{array_intersect, col, expr, flatten, lit, lower, map_values, monotonically_increasing_id, size, udf}
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
-import org.apache.spark.sql.types.StringType
+import org.apache.spark.sql.types.{StringType, ArrayType}
 import utils.Polygon
 
 import scala.collection.mutable
@@ -25,10 +24,6 @@ object GeoDataProcessor {
         .where(s"belongs_to == \'$name\'")
 
       filterCountry(countryDf, name)
-
-      getAllCoordinates(countryDf)
-        .write
-        .parquet(dataPath + s"$name-everything")
     }
   }
 
@@ -41,7 +36,6 @@ object GeoDataProcessor {
         if (isInsideBorder(lat, lon, borders)) {
           belongs_to = country
         }
-
       }
 
       belongs_to
@@ -143,22 +137,21 @@ object GeoDataProcessor {
 
   private def isInsideBorder(lat: Double, lon: Double, borders: Array[Array[Array[Double]]]): Boolean = {
     val polygons = for (polygon <- borders) yield new Polygon(polygon)
-    polygons.exists(polygon => polygon.containsPointRayCastingImpl2(Array(lon, lat)))
+    polygons.exists(polygon => polygon.containsPointSumOfAngles(Array(lon, lat)))
   }
 
-  private def getNodes(spark: SparkSession, pathToCountryFile: String): DataFrame = {
-    val osm: DataFrame = spark.read
-      .format(OsmSource.OSM_SOURCE_NAME)
+  def getNodes(spark: SparkSession, pathToCountryFile: String): DataFrame = {
+    val nodes: DataFrame = spark.read
+      .format("parquet")
       .load(pathToCountryFile)
 
-    val nodes: DataFrame = osm.select(
-      col("LAT").as("latitude"),
-      col("LON").as("longitude"),
-      col("TAG").as("tag")
+    nodes.select(
+      col("latitude"),
+      col("longitude"),
+      col("tags")
     )
       .where("latitude is not null and longitude is not null")
-
-    nodes
+      .where(size(col("tags")) =!= 0)
   }
 
   private def getEuropeanCountries: Array[String] = {
@@ -169,7 +162,7 @@ object GeoDataProcessor {
       "denmark", "finland", "slovakia", "norway", "ireland", "croatia", "moldova",
       "bosnia and herzegovina", "albania", "lithuania", "north macedonia", "slovenia",
       "latvia", "estonia", "montenegro", "luxembourg", "malta", "iceland", "andorra",
-      "monaco", "liechtenstein", "san marino", "vatican",
+      "monaco", "liechtenstein", "san marino", "vatican"
     )
   }
 
@@ -180,19 +173,18 @@ object GeoDataProcessor {
 
   def filterCountry(countryDF: DataFrame, countryName: String): Unit = {
     val conditions: Array[String] = Array(
-      "religion", "village", "hotel", "hotel_hostel", "bars",
-      "restaurant", "health", "market", "gas", "parking", "culture"
+      "religion", "health", "hotel", "hostel", "bar", "nightclub",
+      "pub", "restaurant", "parking", "gas", "market"
     )
 
     val countryDfTags = countryDF
-      .withColumn("tag_values", map_values(col("tag")))
-      .where(size(col("tag_values")) =!= 0)
       .cache()
 
+    val removeSpaces = countryName.replace(' ', '-')
     for (condition <- conditions) {
       filterCountryByCondition(countryDfTags, condition)
         .write
-        .parquet(dataPath + s"$countryName-$condition/")
+        .parquet(dataPath + s"$removeSpaces-$condition")
     }
   }
 
@@ -200,6 +192,10 @@ object GeoDataProcessor {
     val filters = mapCondition(condition)
 
     country
+      .withColumn(
+        "tag_values",
+        expr("transform(tags, x -> x.value)").cast(ArrayType(StringType))
+      )
       .where(size(array_intersect(col("tag_values"), lit(filters))) =!= 0)
       .select(col("latitude"), col("longitude"))
   }
@@ -207,16 +203,16 @@ object GeoDataProcessor {
   private def mapCondition(condition: String): Array[String] = {
     condition match {
       case "religion" => Array("church", "place_of_worship", "monastery", "christian", "muslim", "religion")
-      case "village" => Array("village", "hamlet")
+      case "health" => Array("hospital", "health", "ambulance", "pharmacy", "healthcare")
       case "hotel" => Array("hotel")
-      case "hotel_hostel" => Array("hostel", "hotel")
-      case "bars" => Array("bar", "nightclub", "pub", "cafe")
+      case "hostel" => Array("hostel")
+      case "bar" => Array("bar", "cafe")
+      case "nightclub" => Array("nightclub")
+      case "pub" => Array("pub")
       case "restaurant" => Array("restaurant")
-      case "health" => Array("hospital", "health", "ambulance", "pharmacy")
       case "market" => Array("market", "supermarket")
       case "gas" => Array("fuel", "gas", "petrol")
       case "parking" => Array("parking")
-      case "culture" => Array("monument", "museum", "memorial", "library", "castle")
       case _ => Array("unknown")
     }
   }
