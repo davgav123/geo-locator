@@ -16,6 +16,12 @@ function displayPoints() {
     var country = document.getElementById("inputCountry").value;
     var filterCondition = document.getElementById("inputCondition").value;
 
+    if (filterCondition == "everything") {
+        console.log("select filter!");
+        window.alert("Filter not selected!");
+        return ;
+    }
+
     httpGet(
         "http://localhost:8080/selection?country=" + country + "&param=" + filterCondition,
         function(err, returnedData) {
@@ -78,7 +84,7 @@ function addCircle(coord) {
     return L.circle(coord, {
         color: 'red',
         fillColor: '#f03',
-        fillOpacity: 0.6,
-        radius: 75
+        fillOpacity: 0.55,
+        radius: 60
     });
 }
