@@ -56,9 +56,13 @@ object akkaHttpServer {
   }
 
   def readData(spark: SparkSession, country: String, cond: String): Array[Array[Double]] = {
-    val countryFilePath = s"path/to/data/$country-$cond/"
+    val dataPath = "/path/to/data/dir/"
+    val countryFilePath = dataPath + s"$country-$cond"
 
-    val data = spark.read.parquet(countryFilePath)
+    val parq_data = spark.read.parquet(countryFilePath)
+    parq_data.show(20, truncate=false)
+
+      val data = parq_data
       .collect()
       .map(row => Array(row(0).asInstanceOf[Double], row(1).asInstanceOf[Double]))
 
