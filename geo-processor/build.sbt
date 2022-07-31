@@ -1,11 +1,22 @@
 name := "geo-processor"
 
-version := "0.1"
+version := "1.0-processor"
 
 scalaVersion := "2.12.11"
 
+val versions = new Versions()
+val dependencies = new Dependencies(versions)
+
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "2.4.5",
-  "org.apache.spark" %% "spark-sql" % "2.4.5"
+  dependencies.spark_core,
+  dependencies.spark_sql
 )
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF","services",xs @ _*) => MergeStrategy.filterDistinctLines
+  case PathList("META-INF",xs @ _*) => MergeStrategy.discard
+  case _ => MergeStrategy.first
+}
+
+
 
