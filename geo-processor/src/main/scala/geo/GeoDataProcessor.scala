@@ -1,6 +1,6 @@
 package geo
 
-import org.apache.spark.sql.functions.{array_intersect, col, expr, flatten, lit, lower, map_values, monotonically_increasing_id, size, udf}
+import org.apache.spark.sql.functions.{array_intersect, col, expr, flatten, lit, lower, monotonically_increasing_id, size, udf}
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 import org.apache.spark.sql.types.{StringType, ArrayType}
 import utils.Polygon
@@ -8,10 +8,10 @@ import utils.Polygon
 import scala.collection.mutable
 
 object GeoDataProcessor {
-  val dataPath: String = "/path/to/data/dir/"
+  val dataPath: String = "s3a://geo-master-496542722941/osm-data/countries/"
 
   def processGeoData(spark: SparkSession, pathToDataFile: String, europeanCountries: Boolean): Unit = {
-    val mapped = mapCoordinatesToCountry(spark, pathToDataFile)
+    val mapped = mapCoordinatesToCountry(spark, pathToDataFile).cache()
 
     val countryNames: Array[String] = if (europeanCountries) {
       getEuropeanCountries
@@ -41,7 +41,7 @@ object GeoDataProcessor {
       belongs_to
     }
 
-    val belongsToCountry = udf(belongsToCountryFunction, StringType)
+    val belongsToCountry = udf[String, Double, Double](belongsToCountryFunction)
 
     val osmData = getNodes(spark, countryFilePath)
       .withColumn(
@@ -56,8 +56,8 @@ object GeoDataProcessor {
   }
 
   private def prepareBorderData(spark: SparkSession): DataFrame = {
-    val pathToBordersFile = getClass.getResource("/shapes_all_low.txt").getPath
-    val pathToInfoFile = getClass.getResource("/country_info.txt").getPath
+    val pathToBordersFile = "s3a://geo-master-496542722941/geo-names/shapes_all_low.txt" // put s3 path
+    val pathToInfoFile = "s3a://geo-master-496542722941/geo-names/country_info.txt" // put s3 path
 
     val countryBordersRaw: DataFrame = spark
       .read

@@ -1,3 +1,3 @@
 class Versions {
-  val spark = "2.4.5"
+  val spark = "3.1.2"
 }
