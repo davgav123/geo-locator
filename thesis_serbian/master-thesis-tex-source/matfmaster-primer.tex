@@ -323,7 +323,7 @@ scala> x = "some string"
 
 Скала делом припада функционалној парадигми па су стога функције веома битан део језика. Функција се дефинише кључном речи \textit{def} након које редом следе име функције, опциона листа њених аргумената са њиховим типовима раздвојених зарезом, тип повратне вредности функције, знак $=$ и на крају тело функције. Пример синтаксе је приказан у коду \ref{lst:scala_function_template}.
 
-\begin{lstlisting}[language=Scala, caption={Дефиниција фунције у скали}, label={lst:scala_function_template}]
+\begin{lstlisting}[language=Scala, caption={Дефиниција фунције у Скали}, label={lst:scala_function_template}]
 def imeFunkcije(argument1: tip1, ...): povratni_tip = {
   // telo funkcije
 }
@@ -561,7 +561,7 @@ Hello from object
 
 Да би се Скала апликација покренула потребно је дефинисати објекат који у себи садржи \textit{main()} метод \cite{scala_prog}. Тај метод представља улазну тачку у сваку Скала апликацију.
 
-\begin{lstlisting}[language=Scala, caption={Пример main метода}, label={lst:scala_oop_main_method}]
+\begin{lstlisting}[language=Scala, caption={Пример метода \textit{main}}, label={lst:scala_oop_main_method}]
 scala> object Main {
      |  def main(args: Array[String]): Unit = {
      |      print("Hello")
@@ -702,7 +702,7 @@ val res1: Array[Int] = Array(100, 2, 3)
 
 Инстанцира се навођењем елемената. Приступ елементу листе се извршава на исти начин као и у случају низа. Пошто су листе имутабилне, измена вредности елемената није дозвољена.
 
-\begin{lstlisting}[language=Scala, caption={Пример Скала листе}, label={lst:scala_coll_lists_example}]
+\begin{lstlisting}[language=Scala, caption={Пример листе у Скали}, label={lst:scala_coll_lists_example}]
 scala> val l = List("a", "b", "c")
 val l: List[String] = List(a, b, c)
 
@@ -753,7 +753,7 @@ scala> l(0) = "try"
 
 Имутабилна колекција која садржи елементе различитог типа се назива \textit{n}-торка (енг. \textit{Tuple}) \cite{scala_prog}. Ова структура података се може користити када је потребно вратити више различитих вредности функције. \textit{Tuple} се инстанцира навођењем елемената између заграда. Елементу се приступа оператором \_Х где је \textit{Х} редни број елемента унутар \textit{n}-торке.
 
-\begin{lstlisting}[language=Scala, caption={\textit{N}-торка у Скали}, label={lst:scala_coll_tuple_example}]
+\begin{lstlisting}[language=Scala, caption={Пример \textit{N}-торке у Скали}, label={lst:scala_coll_tuple_example}]
 scala> val t = (1, "string123", Array(1, 2, 3))
 val t: (Int, String, Array[Int]) = (1,string123,Array(1, 2, 3))
 
@@ -771,18 +771,13 @@ val res1: Array[Int] = Array(1, 2, 3)
 
 Дефинишу се навођењем низа кључ-вредност парова, раздвојених знаком $\rightarrow$. Сви кључеви и све вредности међусобно морају бити истог типа. Приступ вредностима се врши преко назива кључа, методом $()$.
 
-\begin{lstlisting}[language=Scala, caption={Мапе у Скали}, label={lst:scala_app_maps_example}]
+\begin{lstlisting}[language=Scala, caption={Пример мапе у Скали}, label={lst:scala_app_maps_example}]
 scala> val m1 = Map("k1" -> "v1", "k2" -> "v2")
 val m1: scala.collection.Map[String,String] = Map(k1 -> v1, k2 -> v2)
 
 scala> m1("k1")
 val res0: String = v1
 
-scala> val m2 = Map(1 -> Array(1, 2), 2 -> Array(3, 4))
-val m2: scala.collection.Map[Int,Array[Int]] = Map(1 -> Array(1, 2), 2 -> Array(3, 4))
-
-scala> m2(1)
-val res1: Array[Int] = Array(1, 2)
 \end{lstlisting}
 
 Разлика између мутабилних и имутабилних мапа је та што је код мутабилних могуће изменити број елемената, као и саме елементе, док имутабилна мапа то не подржава.
