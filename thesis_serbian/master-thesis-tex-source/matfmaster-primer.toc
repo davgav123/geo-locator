@@ -66,4 +66,4 @@
 \contentsline {section}{\numberline {6.6}Obrada OSM skupa Sparkom}{59}{section.6.6}%
 \contentsline {section}{\numberline {6.7}Rezultat}{60}{section.6.7}%
 \contentsline {chapter}{\chapternumberline {7}Закључак}{62}{chapter.7}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{63}{chapter*.30}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{64}{chapter*.30}%
