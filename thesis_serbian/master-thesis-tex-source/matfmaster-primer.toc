@@ -1,69 +1,69 @@
 \babel@toc {serbianc}{}\relax 
 \contentsline {chapter}{\chapternumberline {1}Увод}{1}{chapter.1}%
-\contentsline {chapter}{\chapternumberline {2}Програмски језик Скала}{2}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Особине језика \textit {Scala}}{2}{section.2.1}%
-\contentsline {subsection}{Објектно оријентисан и функционалан језик}{2}{section*.2}%
-\contentsline {subsection}{Повезаност са језиком Јава}{3}{section*.3}%
-\contentsline {subsection}{Статичка типизираност}{4}{section*.4}%
-\contentsline {section}{\numberline {2.2}Скала интерпретер}{5}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Типови}{6}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Променљиве}{6}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Функције}{7}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Објектнo оријентисана својства језика}{9}{section.2.6}%
-\contentsline {subsection}{Класе}{9}{section*.5}%
-\contentsline {subsection}{Наслеђивање}{11}{section*.6}%
-\contentsline {subsection}{Апстрактне класе}{12}{section*.7}%
-\contentsline {subsection}{Синглтон објекти}{12}{section*.8}%
-\contentsline {subsubsection}{Метод \textit {main()}}{13}{section*.9}%
-\contentsline {subsection}{Скала интерфејси}{13}{section*.10}%
-\contentsline {subsection}{Хијерархија класа}{15}{section*.11}%
-\contentsline {section}{\numberline {2.7}Скала колекције}{15}{section.2.7}%
-\contentsline {subsection}{Низови}{16}{section*.12}%
-\contentsline {subsection}{Листе}{16}{section*.13}%
-\contentsline {subsection}{\textit {N}-торке}{17}{section*.14}%
-\contentsline {subsection}{Мапе}{18}{section*.15}%
-\contentsline {section}{\numberline {2.8}Поклапање образаца}{18}{section.2.8}%
-\contentsline {chapter}{\chapternumberline {3}Дистрибуирана обрада података}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Доба података}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Скалирање система}{22}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Организација дистрибуираних система}{23}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Систем \textit {Hadoop}}{24}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Дистрибуирани фајл систем \textit {HDFS}}{25}{section.3.5}%
-\contentsline {subsection}{Структура \textit {HDFS}-а}{26}{section*.16}%
-\contentsline {subsection}{Основне карактеристике \textit {HDFS}-а}{27}{section*.17}%
-\contentsline {section}{\numberline {3.6}Парадигма \textit {MapReduce}}{28}{section.3.6}%
-\contentsline {subsection}{\textit {MapReduce} из аспекта функција}{29}{section*.18}%
-\contentsline {subsection}{Недостаци \textit {MapReduce} парадигме}{30}{section*.19}%
-\contentsline {section}{\numberline {3.7}Преговарач ресурса \textit {Apache Yarn}}{31}{section.3.7}%
-\contentsline {subsection}{Архитектура \textit {Yarn}-а}{32}{section*.20}%
-\contentsline {section}{\numberline {3.8}Остале компоненте \textit {Hadoop}-а}{34}{section.3.8}%
-\contentsline {chapter}{\chapternumberline {4}Алат \textit {Apache Spark}}{36}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Архитектура}{36}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Партиције}{37}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Апстракција података \textit {RDD}}{38}{section.4.3}%
-\contentsline {subsection}{Трансформације}{40}{section*.21}%
-\contentsline {subsection}{Примери \textit {RDD} трансформација}{41}{section*.22}%
-\contentsline {subsection}{Акције}{42}{section*.23}%
-\contentsline {subsection}{Руковање грешкама}{43}{section*.24}%
-\contentsline {subsection}{Кеширање}{44}{section*.25}%
-\contentsline {section}{\numberline {4.4}Апстракција података \textit {DataFrame}}{45}{section.4.4}%
-\contentsline {subsection}{Трансформације и акције \textit {DataFrame}-а}{46}{section*.26}%
-\contentsline {subsection}{Разлика између \textit {DataFrame}-а и \textit {RDD}-ја}{47}{section*.27}%
-\contentsline {subsection}{Планови извршавања \textit {DataFrame}-а}{47}{section*.28}%
-\contentsline {section}{\numberline {4.5}Остале компоненте \textit {Spark}-а}{48}{section.4.5}%
-\contentsline {chapter}{\chapternumberline {5}Скуп података \textit {OpenStreetMap}}{50}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Елементи}{51}{section.5.1}%
-\contentsline {subsection}{Тагови}{51}{section*.29}%
-\contentsline {section}{\numberline {5.2}Чворови}{52}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Путање}{52}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Релације}{53}{section.5.4}%
-\contentsline {chapter}{\chapternumberline {6}App}{55}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Opis}{55}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Облак}{55}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{56}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Подаци}{57}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Одређивање припадности локације држави}{57}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Obrada OSM skupa Sparkom}{59}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Rezultat}{60}{section.6.7}%
-\contentsline {chapter}{\chapternumberline {7}Закључак}{62}{chapter.7}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{64}{chapter*.30}%
+\contentsline {chapter}{\chapternumberline {2}Програмски језик Скала}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Особине језика \textit {Scala}}{3}{section.2.1}%
+\contentsline {subsection}{Објектно оријентисан и функционалан језик}{3}{section*.2}%
+\contentsline {subsection}{Повезаност са језиком Јава}{4}{section*.3}%
+\contentsline {subsection}{Статичка типизираност}{5}{section*.4}%
+\contentsline {section}{\numberline {2.2}Скала интерпретер}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Типови}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Променљиве}{7}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Функције}{8}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Објектнo оријентисана својства језика}{10}{section.2.6}%
+\contentsline {subsection}{Класе}{10}{section*.5}%
+\contentsline {subsection}{Наслеђивање}{12}{section*.6}%
+\contentsline {subsection}{Апстрактне класе}{13}{section*.7}%
+\contentsline {subsection}{Синглтон објекти}{13}{section*.8}%
+\contentsline {subsubsection}{Метод \textit {main()}}{14}{section*.9}%
+\contentsline {subsection}{Скала интерфејси}{14}{section*.10}%
+\contentsline {subsection}{Хијерархија класа}{16}{section*.11}%
+\contentsline {section}{\numberline {2.7}Скала колекције}{16}{section.2.7}%
+\contentsline {subsection}{Низови}{17}{section*.12}%
+\contentsline {subsection}{Листе}{17}{section*.13}%
+\contentsline {subsection}{\textit {N}-торке}{18}{section*.14}%
+\contentsline {subsection}{Мапе}{19}{section*.15}%
+\contentsline {section}{\numberline {2.8}Поклапање образаца}{19}{section.2.8}%
+\contentsline {chapter}{\chapternumberline {3}Дистрибуирана обрада података}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Доба података}{22}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Скалирање система}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Организација дистрибуираних система}{24}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Систем \textit {Hadoop}}{25}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Дистрибуирани фајл систем \textit {HDFS}}{26}{section.3.5}%
+\contentsline {subsection}{Структура \textit {HDFS}-а}{27}{section*.16}%
+\contentsline {subsection}{Основне карактеристике \textit {HDFS}-а}{28}{section*.17}%
+\contentsline {section}{\numberline {3.6}Парадигма \textit {MapReduce}}{29}{section.3.6}%
+\contentsline {subsection}{\textit {MapReduce} из аспекта функција}{30}{section*.18}%
+\contentsline {subsection}{Недостаци \textit {MapReduce} парадигме}{31}{section*.19}%
+\contentsline {section}{\numberline {3.7}Преговарач ресурса \textit {Apache Yarn}}{32}{section.3.7}%
+\contentsline {subsection}{Архитектура \textit {Yarn}-а}{33}{section*.20}%
+\contentsline {section}{\numberline {3.8}Остале компоненте \textit {Hadoop}-а}{35}{section.3.8}%
+\contentsline {chapter}{\chapternumberline {4}Алат \textit {Apache Spark}}{37}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Архитектура}{37}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Партиције}{38}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Апстракција података \textit {RDD}}{39}{section.4.3}%
+\contentsline {subsection}{Трансформације}{41}{section*.21}%
+\contentsline {subsection}{Примери \textit {RDD} трансформација}{42}{section*.22}%
+\contentsline {subsection}{Акције}{43}{section*.23}%
+\contentsline {subsection}{Руковање грешкама}{44}{section*.24}%
+\contentsline {subsection}{Кеширање}{45}{section*.25}%
+\contentsline {section}{\numberline {4.4}Апстракција података \textit {DataFrame}}{46}{section.4.4}%
+\contentsline {subsection}{Трансформације и акције \textit {DataFrame}-а}{47}{section*.26}%
+\contentsline {subsection}{Разлика између \textit {DataFrame}-а и \textit {RDD}-ја}{48}{section*.27}%
+\contentsline {subsection}{Планови извршавања \textit {DataFrame}-а}{48}{section*.28}%
+\contentsline {section}{\numberline {4.5}Остале компоненте \textit {Spark}-а}{49}{section.4.5}%
+\contentsline {chapter}{\chapternumberline {5}Скуп података \textit {OpenStreetMap}}{51}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Елементи}{52}{section.5.1}%
+\contentsline {subsection}{Тагови}{52}{section*.29}%
+\contentsline {section}{\numberline {5.2}Чворови}{53}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Путање}{53}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Релације}{54}{section.5.4}%
+\contentsline {chapter}{\chapternumberline {6}App}{56}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Opis}{56}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Облак}{56}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{57}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Подаци}{58}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Одређивање припадности локације држави}{58}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Obrada OSM skupa Sparkom}{60}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Rezultat}{61}{section.6.7}%
+\contentsline {chapter}{\chapternumberline {7}Закључак}{63}{chapter.7}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{65}{chapter*.30}%
