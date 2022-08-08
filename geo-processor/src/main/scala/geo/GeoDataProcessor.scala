@@ -1,8 +1,8 @@
 package geo
 
 import org.apache.spark.sql.functions.{array_intersect, col, expr, flatten, lit, lower, monotonically_increasing_id, size, udf}
-import org.apache.spark.sql.{DataFrame, Row, SparkSession}
-import org.apache.spark.sql.types.{StringType, ArrayType}
+import org.apache.spark.sql.{DataFrame, Row, SaveMode, SparkSession}
+import org.apache.spark.sql.types.{ArrayType, StringType}
 import utils.Polygon
 
 import scala.collection.mutable
@@ -11,7 +11,8 @@ object GeoDataProcessor {
   val dataPath: String = "s3a://geo-master-496542722941/osm-data/countries/"
 
   def processGeoData(spark: SparkSession, pathToDataFile: String, europeanCountries: Boolean): Unit = {
-    val mapped = mapCoordinatesToCountry(spark, pathToDataFile).cache()
+    val mapped = mapCoordinatesToCountry(spark, pathToDataFile)
+      .cache()
 
     val countryNames: Array[String] = if (europeanCountries) {
       getEuropeanCountries
@@ -56,8 +57,8 @@ object GeoDataProcessor {
   }
 
   private def prepareBorderData(spark: SparkSession): DataFrame = {
-    val pathToBordersFile = "s3a://geo-master-496542722941/geo-names/shapes_all_low.txt" // put s3 path
-    val pathToInfoFile = "s3a://geo-master-496542722941/geo-names/country_info.txt" // put s3 path
+    val pathToBordersFile = "s3a://geo-master-496542722941/geo-names/shapes_all_low.txt"
+    val pathToInfoFile = "s3a://geo-master-496542722941/geo-names/country_info.txt"
 
     val countryBordersRaw: DataFrame = spark
       .read
@@ -184,6 +185,7 @@ object GeoDataProcessor {
     for (condition <- conditions) {
       filterCountryByCondition(countryDfTags, condition)
         .write
+        .mode(SaveMode.Overwrite)
         .parquet(dataPath + s"$removeSpaces-$condition")
     }
   }
