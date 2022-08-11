@@ -1,6 +1,6 @@
 package geo
 
-import org.apache.spark.sql.functions.{array_intersect, col, expr, flatten, lit, lower, monotonically_increasing_id, size, udf}
+import org.apache.spark.sql.functions.{col, expr, flatten, lit, lower, monotonically_increasing_id, size, udf}
 import org.apache.spark.sql.{DataFrame, Row, SaveMode, SparkSession}
 import org.apache.spark.sql.types.{ArrayType, StringType}
 import utils.Polygon
@@ -8,24 +8,21 @@ import utils.Polygon
 import scala.collection.mutable
 
 object GeoDataProcessor {
-  val dataPath: String = "s3a://geo-master-496542722941/osm-data/countries/"
 
-  def processGeoData(spark: SparkSession, pathToDataFile: String, europeanCountries: Boolean): Unit = {
+  def processGeoData(spark: SparkSession, pathToDataFile: String, pathToOutFile: String): Unit = {
     val mapped = mapCoordinatesToCountry(spark, pathToDataFile)
-      .cache()
 
-    val countryNames: Array[String] = if (europeanCountries) {
-      getEuropeanCountries
-    } else {
-      getAllCountries(spark)
-    }
-
-    for (name <- countryNames) {
-      val countryDf = mapped
-        .where(s"belongs_to == \'$name\'")
-
-      filterCountry(countryDf, name)
-    }
+    applyFilters(mapped)
+      .select(
+        col("latitude"),
+        col("longitude"),
+        col("country"),
+        col("condition")
+      )
+      .write
+      .partitionBy("country", "condition")
+      .mode(SaveMode.Overwrite)
+      .parquet(pathToOutFile)
   }
 
   def mapCoordinatesToCountry(spark: SparkSession, countryFilePath: String): DataFrame = {
@@ -46,7 +43,7 @@ object GeoDataProcessor {
 
     val osmData = getNodes(spark, countryFilePath)
       .withColumn(
-        "belongs_to",
+        "country",
         belongsToCountry(
           col("latitude"),
           col("longitude")
@@ -54,6 +51,7 @@ object GeoDataProcessor {
       )
 
     osmData
+      .filter(col("country") =!= lit("-"))
   }
 
   private def prepareBorderData(spark: SparkSession): DataFrame = {
@@ -104,7 +102,9 @@ object GeoDataProcessor {
         col("coordinates").as("border_coordinates")
       )
 
+    val selectedCountries: Array[String] = getEuropeanCountries
     borders
+      .filter(col("country").isInCollection(selectedCountries))
   }
 
   private def makeBordersIterable(borders: DataFrame): Array[(String, Array[Array[Array[Double]]])] = {
@@ -141,8 +141,21 @@ object GeoDataProcessor {
     polygons.exists(polygon => polygon.containsPointSumOfAngles(Array(lon, lat)))
   }
 
+  def getEuropeanCountries: Array[String] = {
+    Array(
+      "russia", "germany", "united kingdom", "france", "italy", "spain", "ukraine",
+      "poland", "romania", "netherlands", "belgium", "czechia", "greece", "portugal",
+      "sweden", "hungary", "belarus", "austria", "serbia", "switzerland", "bulgaria",
+      "denmark", "finland", "slovakia", "norway", "ireland", "croatia", "moldova",
+      "bosnia and herzegovina", "albania", "lithuania", "north macedonia", "slovenia",
+      "latvia", "estonia", "montenegro", "luxembourg", "malta", "iceland", "andorra",
+      "monaco", "liechtenstein", "san marino", "vatican"
+    )
+  }
+
   def getNodes(spark: SparkSession, pathToCountryFile: String): DataFrame = {
-    val nodes: DataFrame = spark.read
+    val nodes: DataFrame = spark
+      .read
       .format("parquet")
       .load(pathToCountryFile)
 
@@ -155,72 +168,32 @@ object GeoDataProcessor {
       .where(size(col("tags")) =!= 0)
   }
 
-  private def getEuropeanCountries: Array[String] = {
-    Array(
-      "russia", "germany", "united kingdom", "france", "italy", "spain", "ukraine",
-      "poland", "romania", "netherlands", "belgium", "czechia", "greece", "portugal",
-      "sweden", "hungary", "belarus", "austria", "serbia", "switzerland", "bulgaria",
-      "denmark", "finland", "slovakia", "norway", "ireland", "croatia", "moldova",
-      "bosnia and herzegovina", "albania", "lithuania", "north macedonia", "slovenia",
-      "latvia", "estonia", "montenegro", "luxembourg", "malta", "iceland", "andorra",
-      "monaco", "liechtenstein", "san marino", "vatican"
-    )
-  }
+  def applyFilters(countryDF: DataFrame): DataFrame = {
+    val filterTagValues: Array[String] => String = (tagValues: Array[String]) => {
+      val conditions = Set(
+        "hospital", "pharmacy", "hotel",
+        "hostel", "bar", "cafe", "pub",
+        "nightclub", "restaurant", "parking"
+      )
 
-  private def getAllCountries(spark: SparkSession): Array[String] = {
-    prepareBorderData(spark)
-      .rdd.collect().map(row => row(0).toString)
-  }
-
-  def filterCountry(countryDF: DataFrame, countryName: String): Unit = {
-    val conditions: Array[String] = Array(
-      "religion", "health", "hotel", "hostel", "bar", "nightclub",
-      "pub", "restaurant", "parking", "gas", "market"
-    )
-
-    val countryDfTags = countryDF
-      .cache()
-
-    val removeSpaces = countryName.replace(' ', '-')
-    for (condition <- conditions) {
-      filterCountryByCondition(countryDfTags, condition)
-        .write
-        .mode(SaveMode.Overwrite)
-        .parquet(dataPath + s"$removeSpaces-$condition")
+      val intersection = tagValues.toSet.intersect(conditions)
+      if (intersection.isEmpty) {
+        "x"
+      } else {
+        intersection.head
+      }
     }
-  }
 
-  def filterCountryByCondition(country: DataFrame, condition: String): DataFrame = {
-    val filters = mapCondition(condition)
+    val filterFunc = udf[String, Array[String]](filterTagValues)
 
-    country
+    countryDF
       .withColumn(
         "tag_values",
         expr("transform(tags, x -> x.value)").cast(ArrayType(StringType))
       )
-      .where(size(array_intersect(col("tag_values"), lit(filters))) =!= 0)
-      .select(col("latitude"), col("longitude"))
-  }
-
-  private def mapCondition(condition: String): Array[String] = {
-    condition match {
-      case "religion" => Array("church", "place_of_worship", "monastery", "christian", "muslim", "religion")
-      case "health" => Array("hospital", "health", "ambulance", "pharmacy", "healthcare")
-      case "hotel" => Array("hotel")
-      case "hostel" => Array("hostel")
-      case "bar" => Array("bar", "cafe")
-      case "nightclub" => Array("nightclub")
-      case "pub" => Array("pub")
-      case "restaurant" => Array("restaurant")
-      case "market" => Array("market", "supermarket")
-      case "gas" => Array("fuel", "gas", "petrol")
-      case "parking" => Array("parking")
-      case _ => Array("unknown")
-    }
-  }
-
-  private def getAllCoordinates(countryDF: DataFrame): DataFrame = {
-    countryDF
-      .select(col("latitude"), col("longitude"))
+      .withColumn(
+        "condition", filterFunc(col("tag_values"))
+      )
+      .filter(col("condition") =!= lit("x"))
   }
 }

@@ -11,13 +11,15 @@ object Main {
       .appName("geo-master")
       .getOrCreate()
 
+    println("[LOG]: STARTING!")
+
     processGeoData(
       spark,
       "s3a://geo-master-496542722941/osm-data/europe/europe-latest.osm.pbf.node.parquet",
-      europeanCountries = true
+      "s3a://geo-master-496542722941/osm-data/countries/countries-data"
     )
 
-    println("done!")
+    println("[LOG]: DONE!")
 
     spark.close()
   }
