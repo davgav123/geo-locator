@@ -84,7 +84,7 @@ function addCircle(coord) {
     return L.circle(coord, {
         color: 'red',
         fillColor: '#f03',
-        fillOpacity: 0.55,
-        radius: 60
+        fillOpacity: 0.45,
+        radius: 10
     });
 }
