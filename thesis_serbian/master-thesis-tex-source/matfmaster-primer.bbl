@@ -1,8 +1,35 @@
 \begin{thebibliography}{10}
 
+\bibitem{geofabrik}
+Geofabrik.de.
+\newblock online at: https://download.geofabrik.de/europe.html.
+
 \bibitem{geonames}
 {GeoNames}.
 \newblock online at: https://www.geonames.org/.
+
+\bibitem{leaflet}
+Leaflet.
+\newblock online at: https://leafletjs.com/.
+
+\bibitem{osm_pbf_format}
+{PBF Format}.
+\newblock online: https://wiki.openstreetmap.org/wiki/PBF\_Format.
+
+\bibitem{osm_parquetizer}
+Adrianulbona.
+\newblock {Osm parquetizer}.
+\newblock online at: https://wiki.openstreetmap.org/wiki/Osm-parquetizer.
+
+\bibitem{apache_parquet}
+{Apache Foundation}.
+\newblock {Apache Parquet}.
+\newblock online at: https://parquet.apache.org/.
+
+\bibitem{apache_sedona}
+{Apache Foundation}.
+\newblock {Apache Sedona}.
+\newblock oneline at: https://sedona.apache.org/.
 
 \bibitem{emr}
 {AWS}.
@@ -112,6 +139,12 @@ Arne Horst.
 Lightbend.
 \newblock akka.
 \newblock online at: https://akka.io/.
+
+\bibitem{using_akka_http}
+Lightbend.
+\newblock {Introduction to akka Http}.
+\newblock online at:
+  https://doc.akka.io/docs/akka-http/current/introduction.html.
 
 \bibitem{scala_prog}
 Lex~Spoon Martin~Odersky and Bill Venners.

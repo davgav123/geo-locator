@@ -57,13 +57,14 @@
 \contentsline {section}{\numberline {5.2}Чворови}{53}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Путање}{53}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Релације}{54}{section.5.4}%
-\contentsline {chapter}{\chapternumberline {6}App}{56}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Opis}{56}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Облак}{56}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Arhitektura aplikacije}{57}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Подаци}{58}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Одређивање припадности локације држави}{58}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Obrada OSM skupa Sparkom}{60}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Rezultat}{61}{section.6.7}%
-\contentsline {chapter}{\chapternumberline {7}Закључак}{63}{chapter.7}%
-\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{65}{chapter*.30}%
+\contentsline {chapter}{\chapternumberline {6}Опис апликације}{56}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Рачунарство у облаку}{56}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Подаци}{58}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Архитектура апликације}{59}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Одређивање припадности локације држави}{59}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Обрада геопросторних података \textit {Spark}-ом}{62}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Сервер апликације}{75}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Клијент апликације}{77}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Приказ резултата}{77}{section.6.8}%
+\contentsline {chapter}{\chapternumberline {7}Закључак}{80}{chapter.7}%
+\contentsline {chapter}{\CYRB \cyri \cyrb \cyrl \cyri \cyro \cyrg \cyrr \cyra \cyrf \cyri \cyrje \cyra }{82}{chapter*.30}%

@@ -3,10 +3,28 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: matfmaster-primer.aux
 The style file: plain.bst
 Database file #1: matfmaster-primer.bib
+Warning--to sort, need author or key in geofabrik
+Warning--to sort, need author or key in osm_pbf_format
 Warning--to sort, need author or key in geonames
+Warning--to sort, need author or key in leaflet
+Warning--empty author in geofabrik
+Warning--empty journal in geofabrik
+Warning--empty year in geofabrik
 Warning--empty author in geonames
 Warning--empty journal in geonames
 Warning--empty year in geonames
+Warning--empty author in leaflet
+Warning--empty journal in leaflet
+Warning--empty year in leaflet
+Warning--empty author in osm_pbf_format
+Warning--empty journal in osm_pbf_format
+Warning--empty year in osm_pbf_format
+Warning--empty journal in osm_parquetizer
+Warning--empty year in osm_parquetizer
+Warning--empty journal in apache_parquet
+Warning--empty year in apache_parquet
+Warning--empty journal in apache_sedona
+Warning--empty year in apache_sedona
 Warning--empty journal in emr
 Warning--empty year in emr
 Warning--empty journal in s3
@@ -45,6 +63,8 @@ Warning--empty year in google_maps
 Warning--empty journal in volume_data
 Warning--empty journal in scala_akka
 Warning--empty year in scala_akka
+Warning--empty journal in using_akka_http
+Warning--empty year in using_akka_http
 Warning--empty publisher in scala_prog
 Warning--empty journal in java_awt_polygon
 Warning--empty year in java_awt_polygon
@@ -57,45 +77,45 @@ Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 30 entries,
+You've used 37 entries,
             2118 wiz_defined-function locations,
-            605 strings with 6552 characters,
-and the built_in function-call counts, 6441 in all, are:
-= -- 583
-> -- 234
+            628 strings with 7125 characters,
+and the built_in function-call counts, 7777 in all, are:
+= -- 704
+> -- 265
 < -- 0
-+ -- 98
-- -- 68
-* -- 339
-:= -- 1166
-add.period$ -- 92
-call.type$ -- 30
-change.case$ -- 120
++ -- 113
+- -- 76
+* -- 425
+:= -- 1381
+add.period$ -- 110
+call.type$ -- 37
+change.case$ -- 145
 chr.to.int$ -- 0
-cite$ -- 84
-duplicate$ -- 308
-empty$ -- 532
-format.name$ -- 68
-if$ -- 1257
+cite$ -- 111
+duplicate$ -- 378
+empty$ -- 654
+format.name$ -- 76
+if$ -- 1522
 int.to.chr$ -- 0
-int.to.str$ -- 30
-missing$ -- 34
-newline$ -- 155
-num.names$ -- 58
-pop$ -- 216
+int.to.str$ -- 37
+missing$ -- 41
+newline$ -- 187
+num.names$ -- 66
+pop$ -- 265
 preamble$ -- 1
-purify$ -- 94
+purify$ -- 112
 quote$ -- 0
-skip$ -- 188
+skip$ -- 230
 stack$ -- 0
-substring$ -- 150
+substring$ -- 185
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 112
-warning$ -- 54
-while$ -- 58
-width$ -- 32
-write$ -- 276
-(There were 54 warnings)
+type$ -- 140
+warning$ -- 74
+while$ -- 66
+width$ -- 39
+write$ -- 333
+(There were 74 warnings)

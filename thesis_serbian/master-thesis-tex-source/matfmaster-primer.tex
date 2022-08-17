@@ -136,12 +136,11 @@
 
 Данас се, због развоја интернета, друштвених мрежа и сличног, генерише велика количина података. Обрада тих података је битна јер се из њих могу добити разне корисне информације. Због бољих перформанси у односу на појединачне машине, за обраду великих количина података се користе дистрибуирани системи, који су у могућности да поделе податке на делове и да те делове паралелно обрађују на појединачним машинама.
 
-Геопросторни подаци су подаци који представљају локације на географској мапи и њихов опис. У раду је описан јавно доступан скуп геопросторних података \textit{OpenStreetMap}. Унутар скупа се налазе локације одређене географском дужином и ширином. Такође, локације могу садржати и информације о томе шта се на њима налази (аутобуска станица, пешачки прелаз, црква, ресторан и слично).
+Један од примера велике количине података су геопросторни подаци. То су подаци који представљају локације на географској мапи и њихов опис. Могу се користити за конструкцију географских мапа, лоцирање разних објеката на мапи, одређивање оптималних линија градског превоза и друго. Пример јавно доступног скупа геопросторних података је \textit{OpenStreetMap} који садржи локације одређене географском дужином и ширином као и информације о томе шта се на локацијама налази (аутобуска станица, пешачки прелаз, црква, ресторан и слично).
 
 Циљ рада је израда апликације која користи Скалу, алат \textit{Apache Spark} и дистрибуирани систем \textit{HDFS} за обраду геопросторних података. Коришћени геопросторни подаци припадају \textit{OpenStreetMap} скупу. Функција апликације је да филтрира податке и да за сваку локацију из скупа која представља туристички битан податак (хотел, хостел, ресторан, паб, болницу и слично) одреди којој држави припада. Филтрирани подаци се касније приказују на географској мапи света.
 
-Из разлога што је апликација написана у програмском језику Скала, али и због саме заступупљености језика у алатима за дистрибуирану обраду података, у секцији \ref{chp:scala} су описани њени основни концепти. У секцији \ref{chp:dist_sis}, је приказан опис дистрибуираних система као и мотивација за њихово постојање. У истој секцији су описани структура, начин рада и компоненте дистрибуираног система \textit{HDFS}. Приказан је и начин рада, али и недостаци \textit{MapReduce}-а, прве парадигме за дистрибуирану обраду података. Опис алата \textit{Apache Spark} и приказ његовог начина функционисања, архитектуре и компоненти се налази у секцији \ref{chp:spark}, док се детаљнији опис \textit{OpenStreetMap} скупа и његових елемената налази у секцији \ref{chp:osm}.
-
+Апликација је израђена у програмском језику Скала, па су у поглављу \ref{chp:scala} описани њени основни концепти. Такође, Скала је заступљена у алатима за дистрибуирану обраду података. У поглављу \ref{chp:dist_sis}, је приказан опис дистрибуираних система као и мотивација за њихово постојање. У истом поглављу су описани структура, начин рада и компоненте дистрибуираног система \textit{HDFS}. Приказан је и начин рада, али и недостаци \textit{MapReduce}-а, прве парадигме за дистрибуирану обраду података. Опис алата \textit{Apache Spark} и приказ његовог начина функционисања, архитектуре и компоненти се налази у поглављу \ref{chp:spark}, док се детаљнији опис \textit{OpenStreetMap} скупа и његових елемената налази у поглављу \ref{chp:osm}. Опис апликације, њене компоненте и технологије које се користе у њеној изради су приказане у поглављу \ref{chp:app}. У последњем поглављу се налази закључак, у коме се налазе коментари о раду и апликацији, као и могућа унапређења.
 
 %У овом раду је приказан опис дистрибуираних система, мотивација за њихово постојање и њихова организација. Такође је урађено и поређење између система који се састоје од једне машине и система који чини више машина. Детаљно су описани 
 %
@@ -1216,7 +1215,7 @@ $$ k_2, list(v_2) \rightarrow reduce(k_2, list(v_2)) \rightarrow (k_3, v_3) $$
 
 \textit{Apache Spark} је алат отвореног кода. Настао je 2009. године на универзитету Беркли (енг. \textit{Berkeley}) у Калифорнији. Написан је у програмском језику Скала и дизајниран је са идејом да користи концепте функционалног програмирања. Постао је део \textit{Apache} фондације 2013. године. Од тада су избачене три верзије, редом назване, \textit{Spark} 1.0 (2013. године), \textit{Spark} 2.0 (2016. године) и \textit{Spark} 3.0 (2020. године).
 
-Намењен је за дистрибуирану обраду велике количине података али се поред тога користи и за рад са токовима података (енг. \textit{streaming}), машинско учење и рад са графовима \cite{spark_guide}. Може се користити у програмским језицима \textit{Scala}, \textit{Java}, \textit{Python} и \textit{R}. Иако је намењен за рад над кластерима, може се користити и на једној машини. На слици \ref{fig:spark_kompot} су приказане компоненте \textit{Apache Spark}-а. У овој секцији ће детаљније бити приказане оне које се користе за обраду података.
+Намењен је за дистрибуирану обраду велике количине података али се поред тога користи и за рад са токовима података (енг. \textit{streaming}), машинско учење и рад са графовима \cite{spark_guide}. Може се користити у програмским језицима \textit{Scala}, \textit{Java}, \textit{Python} и \textit{R}. Иако је намењен за рад над кластерима, може се користити и на једној машини. На слици \ref{fig:spark_kompot} су приказане компоненте \textit{Apache Spark}-а. У овом поглављу ће детаљније бити приказане оне које се користе за обраду података.
 
 \begin{figure}[!ht]
   \centering
@@ -1878,18 +1877,19 @@ WHERE {
 % mozda pasus za semanticki veb + osm. Ali to mozda i u zakljucku: https://wiki.openstreetmap.org/wiki/OSM_Semantic_Network
 % ============== ??? =====================
 
-\chapter{App}
+\chapter{Опис апликације}
 \label{chp:app}
 
-\section{Opis}
-\label{sec:opis}
+У овом поглављу ће детаљно бити описана израђена апликација за дистрибуирану обраду и графички приказ геопросторних података. Опис апликације укључује опис коришћених података, компоненти и технологија. Апликација је названа \textit{geo-locator} и налази се на адреси \textit{https://github.com/davgav123/geo}.
 
-ovde opis appa i sta se trazi od nas
+Намена апликације је да филтрира геопросторне податке за државе Европе на такав начин да издвоји одређене битне локације, попут болница, апотека, ресторана и хотела. Издвојене локације за сваку државу се складиште и приказују на захтев корисника. 
 
-\section{Облак}
+Део апликације за дистрибуирану обраду података је израђен у програмском језику Скала, коришћењем алата \textit{Apache Spark}, док је за кориснички интерфејс коришћен језик \textit{JavaScript}. Скуп геопросторних података који садржи локације које треба издвојити је \textit{OpenStreetMap}. Из разлога што \textit{OSM} скуп садржи неколико десетина гигабајта података, за израду апликације је коришћен Облак компаније \textit{Amazon}.
+
+\section{Рачунарство у облаку}
 \label{sec:cloud}
 
-Пошто је скуп \textit{OSM} података превелики да би се обрадио на једној машини, у изради апликације је коришћен Облак (енг. \textit{Cloud}). Извршавање на Облаку (енг. \textit{Cloud Computing}) \cite{cloud_computing} представља закупљивање харвера и софтвера које нуди провајдер, на захтев, преко интернета, где се плаћање извршава по количини искоришћених ресурса. На пример, преко Облака је могуће закупити базу података која ће преко интернета бити доступна одмах и плаћање ће се извршавати док год се та база податка користи. Коришћење услуга Облака је приказано на слици \ref{fig:cloud_comp_example}.
+Kako је скуп \textit{OSM} података превелики да би се обрадио локално, у изради апликације је коришћен Облак (енг. \textit{Cloud}). Извршавање на Облаку (енг. \textit{Cloud Computing}) \cite{cloud_computing} представља закупљивање хардвера и софтвера које нуди провајдер, на захтев, преко интернета, где се плаћање извршава по количини искоришћених ресурса. На пример, преко Облака је могуће закупити базу података која ће преко интернета бити доступна одмах и плаћање ће се извршавати док год се та база податка користи. Коришћење услуга Облака је приказано на слици \ref{fig:cloud_comp_example}.
 
 \begin{figure}[!ht]
   \centering
@@ -1898,37 +1898,48 @@ ovde opis appa i sta se trazi od nas
   \label{fig:cloud_comp_example}
 \end{figure}
 
-У изради апликације коришћен је Амазонов Облак (енг. \textit{Amazon Web Services}), скраћено \textit{AWS}. Харвер и софтвер који се може закупити од \textit{AWS}-а се назива сервис. Апликација за обраду података користи два сервиса и то су \textit{S3} \cite{s3} и \textit{EMR} \cite{emr}.
+У изради апликације коришћен је Амазонов Облак (енг. \textit{Amazon Web Services}), скраћено \textit{AWS}. Хардвер и софтвер који се може закупити од \textit{AWS}-а се назива сервис. Израђена апликација за дистрибуирану обраду података користи два сервиса, \textit{S3} \cite{s3} и \textit{EMR} \cite{emr}.
 
 % можда ће бити 3, са EC2 (за приказ резултата итд), онда то додај
 
-Сервис \textit{S3}, скрађено од \textit{Simple Storage Service}, се користи за складиштење фајлова на \textit{AWS}-у. Фајлови могу бити било ког формата и распоређени су у кофе (енг. \textit{bucket}). У апликацији се \textit{S3} користи за складиштење \textit{OSM} фајлова над којима се врши обрада.
+Сервис \textit{S3}, скрађено од \textit{Simple Storage Service}, се користи за поуздано складиштење фајлова на \textit{AWS}-у. Складиштени фајлови могу бити било ког формата и распоређени су у кофе (енг. \textit{bucket}), које се могу посматрати слично као директоријуми у фајл систему рачунара. У апликацији се \textit{S3} користи за складиштење \textit{OSM} фајлова над којима се врши обрада и за складиштење резултата обраде.
 
-Сервис \textit{EMR}, скраћено од \textit{Elastic Map Reduce}, представља \textit{Hadoop} на \textit{AWS}-у. Састоји се од машина којима се може бирати снага процесора и количина меморије. На \textit{EMR}-у се може инсталирати велики број апликација \textit{Hadoop} екосистема. Поред њих је могуће користити и \textit{Spark}.
+Сервис \textit{EMR}, скраћено од \textit{Elastic Map Reduce}, представља \textit{Hadoop} екосистем на \textit{AWS}-у. Састоји се од машина којима се може бирати снага процесора и количина меморије, зависно од потребе. На \textit{EMR}-у се може инсталирати велики број апликација \textit{Hadoop} екосистема, укључујући \textit{Apache Yarn} и \textit{Apache Spark}. Апликација користи овај сервис приликом дистрибуиране обраде података.
+ 
+\section{Подаци}
+\label{sec:osm_spark_podaci}
 
-\section{Arhitektura aplikacije}
+У изради апликације су коришћена два скупа података. Први скуп представља \textit{OSM} податке Европе и у њему се налазе информације о географским локацијама. На вебу се налази на вебсајту \textit{geofabrik.de} \cite{geofabrik}. Изабрани \textit{OSM} скуп података је у \textit{osm.pbf} (енг. \textit{OSM Protocolbuffer Binary Format}) формату \cite{osm_pbf_format}, који је стандард за \textit{OSM} податке. Пошто \textit{Apache Spark} нема уграђену функционалност за читање података у \textit{PBF} формату, подаци се морају пребацити у неки други формат, за који постоји једноставна интеграција са \textit{Spark}-ом. Један од тих формата је формат отвореног кода, дизајниран за брзо читање и уписивање података, \textit{Apache Parquet} \cite{apache_parquet}. Фајл \textit{ОSM PBF} формата се може изменити у \textit{parquet} коришћењем апликације \textit{osm-parquetizer} \cite{osm_parquetizer}. Ова апликације прима \textit{OSM} скуп у \textit{PBF} формату и као резултат има три скупа у \textit{parquet} формату, по један за сваки од \textit{OSM} елемената, чворове, путање и релације. Како су за израду \textit{geo-locator} апликације потребне само локације са описима, које садрже \textit{OSM} чворови, релације и путање се могу одбацити. Укупна величина резултујућег скупа \textit{OSM} чворова који представљају Европу је око 60 гигабајта.
+
+Други скуп, \textit{GeoNames} \cite{geonames} садржи информације о државама света, укључујући њихове границе, популацију, главни град, валуту, позивни број и слично. Границе држава \textit{GeoNames} скупа су представљене полигонима којима су темена локације на географској мапи. Уколико се држава састоји из више целина, на пример острва, границе су представљене мултиполигоном чији су делови полигони који представљају једну целину државе. У супротном, границе су представљене једним полигоном. \textit{GeoNames} скуп се састоји из два фајла. Први, \textit{shapes\_all\_low}, садржи границе држава, док други, \textit{country\_info}, садржи опште информације о државама, уључујући њихово име. Колона која их спаја представља јединствени идентификатор државе и назива се \textit{geoNameId}.
+
+\section{Архитектура апликације}
 \label{sec:app_aphi}
 
-opis komponenti, ss frontenda itd
+Апликација се састоји од 3 компоненте (слика \ref{fig:app_components}). Прва, компонента за обраду података, \textit{geo-processor}, чита податке \textit{OSM} и \textit{GeoNames} скупа са локације на \textit{S3} сервису, обрађује их помоћу Скале, \textit{Spark}-а и \textit{EMR} сервиса, и након тога резултате уписује назад на \textit{S3}. 
+
+Друга компонента, названа \textit{geo-backend} представља сервер, који на захтев клијента чита обрађене податке и прослеђује их клијенту. Због високе цене обраде, подаци се не обрађују на сваки захтев клијента, већ се читају складиштени, већ обрађени подаци. Сервер апликација је написана у програмском језику Скала, коришћењем библиотеке \textit{Akka} \cite{scala_akka}, уз помоћ које се креирају сервер и постојећи \textit{http} методи.
+
+Последња компонента, клијент, названа \textit{geo-frontend}, приказује мапу света, прима упит корисника и исцртава жељене резултате. Страница клијента је приказана на слици \ref{fig:app_front}. Написана је у програмском језику \textit{JavaScript} и за исцртавање географске мапе и приказ резултата користи библиотеку \textit{Leaflet} \cite{leaflet}.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=1\textwidth]{pictures/app_arch_components.png}
+  \includegraphics[width=0.9\textwidth]{pictures/app_arch_components.png}
   \caption{Компоненте апликације}
   \label{fig:app_components}
 \end{figure}
 
-\section{Подаци}
-\label{sec:osm_spark_podaci}
-
-У изради апликације су коришћена два скупа података. Први скуп представља \textit{OSM} податке Европе и у њему се налазе информације о географским локацијама. Други скуп, \textit{GeoNames} \cite{geonames} садржи информације о границама држава. Поред граница држава, \textit{GeoNames} скуп садржи и додатне информације о свакој држави попут популације, главног града, валуте, поштанског кода и слично.
-
-Информације о границама \textit{GeoNames} скупа су предстаљене полигоном којем су темена географске локације. Уколико се држава састоји из више целина раздвојених на неки начин, на пример морем, границе су представљене мултиполигоном чији су делови полигони који представљају једну целину државе. На пример, границе Италије су представљене мултиполигоном чији су делови континентални део Италије, Сицилија и Сардинија. Слично, граница Србије се састоји од једног полигона.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1\textwidth]{pictures/geo_frontend.png}
+  \caption{Клијентска страница апликације}
+  \label{fig:app_front}
+\end{figure}
 
 \section{Одређивање припадности локације држави}
 \label{sec:poly_cont}
 
-Проблем одређивања припадности локације држави је еквивалентан проблему одређивања припадности тачке полигону, где је локација тачка, а граница државе полигон. Како је проблем припадности тачке полигону веома заступљен у рачунарској графици, постоји велики број алгоритама који га решавају. У овом раду су испробана три алгоритма:
+Проблем одређивања припадности локације држави је еквивалентан проблему одређивања припадности тачке полигону, где је локација тачка, а граница државе полигон. Како је проблем припадности тачке полигону веома заступљен у рачунарској графици, постоји велики број алгоритама који га решавају. У овом раду су испробана три алгоритма и њихова имплементација се може пронаћи унутар \textit{Polygon} класе \textit{geo-processor} компоненте. Ти алгоритми су:
 
 \begin{itemize}
 	\item \textit{Ray casting} алгоритам \cite{inside_polygon};
@@ -1938,7 +1949,7 @@ opis komponenti, ss frontenda itd
 
 %\textit{Ray casting} алгоритам \cite{inside_polygon}, алгоритам који се заснива на сумирању углова \cite{inside_polygon} и алгоритам доступан у оквиру Јава \textit{awt} библиотеке, унутар \textit{Polygon} класе \cite{java_awt_polygon}.
 
-\textit{Ray casting} алгоритам исцртава хоризонталне дужи из жељене тачке, такве да јој се други крај налази изван полигона. Након тога се пребројава број пресека исцртане дужи са свим страницама полигона. Уколико је број пресека паран, тачка се налази ван полигона, а уколико је непаран тачка се налази у полигону. Из примера алгоритма приказаног на слици \ref{fig:ray_cast_algo_example} се може закључити да се тачке \textit{А} и \textit{Д} налазе унутар полигона, док су тачке \textit{Б} и \textit{Ц} изван. Недостатак алгоритма \textit{Ray casting} је појава грешака приликом одређивања припадности тачака које се налазе близу ивица полигона. %Може се користити за одређивање припадности тачке свакој врсти полигона.
+\textit{Ray casting} алгоритам исцртава хоризонталне дужи из жељене тачке, такве да јој се други крај налази изван полигона. Након тога се пребројава број пресека исцртане дужи са свим страницама полигона. Уколико је број пресека паран, тачка се налази ван полигона, а уколико је непаран, тачка се налази у полигону. Из примера алгоритма приказаног на слици \ref{fig:ray_cast_algo_example} се може закључити да се тачке \textit{А} и \textit{Д} налазе унутар полигона, док су тачке \textit{Б} и \textit{Ц} изван. Недостатак алгоритма \textit{Ray casting} је појава грешака приликом одређивања припадности тачака које се налазе близу ивица полигона. %Може се користити за одређивање припадности тачке свакој врсти полигона.
 
 \begin{figure}[!ht]
   \centering
@@ -1947,9 +1958,9 @@ opis komponenti, ss frontenda itd
   \label{fig:ray_cast_algo_example}
 \end{figure}
 
-Алгоритам заснован на сумирању углова сабира углове између жељене тачке и сваког пара темена полигона. Уколико је сума $2\pi$ онда се тачка налази унутар полигона, а уколико није онда се налази изван. Овај алгоритам функционише за све врсте полигона.
+Алгоритам заснован на сумирању углова сабира углове између жељене тачке и сваког пара темена полигона. Уколико је сума $2\pi$ онда се тачка налази унутар полигона, а уколико није онда се налази изван. Овај алгоритам функционише за све врсте полигона. Као и  \textit{ray casting}, овај алгоритам може погрешно одредити припадност за тачке близу ивица полигона.
 
-Алгоритми су тестирани над \textit{OSM} подацима који представљају Црну Гору и Словенију који су приказани црвеном бојом на слици \ref{fig:all_map_slo_mon_example}. Оба скупа података садрже одређен број локација на мапи које не припадају државама које представљају. То их чини повољним за тестирање, због тога што се добијени резултати припадности локација једноставно могу проверити исцртавањем.
+Алгоритми су тестирани над \textit{OSM} подацима који представљају Црну Гору и Словенију. Локације скупова су приказане црвеном бојом на слици \ref{fig:all_map_slo_mon_example}. Оба скупа података садрже одређен број локација на мапи које не припадају државама које представљају, што их чини повољним за тестирање. Добијени резултати припадности локација се једноставно могу проверити исцртавањем на географској мапи.
 
 \begin{figure}[!ht]
   \centering
@@ -1958,7 +1969,7 @@ opis komponenti, ss frontenda itd
   \label{fig:all_map_slo_mon_example}
 \end{figure}
 
-Резултати добијени применом алгоритама на поменуте скупове су приказани у табели \ref{tab:tabla_rez_poly_cont_algor} и означавају удео локација које се налазе унутар граница у односу на цео скуп, за сваки алгоритам. Резултати су слични, али алгоритам заснован на сабирању углова даје најбоље резултате.
+Резултати добијени применом алгоритама на поменуте скупове су приказани у табели \ref{tab:tabla_rez_poly_cont_algor} и означавају удео локација које се налазе унутар граница у односу на цео скуп, за сваки алгоритам. Резултати су слични, али алгоритам заснован на сабирању углова додељује већи број тачака границама држава у односу на остала два.
 
 \begin{table}[h!]
 \begin{center}
@@ -1974,49 +1985,414 @@ opis komponenti, ss frontenda itd
 \end{center}
 \end{table}
 
-Графички приказ локацијa за које су алгоритми одредили да не припадају границама су приказани на слици \ref{fig:all_examples_map_slo_mon}. Сва три алгоритма исправно одређују да локације далеко од граница не припадају државама. Да би се проверило да ли исто важи и за локације близу граница, приказане слике се морају увеличати (слике \ref{fig:not_slo_mon_rc}, \ref{fig:not_slo_mon_awt} и \ref{fig:not_slo_mon_sum_angles}).
+Иако су резултати за алгоритме добри, постоје одређени недостаци. Сваки алгоритам је погрешно одредио припадност малом броју локација које се налазе близу обала мора. Поред тога, код сваког алгоритма постоје мање грешке за локације близу граница са другим државама. За разлику од друга два алгоритма, \textit{Ray casting} је погрешно одредио припадност одређеном броју тачака на југоистоку Словеније. Због добијених резултата, у изради апликације је коришћен алгоритам заснован на сумирању углова. Резултати изабраног алгоритма се налазе на слици \ref{fig:not_slo_mon_example} за локације ван граница држава и на слици \ref{fig:slo_mon_example} за локације унутар граница.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=1.05\textwidth]{pictures/slo_mon_contains_all_rc_awt_sa.png}
-  \caption{Локације изван граница Црне Горе и Словеније за редом \textit{Ray casting}, \textit{Awt} алгоритам и Сумирање углова}
-  \label{fig:all_examples_map_slo_mon}
+  \includegraphics[width=1\textwidth]{pictures/not_slo_mon_sum_angles.png}
+  \caption{Резултат за локације изван држава за алгоритма заснован на сумирању углова}
+  \label{fig:not_slo_mon_example}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=1.05\textwidth]{pictures/not_slo_mon_ray_cast.png}
-  \caption{\textit{Ray casting} за локације изван али близу граница Црне Горе и Словеније}
-  \label{fig:not_slo_mon_rc}
+  \includegraphics[width=1\textwidth]{pictures/slo_mon_sum_angles.png}
+  \caption{Резултат за локације унутар држава за алгоритма заснован на сумирању углова}
+  \label{fig:slo_mon_example}
 \end{figure}
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1.05\textwidth]{pictures/not_slo_mon_awt.png}
-  \caption{\textit{Awt} алгоритам за локације изван али близу граница Црне Горе и Словеније}
-  \label{fig:not_slo_mon_awt}
-\end{figure}
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1.05\textwidth]{pictures/not_slo_mon_sum_angles.png}
-  \caption{Сумирање углова за локације изван али близу граница Црне Горе и Словеније}
-  \label{fig:not_slo_mon_sum_angles}
-\end{figure}
-
-Резултати за приказане алгоритме су добри, са одређеним недостацима. Сваки алгоритам је погрешно одредио припадност неким локацијама које се налазе близу обала мора. \textit{Ray casting} је погрешно одредио припадност великом броју тачака на југоистоку Словеније. Поред тога, код сваког алгоритма постоје мање грешке за локације близу осталим деловима граница. Ниједан од алгоритама не прави велике грешке приликом одређивања тачака које стварно припадају границама. Због приказаних резултата, у изради апликације је коришћен алгоритам заснован на сумирању углова.
-
-\section{Obrada OSM skupa Sparkom}
+\section{Обрада геопросторних података \textit{Spark}-ом}
 \label{sec:osm_spark_obrada}
 
-osm parquetizer: https://wiki.openstreetmap.org/wiki/Osm-parquetizer
+Након припреме података, трансформисања \textit{OSM} фајла из \textit{OSM PBF} формата у \textit{parquet} формат и постављања фајла на \textit{S3} локацију, може се почети са дистрибуираном обрадом података. Компонента апликације која обрађује податке је \textit{geo-processor}. Написана је у верзији 2.12.12 програмског језика Скала коришћењем верзије 3.1.2 алата \textit{Apache Spark}. Верзије су изабране због компатибилности. Изабрана верзија \textit{Spark}-а је компатибилна са коришћеном верзијом \textit{AWS} сервиса, док је верзија Скале компатибилна са верзијом \textit{Spark}-а.
 
-koje spark transformacije su primenjene na koje podatke itd
+Подаци се обрађују на верзији 6.4.0 \textit{EMR} кластера. Одабрана верзија садржи инсталиране верзије 3.1.2 \textit{Spark}-а и 3.2.1 \textit{Hadoop}-а. Кластер се састоји од 4 машине од којих је једна именски чвор, док су остале чворови података. Свака од машина садржи 8 језгара процесора и 32 гигабајта радне меморије. \textit{Spark} је конфигурисан тако да има 6 извршилаца са по 4 језгра процесора и 16 гигабајта меморије. Као менаџер ресурса се користи \textit{Apache Yarn}. Укупно извршавање обраде података је око 40 сати. Испробане су и друге конфигурације \textit{EMR} кластера и \textit{Spark}-а, али нису допринеле побољшању временског извршавања обраде података. 
 
-\section{Rezultat}
+Изворни к\^{о}д намењен за обраду података се налази унутар \textit{geo} модула компоненте \textit{geo-processor}, у класи \textit{GeoDataProcessor}. Обрада се може поделити на два дела. Први чита податке и одређује која локација скупа припада којој држави, док друга за сваку државу филтрира жељену врсту локација након чега врши упис података. Оба дела су представљена у функцији \textit{processGeoData}, која као аргументе прима иницијализовану инстанцу \textit{Spark}-а, локацију скупа геопросторних података које треба обрадити и локацију у којој ће коначан резултат бити уписан. Приказ позива функције се налази у класи \textit{Main} компоненте \textit{geo-processor} и приказан је у коду \ref{lst:app_code_main_processGeoData}. Путање представљају локације на сервису \textit{S3}, где је \textit{geo-master-496542722941} име кофе, док остатак путање представља путању до фајла унутар кофе.
+
+\begin{lstlisting}[caption={Позивање функције која започиње обраду података}, language=Scala, label={lst:app_code_main_processGeoData}]
+processGeoData(
+      spark,
+      "s3a://geo-master-496542722941/osm-data/europe/europe-latest.osm.pbf.node.parquet",
+      "s3a://geo-master-496542722941/osm-data/countries/countries-data"
+)
+\end{lstlisting}
+
+\textit{OSM} скуп чворова Европе, након примене \textit{osm-parquetizer} апликације, поседује шему приказану у коду \ref{lst:app_code_node_schema}. Скуп се учитава унутар \textit{getNodes} функције и из њега се трансформацијом \textit{select} издвајају потребне информације, географска дужина и ширина, као и скуп \textit{OSM} тагова, у коме се налазе информације о томе шта се налази на координатама. Након тога се трансформацијом \textit{where} подаци филтрирају тако што се одбацују сви редови којима су географске ширина и дужина \textit{null} као и редови којима је скуп тагова празан. Имплементација \textit{getNodes} функције се налази у коду \ref{lst:app_code_getNodes}
+
+\begin{lstlisting}[caption={Шема \textit{OSM} скупа чворова након примене \textit{osm-parquetizer} апликације}, language=Scala, label={lst:app_code_node_schema}]
+|-- id: long (nullable = true)
+|-- version: integer (nullable = true)
+|-- timestamp: long (nullable = true)
+|-- changeset: long (nullable = true)
+|-- uid: integer (nullable = true)
+|-- user_sid: string (nullable = true)
+|-- tags: array (nullable = true)
+|    |-- element: struct (containsNull = true)
+|    |    |-- key: string (nullable = true)
+|    |    |-- value: string (nullable = true)
+|-- latitude: double (nullable = true)
+|-- longitude: double (nullable = true)
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Функција која учитава податке и извршава иницијално филтрирање колона и редова}, language=Scala, label={lst:app_code_getNodes}]
+def getNodes(spark: SparkSession, pathToCountryFile: String): DataFrame = {
+    val nodes: DataFrame = spark
+      .read
+      .format("parquet")
+      .load(pathToCountryFile)
+
+    nodes.select(
+      col("latitude"),
+      col("longitude"),
+      col("tags")
+    )
+      .where("latitude is not null and longitude is not null")
+      .where(size(col("tags")) =!= 0)
+}
+\end{lstlisting}
+
+Након учитавања података, потребно је доделити им одговарајуће локације држава. Да би се тај корак извршио, морају се учитати и обрадити подаци \textit{GeoNames} скупа, који се састоје из два фајла, сачувана на сервису \textit{S3}. Први је \textit{shapes\_all\_low} који је у \textit{Tab Separated Values} формату, скраћено \textit{TSV}, и садржи две колоне. Прва је \textit{geoNameId}, док је друга \textit{geoJSON}, у \textit{JSON} формату. \textit{JSON} садржи два кључа и први је ознака, названа \textit{type}, која показује да ли су границе представљене једним полигоном (ознака \textit{Polygon}) или са више полигона (ознака \textit{MultiPolygon}). Други \textit{JSON} кључ, назван \textit{coordinates}, садржи координате које означавају полигоне. Пример редова овог скупа се налази у коду \ref{lst:app_code_shapes_all_low_example}.
+
+\begin{lstlisting}[caption={Упрошћени пример редова \textit{shapes\_all\_low} скупа}, language=Scala, label={lst:app_code_shapes_all_low_example}]
+geoNameId	geoJSON
+49518	    {"type":"Polygon","coordinates":[[[29.96,-2.327],...,[29.438,-2.798]]]}
+51537	    {"type":"MultiPolygon","coordinates":[[[[42.322,-0.659],...,[43.451,11.491]]]]}
+\end{lstlisting}
+
+Да би се информације из \textit{geoJSON} колоне извукле у засебне колоне, потребно је издвојити ту колону, направити нови \textit{Spark DataFrame} од ње и додати \textit{geoNameId} колону. Процес трансформације \textit{geoJSON} колоне се налази у \textit{prepareBorderData} функцији и приказан je у коду \ref{lst:app_code_prepare_borders}. Исти процес је приказан и на слици \ref{fig:app_code_transofrm_prepare_borders}. Први корак је прочитати фајл у \textit{DataFrame} и након тога од њега креирати нови, пребацивањем \textit{geoJSON} колоне у засебан \textit{DataFrame}. На такав начин се добија \textit{DataFrame} са две колоне, \textit{type} и \textit{coordinates}. На њега се трансформацијом \textit{withColumn} додаје још једна колона која ће се користити у спајању и која за сваки ред има вредност његовог редног броја. Након тога се из почетно прочитаног фајла, издваја \textit{geoNameId} колона, трансформацијом \textit{drop}, којом се брише \textit{geoJSON} колона и тако се конструише још један нови \textit{DataFrame}. На њега се трансформацијом \textit{withColumn} додаје колона за спајање, која у за сваки ред има вредност његовог редног броја. Након тога се два добијена \textit{DataFrame}-а спајају преко колоне за спајање и колона за спајање се брише. Резултат је \textit{DataFrame} са три колоне, \textit{geoNameId}, \textit{type} и \textit{coordinates}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1\textwidth]{pictures/borders_file_thingy.png}
+  \caption{Приказ трансформација над скупом \textit{GeoNames} података који садржи границе}
+  \label{fig:app_code_transofrm_prepare_borders}
+\end{figure}
+
+Добијени \textit{DataFrame} поседује информације о границама, али не садржи имена држава, већ само њихов идентификатор. Имена се налазе у фајлу \textit{country\_info}. Након читања тог фајла, добијени \textit{DataFrame} треба спојити са претходним и из спојеног \textit{DataFrame}-а извући потребне колоне, \textit{country} која представља име државе, \textit{type} која означава да ли су границе полигон или мултиполигон и \textit{coordinates} у којој се налазе координате граница. На крају се из добијеног скупа филтрирају државе које се не разматрају, што су у овом случају све државе које се не налазе у Европи. Имена европских државе се налазе у функцији \textit{getEuropeanCountries}. Цео процес је приказан у коду \ref{lst:app_code_prepare_borders} у коме се налази функција \textit{prepareBorderData}.
+
+\begin{lstlisting}[caption={Функција која припрема \textit{DataFrame} у коме се налазе информације о границама држава}, language=Scala, label={lst:app_code_prepare_borders}]
+private def prepareBorderData(spark: SparkSession): DataFrame = {
+    val pathToBordersFile = "s3a://geo-master-496542722941/geo-names/shapes_all_low.txt"
+    val pathToInfoFile = "s3a://geo-master-496542722941/geo-names/country_info.txt"
+
+    val countryBordersRaw: DataFrame = spark
+      .read
+      .format("csv")
+      .option("delimiter", "\t")
+      .option("header", "true")
+      .option("inferSchema", "true")
+      .load(pathToBordersFile)
+
+    import spark.implicits._ // need this in order to cast json to string
+    val parsedJson: DataFrame = spark.read.json(countryBordersRaw.select(col("geoJSON")).as[String])
+      .withColumn("join_column", monotonically_increasing_id())
+
+    val prepareBordersForJoin: DataFrame = countryBordersRaw
+      .withColumn("join_column", monotonically_increasing_id())
+      .drop(col("geoJSON"))
+
+    val countryBorders: DataFrame = prepareBordersForJoin
+      .join(parsedJson, "join_column")
+      .select(
+        col("geoNameId"),
+        col("type"),
+        flatten(col("coordinates")).as("coordinates")
+      )
+
+    val countryToId: DataFrame = spark.read
+      .format("csv")
+      .option("delimiter", "\t")
+      .option("header", "true")
+      .option("inferSchema", "true")
+      .load(pathToInfoFile)
+      .select(col("geonameid").as("id"), col("Country"))
+
+    val borders: DataFrame = countryBorders
+      .join(
+        countryToId,
+        countryBorders("geoNameId") === countryToId("id"),
+        "inner"
+      )
+      .select(
+        lower(col("Country")).as("country"),
+        col("type").as("border_type"),
+        col("coordinates").as("border_coordinates")
+      )
+
+    val selectedCountries: Array[String] = getEuropeanCountries
+    borders
+      .filter(col("country").isInCollection(selectedCountries))
+}
+\end{lstlisting}
+
+За одређивање припадности локације држави се конструише засебна корисничка функција (енг. \textit{user defined function}) скраћено \textit{udf}. \textit{Udf} се у \textit{Spark}-у конструише као регуларна Скала фунцкија, с тим што њени аргументи морају бити истог типа као и типови колона \textit{DataFrame}-а који јој се прослеђују, Функција која географској дужини и ширини додељује државу је приказана у коду \ref{lst:app_code_belongstocountry}. Листа \textit{iterableBorders} садржи полигоне \textit{GeoNames} скупа који представљају границе, док функција \textit{isInsideBorder} за сваку локацију проверава којој држави припада тако што итерира кроз сваку границу и проверава припадност алгоритмом заснованим на сумирању углова. Кориснички дефинисана функција се региструје позивом \textit{Spark} функције \textit{org.apache.spark.sql.functions.udf} и након тога се може користити у трансформацијама.
+
+\begin{lstlisting}[caption={Функција која додељује државу локацији}, language=Scala, label={lst:app_code_belongstocountry}]
+
+val belongsToCountryFunction: (Double, Double) => String = (lat: Double, lon: Double) => {
+      var belongs_to = "-"
+      for ((country, borders) <- iterableBorders) {
+        if (isInsideBorder(lat, lon, borders)) {
+          belongs_to = country
+        }
+      }
+
+      belongs_to
+}
+\end{lstlisting}
+
+Процес додељивања државе локацији се извршава унутар функције приказане у коду \ref{lst:app_code_mapcoordstocountry}. На крају се из скупа избацују све локације којима није додељена држава. Резултујући \textit{DataFrame} ове функције садржи локацију, тачније географску ширину и дужину, \textit{OSM} тагове као и ознаку којој држави локација припада. Његова шема је приказана у коду \ref{lst:app_code_countrydf_schema}.
+
+\begin{lstlisting}[caption={Функција \textit{mapCoordinatesToCountry}}, language=Scala, label={lst:app_code_mapcoordstocountry}]
+def mapCoordinatesToCountry(spark: SparkSession, countryFilePath: String): DataFrame = {
+    val iterableBorders = makeBordersIterable(prepareBorderData(spark))
+
+    val belongsToCountryFunction: (Double, Double) => String = (lat: Double, lon: Double) => {
+      var belongs_to = "-"
+      for ((country, borders) <- iterableBorders) {
+        if (isInsideBorder(lat, lon, borders)) {
+          belongs_to = country
+        }
+      }
+
+      belongs_to
+    }
+
+    val belongsToCountry = udf[String, Double, Double](belongsToCountryFunction)
+
+    val osmData = getNodes(spark, countryFilePath)
+      .withColumn(
+        "country",
+        belongsToCountry(
+          col("latitude"),
+          col("longitude")
+        )
+      )
+
+    osmData
+      .filter(col("country") =!= lit("-"))
+  }
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Шема \textit{DataFrame}-а након додељивања држава локацијама}, language=Scala, label={lst:app_code_countrydf_schema}]
+ |-- latitude: double (nullable = true)
+ |-- longitude: double (nullable = true)
+ |-- tags: array (nullable = true)
+ |    |-- element: struct (containsNull = true)
+ |    |    |-- key: binary (nullable = true)
+ |    |    |-- value: binary (nullable = true)
+ |-- country: string (nullable = true)
+\end{lstlisting}
+
+Након одређивања припадности, потребно је за сваку државу изабрати жељену врсту локација. Филтрирање се извршава у односу на \textit{tag} колону \textit{DataFrame}-а. Пример садржаја \textit{tag} колоне се налази у коду \ref{lst:code_app_tags_col_values}. Састоји се од низа кључ-вредност парова, од којих су за одабир жељених врста локације потребне само вредности. Оне се могу издвојити трансформацијом \textit{withColumn} и применом функције \textit{expr}, која користи функцију \textit{transform} за трансформисање кључ-вредност парова (к\^{о}д \ref{lst:code_app_with_col_expr_transform}).
+
+\begin{lstlisting}[caption={Пример вредности \textit{tag} колоне}, language=Scala, label={lst:code_app_tags_col_values}]
++----------------------------------------------------+
+|tags                                                |
++----------------------------------------------------+
+|[{access, yes}, {amenity, parking}, {parking, lane}]|
+|[{amenity, restaurant}, {outdoor_seating, yes}]     |
+|[{name, The Tesla Art Hostel}, {tourism, hostel}]   |
+|[{amenity, hospital}, {healthcare, hospital}]       |
+|[{name, The Black Turtle Pub I}, {amenity, pub}     |
+|[{name, Picerija}, {amenity, cafe}]                 |
++----------------------------------------------------+
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Конструкција низа вредности \textit{tag} колоне}, language=Scala, label={lst:code_app_with_col_expr_transform}]
+countryDF
+  .withColumn(
+    "tag_values",
+    expr("transform(tags, x -> x.value)").cast(ArrayType(StringType))
+  )
+\end{lstlisting}
+
+Следећи корак је филтрирање низа вредности тагова. Слично као код одређивања припадности локације држави, за филтрирање жељених локацијa се користи функција дефинисана од стране корисника, \textit{udf}. Функција је приказана у коду \ref{lst:app_code_filter_tag_vals_func} и функционише тако што тражи пресек између жељених врста локација које се налазе у променљивој \textit{conditions} и низа вредости тагова. Уколико пресек не постоји, функција враћа вредност \textit{x}, а уколико постоји функција враћа врсту локације. Резултат је нова колона названа \textit{condition}. Након одређивања врсте локације, трансформацијом \textit{filter} се уклањају сви редови који садрже вредност \textit{x}. Све операције за филтрирање података се налазе унутар функције \textit{applyFilters} приказане у коду \ref{lst:app_code_apply_filters}.
+
+\begin{lstlisting}[caption={Функција која одређује да ли је локација жељеног типа}, language=Scala, label={lst:app_code_filter_tag_vals_func}]
+val filterTagValues: Array[String] => String = (tagValues: Array[String]) => {
+  val conditions = Set(
+    "hospital", "pharmacy", "hotel"
+    // ...
+  )
+
+  val intersection = tagValues.toSet.intersect(conditions)
+  if (intersection.isEmpty) {
+    "x"
+  } else {
+    intersection.head
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Функција \textit{applyFilters}}, language=Scala, label={lst:app_code_apply_filters}]
+
+def applyFilters(countryDF: DataFrame): DataFrame = {
+  val filterTagValues: Array[String] => String = (tagValues: Array[String]) => {
+    val conditions = Set(
+      "hospital", "pharmacy", "hotel",
+      "hostel", "bar", "cafe", "pub",
+      "nightclub", "restaurant", "parking"
+    )
+
+    val intersection = tagValues.toSet.intersect(conditions)
+    if (intersection.isEmpty) {
+      "x"
+    } else {
+      intersection.head
+    }
+  }
+
+  val filterFunc = udf[String, Array[String]](filterTagValues)
+
+  countryDF
+    .withColumn(
+      "tag_values",
+      expr("transform(tags, x -> x.value)").cast(ArrayType(StringType))
+    )
+    .withColumn(
+      "condition", filterFunc(col("tag_values"))
+    )
+    .filter(col("condition") =!= lit("x"))
+}
+\end{lstlisting}
+
+Након филтрирања, добијене податке треба сачувати. Чување се извршава у функцији \textit{processGeoData} (к\^{о}д \ref{lst:app_code_process_geo_data}), позваној у коду \ref{lst:app_code_main_processGeoData}. Из података се прво извлаче жељене колоне, а затим се подаци чувају у \textit{parquet} формату. Пре чувања, подаци се партиционишу функцијом \textit{partitionBy}.
+Партиционисање се извршава по прослеђеним колонама и функционише тако што се подаци који имају исту вредност изабране колоне групишу у заједнички поддиректоријум. Пример структуре у којој се подаци за државе Шпанију и Португал за болнице и хотеле чувају оваквом врстом партиционисања се налази у коду \ref{lst:app_code_partition_by_countries}. Географске ширина и дужина се налазе у крајњим \textit{parquet} фајловима, док се информације о држави и жељеној локацији налазе у именима директоријума који садрже \textit{parquet} фајлове. Након чувања, подаци су спремни и могу се користити за приказивање на географској мапи.
+
+\begin{lstlisting}[caption={Функција \textit{processGeoData}}, language=Scala, label={lst:app_code_process_geo_data}]
+def processGeoData(spark: SparkSession, pathToDataFile: String, pathToOutFile: String): Unit = {
+  val mapped = mapCoordinatesToCountry(spark, pathToDataFile)
+
+  applyFilters(mapped)
+    .select(
+      col("latitude"),
+      col("longitude"),
+      col("country"),
+      col("condition")
+    )
+    .write
+    .partitionBy("country", "condition")
+    .mode(SaveMode.Overwrite)
+    .parquet(pathToOutFile)
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Структура директоријума партиционисаног по државама и врстама локација}, language=Scala, label={lst:app_code_partition_by_countries}]
+|-- country=portugal
+|   |-- condition=hospital
+|   |   |-- part-00000-c55ece3af5a5.c000.snappy.parquet
+|   |   |-- part-00001-c55ece3af5a5.c000.snappy.parquet
+|   |-- condition=hotel
+|   |   |-- part-00000-c55ece3af5a5.c000.snappy.parquet
+|   |   |-- part-00001-c55ece3af5a5.c000.snappy.parquet
+|-- country=spain
+    |-- condition=hospital
+    |   |-- part-00000-f558ba92bda6.c000.snappy.parquet
+    |   |-- part-00001-f558ba92bda6.c000.snappy.parquet
+    |-- condition=hotel
+        |-- part-00000-f558ba92bda6.c000.snappy.parquet
+        |-- part-00001-f558ba92bda6.c000.snappy.parquet
+\end{lstlisting}
+
+\section{Сервер апликације}
+\label{sec:app_server}
+
+Улога сервера апликације је да покрене сервер, прима \textit{GET} захтеве клијента, обради их и пошаље резултат. Креирање сервера и обрада \textit{GET} захтева је имплементирана преко \textit{http} модула \textit{Akka} библиотеке, док се обрада извршава преко \textit{Spark}-а. Креирање \textit{GET} захтева је приказано у коду \ref{lst:app_code_create_get}. Извршава се преко \textit{path} функције, чији је аргумент ниска која означава путању до захтева. Параметри захтева се задају функцијом \textit{parameters} док је повратна вредност функције одговор на захтев. У креираној функцији одговор је у \textit{JSON} формату. Улога \textit{Spark} кода у функцији \textit{readData} је да прочита жељене локације креиране од стране \textit{geo-processor} компоненте и пребаци их у низ, који се шаље као одговор клијенту.
+
+\begin{lstlisting}[caption={Имплементација функције која прима и обрађује \textit{GET} захтев}, language=Scala, label={lst:app_code_create_get}]
+val route: Route = path("selection") {
+  concat {
+    cors() {
+      get {
+        //selection?country=[COUNTRY]&param=[PARAM]
+        parameters('country.as[String], 'param.as[String]) { (country, param) =>
+          complete {
+            val coords = readData(spark, country, param)
+            HttpEntity(ContentTypes.`application/json`, s"""${coords.toJson}""")
+          }
+        }
+      }
+    }
+  }
+}
+
+def readData(spark: SparkSession, country: String, cond: String): Array[Array[Double]] = {
+  val dataPath = "/path/to/data/dir/"
+  val countryFilePath = dataPath + s"country=$country/condition=$cond"
+
+  spark
+    .read
+    .parquet(countryFilePath)
+    .collect()
+    .map(row => Array(row(0).asInstanceOf[Double], row(1).asInstanceOf[Double]))
+}
+\end{lstlisting}
+
+На крају се направљена путања везује за инстанцу сервера, функцијом \textit{bind}. Сервер се налази на локацији \textit{localhost}, на порту \textit{8080} и покреће се функцијом \textit{newServerAt}, објекта \textit{Http} \textit{Akka} библиотеке \cite{using_akka_http}. Имплементација сервера је приказана у коду \ref{lst:app_code_server_sturtup}.
+
+\begin{lstlisting}[caption={Имплементација сервера}, language=Scala, label={lst:app_code_server_sturtup}]
+val bindingFuture = Http().newServerAt("localhost", 8080)
+  .bind(route)
+
+println(s"Server is now online\nPress RETURN to stop...")
+StdIn.readLine()
+bindingFuture
+  .flatMap(_.unbind())
+  .onComplete(_ => {
+     spark.close()
+     system.terminate()
+  })
+\end{lstlisting}
+
+
+\section{Клијент апликације}
+\label{sec:app_client}
+
+Клијент шаље \textit{GET} захтеве серверу и приказује резултат на географској мапи. Слање захтева се извршава уносом жељених параметара и притиском на дугме \textit{Submit} (слика \ref{fig:app_code_request_bar_front}). Притиском на дугме се креира \textit{http} захтев ка адреси сервера. За слање захтева се користи \textit{XMLHttpRequest} објекат. Када сервер пошаље резултате кленту, он исцртава локације црвеном бојом на мапи.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1\textwidth]{pictures/frontend_request_bar.png}
+  \caption{Место за унос и слање захтева на кленту}
+  \label{fig:app_code_request_bar_front}
+\end{figure}
+
+За исцртавање мапе се користи \textit{leaflet} библотека. Иницијално се приказује мапа целе Европе, али се при исцртавању жељених локација мапа увеличава на приказ изабране државе.
+
+\section{Приказ резултата}
 \label{sec:rezultat}
 
-dobijeni rezultati aplikacije, prikaz nekih selekcija itd
+У овој секцији су приказане исцртане локације за насумично изабране државе и жељене локације. Приказ клијентске странице са резултатима за изабране локације се налази на сликама \ref{fig:app_code_italy_hotel}, \ref{fig:app_code_greece_restaurants}, \ref{fig:app_code_uk_pubs} и \ref{fig:app_code_switzerland_pharmacies}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{pictures/italy_hotels.png}
+  \caption{Хотели у Италији}
+  \label{fig:app_code_italy_hotel}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{pictures/greece_restaurants.png}
+  \caption{Ресторани у Грчкој}
+  \label{fig:app_code_greece_restaurants}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{pictures/uk_pubs.png}
+  \caption{Пабови у Уједињеном Краљевству}
+  \label{fig:app_code_uk_pubs}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{pictures/switzerland_pharmacies.png}
+  \caption{Апотеке у Швајцарској}
+  \label{fig:app_code_switzerland_pharmacies}
+\end{figure}
 
 \chapter{Закључак}
 \label{chp:zakljucak}
@@ -2025,9 +2401,13 @@ dobijeni rezultati aplikacije, prikaz nekih selekcija itd
 
 Приказана је и мотивација за коришћење дистрибуираних система као и њихова организација. Описан је дистрибуирани фајл систем \textit{HDSF}, централни део \textit{Hadoop} екосистема ког поред \textit{HDFS}-a чине и остале апликације разних намена, попут \textit{Apache Yarn}-а, \textit{Flume}-а, \textit{Hive}-a и \textit{Pig}-а. Приказана је и прва парадигма за дистрибуирану обраду података, \textit{MapReduce}-а, као и њени недостаци.
 
-Имплементирана је апликације за дистрибуирану обраду скупа геопросторних података \textit{OpenStreetMap}. Обрада се извршава на \textit{HDFS}-у имплементираном од стране \textit{AWS}-а, сервису \textit{EMR}. За обраду података се користе \textit{Apache Spark} и програмски језик Скала. Намена апликације је да филтрира геопросторне податке тако што ће за сваку државу европе издвојити локације здравствених објеката, хотела, хостела, барова, ресторана и других битних туристичких локација које се унутар ње налазе, да би се те локације касније приказале на географској мапи. За приказ локација на географској мапи се користи језик \textit{JavaScript} и биоблиотека \textit{Leaflet}.
+Имплементирана је апликација за дистрибуирану обраду скупа геопросторних података \textit{OpenStreetMap}. Обрада се извршава на \textit{HDFS}-у имплементираном од стране \textit{AWS}-а, сервису \textit{EMR}. За обраду података се користе \textit{Apache Spark} и програмски језик Скала. Намена апликације је да филтрира геопросторне податке тако што ће за сваку државу европе издвојити локације здравствених објеката, хотела, хостела, барова, ресторана и других битних туристичких локација које се унутар ње налазе, да би се те локације касније приказале на географској мапи. За приказ локација на географској мапи се користи језик \textit{JavaScript} и библиотека \textit{Leaflet}.
 
-Постоји неколико начина на које се апликација може унапредити. На пример, поред филтрирања локација по државама, филтрирање се може извршити и по регијама држава или градовима. Такође, могуће је и пратити тренутну локацију корисника и на основу ње приказивати филтриране локације. Да би подаци увек били ажурни потребно је направити аутоматизован систем који ће реаговати на објављивање сваке нове верзије \textit{OpenStreetMap} скупа и поново га филтрирати.
+Апликацијом је постигнут жељени резултат, иако перформансе нису задовољавајуће. Време извршавања \textit{Spark} апликације је дуже од иницијално очекиваног. Разлог томе може бити велики број \textit{Shuffle} операција, што значи да апликација троши много времена у пребацивању података између машина које врше обраду. Такође, због перформанси је смањен број понуђених опција за жељене локације и у конструисаној апликацији их има десет, мање од иницијално жељеног броја. Изостављене су локације попут религијских објеката, музеја и других туристичких атракција.
+
+Постоји неколико начина на које се апликација може унапредити. На пример, поред филтрирања локација по државама, филтрирање се може извршити и по регијама држава или градовима. Такође, могуће је и пратити тренутну локацију корисника и на основу ње приказивати филтриране локације. Да би подаци увек били ажурни потребно је направити аутоматизован систем који ће реаговати на објављивање сваке нове верзије \textit{OpenStreetMap} скупа и поново га филтрирати. Такође, потребно је истражити да ли је могуће унапређење перформанси коришћењем других технологија за дистрибуирану обраду података уместо \textit{Spark}-а, попут  \textit{Apache Sedona}-е \cite{apache_sedona}.
+
+% jos stvari: vise filtera i vise drzava ali zbog performansi smanjeno
 
 % potencijalne nadogradnje:
 % napraviti da radi za posebne gradove/regije/pokrajne
@@ -2035,7 +2415,7 @@ dobijeni rezultati aplikacije, prikaz nekih selekcija itd
 % napraviti pipeline koji skuplja nove OSM podatke kada stignu i pravi nove rezultate od toga
 % da se doda lokacija pa da na osnovu toga izbacuje
 
-% ------------------------------------------------------------------------------
+% na svoju sezonsku, R desno mesto 7 ------------------------------------------------------------------------------
 % Literatura
 % ------------------------------------------------------------------------------
 \literatura
@@ -2048,7 +2428,7 @@ dobijeni rezultati aplikacije, prikaz nekih selekcija itd
 % ------------------------------------------------------------------------------
 % Biografija kandidata
 \begin{biografija}
-\textbf{Давид Гавриловић}, рођен је 29.10.1996. у Чачку. Смер Информатика на Математичком факултету Универзитета у Београду је уписао 2015. године, а завршио 2019. Након тога је на истом факултету уписао мастер студије информатике. У новембру 2020. године је почео са радом у компанији \textit{Grid Dynamics} и од тад ради као \textit{Data Engineer}. Тренутно ради у тиму који развија и одржава инфраструктуру и сервисе које користе \textit{data science} и \textit{data analyst} тимови. Интересује се за обраду великих података, машинско учење и рад са геопростормин подацима.
+\textbf{Давид Гавриловић}, рођен је 29.10.1996. у Чачку. Смер Информатика на Математичком факултету Универзитета у Београду је уписао 2015. године, а завршио 2019. Након тога је на истом факултету уписао мастер студије информатике. У новембру 2020. године је почео са радом у компанији \textit{Grid Dynamics} и од тад ради као \textit{Data Engineer}. Тренутно ради у тиму који развија и одржава инфраструктуру и сервисе које користе \textit{data science} и \textit{data analyst} тимови. Интересује се за обраду великих података, машинско учење и рад са геопросторним подацима.
 \end{biografija}
 % ------------------------------------------------------------------------------
 
