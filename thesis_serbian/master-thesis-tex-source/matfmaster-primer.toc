@@ -1,7 +1,7 @@
 \babel@toc {serbianc}{}\relax 
 \contentsline {chapter}{\chapternumberline {1}Увод}{1}{chapter.1}%
 \contentsline {chapter}{\chapternumberline {2}Програмски језик Скала}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Особине језика \textit {Scala}}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.1}Особине језика Скала}{3}{section.2.1}%
 \contentsline {subsection}{Објектно оријентисан и функционалан језик}{3}{section*.2}%
 \contentsline {subsection}{Повезаност са језиком Јава}{4}{section*.3}%
 \contentsline {subsection}{Статичка типизираност}{5}{section*.4}%
