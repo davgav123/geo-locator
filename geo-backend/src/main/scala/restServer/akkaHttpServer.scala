@@ -45,7 +45,7 @@ object akkaHttpServer {
 
     val bindingFuture = Http().newServerAt("localhost", 8080).bind(route)
 
-    println(s"Server now online\nPress RETURN to stop...")
+    println(s"Server is now online\nPress RETURN to stop...")
     StdIn.readLine()
     bindingFuture
       .flatMap(_.unbind())
@@ -57,15 +57,12 @@ object akkaHttpServer {
 
   def readData(spark: SparkSession, country: String, cond: String): Array[Array[Double]] = {
     val dataPath = "/path/to/data/dir/"
-    val countryFilePath = dataPath + s"$country-$cond"
+    val countryFilePath = dataPath + s"country=$country/condition=$cond"
 
-    val parq_data = spark.read.parquet(countryFilePath)
-    parq_data.show(20, truncate=false)
-
-      val data = parq_data
+    spark
+      .read
+      .parquet(countryFilePath)
       .collect()
       .map(row => Array(row(0).asInstanceOf[Double], row(1).asInstanceOf[Double]))
-
-    data
   }
 }
