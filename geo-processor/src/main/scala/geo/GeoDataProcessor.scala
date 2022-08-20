@@ -12,7 +12,7 @@ object GeoDataProcessor {
   def processGeoData(spark: SparkSession, pathToDataFile: String, pathToOutFile: String): Unit = {
     val mapped = mapCoordinatesToCountry(spark, pathToDataFile)
 
-    applyFilters(mapped)
+    applyFilters(spark, mapped)
       .select(
         col("latitude"),
         col("longitude"),
@@ -26,11 +26,13 @@ object GeoDataProcessor {
   }
 
   def mapCoordinatesToCountry(spark: SparkSession, countryFilePath: String): DataFrame = {
-    val iterableBorders = makeBordersIterable(prepareBorderData(spark))
+    val iterableBorders = spark.sparkContext.broadcast(
+      makeBordersIterable(prepareBorderData(spark))
+    )
 
     val belongsToCountryFunction: (Double, Double) => String = (lat: Double, lon: Double) => {
       var belongs_to = "-"
-      for ((country, borders) <- iterableBorders) {
+      for ((country, borders) <- iterableBorders.value) {
         if (isInsideBorder(lat, lon, borders)) {
           belongs_to = country
         }
@@ -52,6 +54,7 @@ object GeoDataProcessor {
 
     osmData
       .filter(col("country") =!= lit("-"))
+      .repartition(col("country"))
   }
 
   private def prepareBorderData(spark: SparkSession): DataFrame = {
@@ -143,13 +146,13 @@ object GeoDataProcessor {
 
   def getEuropeanCountries: Array[String] = {
     Array(
-      "russia", "germany", "united kingdom", "france", "italy", "spain", "ukraine",
+      "germany", "united kingdom", "france", "italy", "spain", "ukraine",
       "poland", "romania", "netherlands", "belgium", "czechia", "greece", "portugal",
       "sweden", "hungary", "belarus", "austria", "serbia", "switzerland", "bulgaria",
       "denmark", "finland", "slovakia", "norway", "ireland", "croatia", "moldova",
       "bosnia and herzegovina", "albania", "lithuania", "north macedonia", "slovenia",
       "latvia", "estonia", "montenegro", "luxembourg", "malta", "iceland", "andorra",
-      "monaco", "liechtenstein", "san marino", "vatican"
+      "monaco", "liechtenstein", "san marino"
     )
   }
 
@@ -168,15 +171,16 @@ object GeoDataProcessor {
       .where(size(col("tags")) =!= 0)
   }
 
-  def applyFilters(countryDF: DataFrame): DataFrame = {
-    val filterTagValues: Array[String] => String = (tagValues: Array[String]) => {
-      val conditions = Set(
+  def applyFilters(spark: SparkSession, countryDF: DataFrame): DataFrame = {
+    val conditions = spark.sparkContext.broadcast(
+      Set(
         "hospital", "pharmacy", "hotel",
         "hostel", "bar", "cafe", "pub",
         "nightclub", "restaurant", "parking"
-      )
+    ))
 
-      val intersection = tagValues.toSet.intersect(conditions)
+    val filterTagValues: Array[String] => String = (tagValues: Array[String]) => {
+      val intersection = tagValues.toSet.intersect(conditions.value)
       if (intersection.isEmpty) {
         "x"
       } else {
