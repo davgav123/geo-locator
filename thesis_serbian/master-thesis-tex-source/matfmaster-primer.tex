@@ -74,7 +74,8 @@
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
-    tabsize=2
+    tabsize=2,
+    basicstyle=\small
 }
 
 \lstset{style=mystyle}
@@ -99,7 +100,7 @@
 % Ime i afilijacija četvrtog člana komisije (opciono)
 % \komisijaD{}
 % Datum odbrane (obrisati ili iskomentarisati narednu liniju ako datum odbrane nije poznat)
-\datumodbrane{10. јун 2022.}
+\datumodbrane{септембар 2022.}
 
 % Apstrakt na srpskom jeziku (u odabranom pismu)
 \apstr{%
@@ -107,7 +108,7 @@
 }
 
 % Ključne reči na srpskom jeziku (u odabranom pismu)
-\kljucnereci{програмски језик \textit{Scala}, дистрибуирана обрада података, \textit{Hadoop}, \textit{Apache Spark}, геопросторни подаци, \textit{OpenStreetMap}}
+\kljucnereci{програмски језик Скала, дистрибуирана обрада података, \textit{Hadoop}, \textit{Apache Spark}, геопросторни подаци, \textit{OpenStreetMap}}
 
 \begin{document}
 % ==============================================================================
@@ -119,7 +120,7 @@
 % Strana sa podacima o mentoru i članovima komisije
 \komisija
 % Strana sa posvetom (u odabranom pismu)
-\posveta{некоме}
+%\posveta{некоме}
 % Strana sa podacima o disertaciji na srpskom jeziku
 \apstrakt
 % Sadržaj teze
@@ -138,9 +139,9 @@
 
 Један од примера велике количине података су геопросторни подаци. То су подаци који представљају локације на географској мапи и њихов опис. Могу се користити за конструкцију географских мапа, лоцирање разних објеката на мапи, одређивање оптималних линија градског превоза и друго. Пример јавно доступног скупа геопросторних података је \textit{OpenStreetMap} који садржи локације одређене географском дужином и ширином као и информације о томе шта се на локацијама налази (аутобуска станица, пешачки прелаз, црква, ресторан и слично).
 
-Циљ рада је израда апликације која користи Скалу, алат \textit{Apache Spark} и дистрибуирани систем \textit{HDFS} за обраду геопросторних података. Коришћени геопросторни подаци припадају \textit{OpenStreetMap} скупу. Функција апликације је да филтрира податке и да за сваку локацију из скупа која представља туристички битан податак (хотел, хостел, ресторан, паб, болницу и слично) одреди којој држави припада. Филтрирани подаци се касније приказују на географској мапи света.
+Циљ рада је израда \textit{geo-locator} апликације. Њена функција је да филтрира геопросторне податке и да за сваку локацију која представља туристички битан податак (хотел, хостел, ресторан, паб, болницу и слично) одреди којој држави припада. Филтрирани подаци се касније приказују на географској мапи света. Коришћени подаци припадају \textit{OpenStreetMap} скупу и обрађују се на дистрибуиран начин коришћењем програмског језика Скала и алата \textit{Apache Spark}.
 
-Апликација је израђена у програмском језику Скала, па су у поглављу \ref{chp:scala} описани њени основни концепти. Такође, Скала је заступљена у алатима за дистрибуирану обраду података. У поглављу \ref{chp:dist_sis}, је приказан опис дистрибуираних система као и мотивација за њихово постојање. У истом поглављу су описани структура, начин рада и компоненте дистрибуираног система \textit{HDFS}. Приказан је и начин рада, али и недостаци \textit{MapReduce}-а, прве парадигме за дистрибуирану обраду података. Опис алата \textit{Apache Spark} и приказ његовог начина функционисања, архитектуре и компоненти се налази у поглављу \ref{chp:spark}, док се детаљнији опис \textit{OpenStreetMap} скупа и његових елемената налази у поглављу \ref{chp:osm}. Опис апликације, њене компоненте и технологије које се користе у њеној изради су приказане у поглављу \ref{chp:app}. У последњем поглављу се налази закључак, у коме се налазе коментари о раду и апликацији, као и могућа унапређења.
+Апликација је израђена у програмском језику Скала, па су у поглављу \ref{chp:scala} описани њени основни концепти. Такође, Скала је заступљена у алатима за дистрибуирану обраду података. У поглављу \ref{chp:dist_sis} је приказан опис дистрибуираних система као и мотивација за њихово постојање. У истом поглављу су описани структура, начин рада и компоненте дистрибуираног система \textit{HDFS}. Приказан је и начин рада, али и недостаци \textit{MapReduce}-а, прве парадигме за дистрибуирану обраду података. Опис алата \textit{Apache Spark} и приказ његовог начина функционисања, архитектуре и компоненти се налази у поглављу \ref{chp:spark}, док се детаљнији опис \textit{OpenStreetMap} скупа и његових елемената налази у поглављу \ref{chp:osm}. Опис апликације, њене компоненте и технологије које се користе у њеној изради су приказане у поглављу \ref{chp:app}. У последњем поглављу се налази закључак, у коме се налазе коментари о раду и апликацији, као и могућа унапређења.
 
 %У овом раду је приказан опис дистрибуираних система, мотивација за њихово постојање и њихова организација. Такође је урађено и поређење између система који се састоје од једне машине и система који чини више машина. Детаљно су описани 
 %
@@ -183,7 +184,6 @@
 Један од многих примера како Скала смањује број линија у односу на Јаву је приказан у кодовима \ref{lst:scala_java_class_declaration} и \ref{lst:scala_scala_class_declaration} који представљају начине декларисања класе у та два програмска језика. У Скали се не мора декларисати конструктор, што доводи до смањења броја линија кода.
 
 \begin{lstlisting}[caption={Декларација класе у језику Јава}, language=Java, label={lst:scala_java_class_declaration}]
-// Java
 class MyClass {  
   private int index;
   private String name;
@@ -195,7 +195,6 @@ class MyClass {
 \end{lstlisting}
 
 \begin{lstlisting}[caption={Декларација класе у језику Скала}, language=Scala, label={lst:scala_scala_class_declaration}]
-// Scala
 class MyClass(index: Int, name: String)
 
 \end{lstlisting}
@@ -209,7 +208,7 @@ class MyClass(index: Int, name: String)
 
 Скала није само статички типизиран језик већ је и језик који аутоматски закључује типове у току компилације. На пример, када се декларише нека променљива целобројног типа, нема потребе назначити и њен тип, пошто га компајлер може аутоматски одредити. То значи да се следеће две линије кода (пример \ref{lst:scala_scala_type_declaration}) понашају еквивалентно. Исто важи и за било који други Скала тип, не само за целобројни.
 
-\begin{lstlisting}[caption={Декларација променљиве са и без експлицитног навођења типа}, language=Scala, label={lst:scala_scala_type_declaration}]
+\begin{lstlisting}[caption={Декларација променљиве са и без експлицитног навођења типа}, language=Scala, label={lst:scala_scala_type_declaration}, basicstyle=\small]
 // primer 1
 val x: Int = 10
 // primer 2
@@ -223,7 +222,7 @@ val x = 10
 
 Скала је језик који се може интерпретирати. Да би се покренуо Скала интерпретер потребно је покренути команду Скала.
 
-\begin{lstlisting}[language=Scala, caption={Скала интерпретер}, label={lst:scala_scala_interpreter_example}]
+\begin{lstlisting}[language=Scala, caption={Скала интерпретер}, label={lst:scala_scala_interpreter_example}, basicstyle=\small]
 $ scala
 Welcome to Scala 2.13.6
 Type in expressions for evaluation. Or try :help.
@@ -233,12 +232,12 @@ scala>
 
 Након што се унесе к\^{о}д у интерпретер и притисне ентер, покреће се извршавање написаног кода и излаз се приказује у конзоли.
 
-\begin{lstlisting}[language=Scala, caption={Пример извршавања кода у интерпретеру}, label={lst:scala_interpreter_code_example}]
+\begin{lstlisting}[language=Scala, caption={Пример извршавања кода у интерпретеру}, label={lst:scala_interpreter_code_example}, basicstyle=\small]
 scala> 20 + 100
 val res0: Int = 120
 \end{lstlisting}
 
-Излаз покренуте команде је аутоматски генерисана променљива названа \textbf{res0} типа \textit{Int} у којој ће се налазити резултат унетог израчунавања. Новонастала променљива се може користити у наставку извршавања.
+Излаз покренуте команде је аутоматски генерисана променљива названа \textit{res0} типа \textit{Int} у којој ће се налазити резултат унетог израчунавања. Новонастала променљива се може користити у наставку извршавања.
 
 %\begin{lstlisting}[language=Scala, caption={Коришћење резултатских променљивих}, label={lst:scala_res0_example}]
 %scala> res0 + 100
@@ -271,7 +270,7 @@ val res0: Int = 120
 
 У наставку (примери \ref{lst:scala_val_reassignment}, \ref{lst:scala_var_values} и \ref{lst:scala_type_missmach}) су приказани примери дeфиниција променљивих у Скала интерпретеру.
 
-\begin{lstlisting}[language=Scala, caption={Додељивање нове вредности \textit{val} променљивима}, label={lst:scala_val_reassignment}]
+\begin{lstlisting}[language=Scala, caption={Додељивање нове вредности \textit{val} променљивима}, label={lst:scala_val_reassignment}, basicstyle=\small]
 scala> val x = 10
 val x: Int = 10
 
@@ -280,7 +279,7 @@ scala> x = 20
        error: reassignment to val
 \end{lstlisting}
 
-\begin{lstlisting}[language=Scala, caption={Додељивање нове вредности \textit{var} променљивима}, label={lst:scala_var_values}]
+\begin{lstlisting}[language=Scala, caption={Додељивање нове вредности \textit{var} променљивима}, label={lst:scala_var_values}, basicstyle=\small]
 scala> var x = 10
 var x: Int = 10
 
@@ -291,7 +290,7 @@ val res0: Int = 20
 
 \end{lstlisting}
 
-\begin{lstlisting}[language=Scala, caption={Додељивање некомпатибилног типа}, label={lst:scala_type_missmach}]
+\begin{lstlisting}[language=Scala, caption={Додељивање некомпатибилног типа}, label={lst:scala_type_missmach}, basicstyle=\small]
 scala> var x = 10
 var x: Int = 10
 
@@ -333,7 +332,7 @@ scala> x = "some string"
 
 Скала делом припада функционалној парадигми па су стога функције веома битан део језика. Функција се дефинише кључном речи \textit{def} након које редом следе име функције, опциона листа њених аргумената са њиховим типовима раздвојених зарезом, тип повратне вредности функције, знак $=$ и на крају тело функције. Пример синтаксе је приказан у коду \ref{lst:scala_function_template}.
 
-\begin{lstlisting}[language=Scala, caption={Дефиниција фунције у Скали}, label={lst:scala_function_template}]
+\begin{lstlisting}[language=Scala, caption={Дефиниција фунције у Скали}, label={lst:scala_function_template}, basicstyle=\small]
 def imeFunkcije(argument1: tip1, ...): povratni_tip = {
   // telo funkcije
 }
@@ -342,7 +341,7 @@ def imeFunkcije(argument1: tip1, ...): povratni_tip = {
 
 У коду \ref{lst:scala_function_add_example} је приказана функција која сабира два целобројна броја и враћа добијени резултат. 
 
-\begin{lstlisting}[language=Scala, caption={Дефиниција функције која сабира два целобројна броја}, label={lst:scala_function_add_example}]
+\begin{lstlisting}[language=Scala, caption={Дефиниција функције која сабира два целобројна броја}, label={lst:scala_function_add_example}, basicstyle=\small]
 def saberi(x: Int, y: Int): Int = {
   x + y
 }
@@ -350,7 +349,7 @@ def saberi(x: Int, y: Int): Int = {
 
 Последња линија тела функције ће увек бити њена повратна вредност али се поред тога она може назначити и наредбом \textit{return}. Уколико се функција састоји од само једне линије кода, могу се изоставити витичасте заграде које означавају почетак и крај тела фунције. Поред тога, због закључивања типова се може изоставити и тип повратне вредности. Дакле, функција \textit{saberi} из претходног примера се краће може записати на следећи начин:
 
-\begin{lstlisting}[language=Scala, caption={Краћи запис функције \textit{saberi}}, label={lst:scala_function_add_example_simplified}]
+\begin{lstlisting}[language=Scala, caption={Краћи запис функције \textit{saberi}}, label={lst:scala_function_add_example_simplified}, basicstyle=\small]
 scala> def saberi(x: Int, y: Int) = x + y
 def saberi(x: Int, y: Int): Int
 
@@ -362,13 +361,13 @@ val res0: Int = 42
 
 Све функције су вредности првог реда у Скали па имају и свој тип. Тип функције је представљен заградама у којима се налазе типови њених аргумената након којих следи знак $=>$ праћен типом повратне вредности. Тип функције \textit{saberi} која поседује два аргумента типа \textit{Int}, као и исти повратни тип ће бити:
 
-\begin{lstlisting}[language=Scala, caption={Тип функције \textit{saberi}}, label={lst:scala_function_add_example_type}]
+\begin{lstlisting}[language=Scala, caption={Тип функције \textit{saberi}}, label={lst:scala_function_add_example_type}, basicstyle=\small]
 (Int, Int) => Int
 \end{lstlisting}
 
 Експлицитно навођење типова дозвољава декларацију функција вишег реда, функција које као аргументе имају друге функције. Пример \ref{lst:scala_function_high_order_example} приказује функцију која као аргумент има функцију која има два аргумента и повратну вредност типа \textit{Int}.
 
-\begin{lstlisting}[language=Scala, caption={Функција вишег реда}, label={lst:scala_function_high_order_example}]
+\begin{lstlisting}[language=Scala, caption={Функција вишег реда}, label={lst:scala_function_high_order_example}, basicstyle=\small]
 scala> def visiRed(f: (Int, Int) => Int, x: Int, y: Int) = {
   f(x, y)
 }
@@ -377,7 +376,7 @@ def visiRed(f: (Int, Int) => Int, x: Int, y: Int): Int
 
 Тип овог аргумента одговара типу функције \textit{saberi}, па се она може проследити новонаписаној функцији.
 
-\begin{lstlisting}[language=Scala, caption={Прослеђивање функције функцији}, label={lst:scala_function_add_high_order}]
+\begin{lstlisting}[language=Scala, caption={Прослеђивање функције функцији}, label={lst:scala_function_add_high_order}, basicstyle=\small]
 scala> visiRed(saberi, 100, 200)
 val res0: Int = 300
 \end{lstlisting}
@@ -408,7 +407,7 @@ val res0: Int = 300
 
 Као и у Јави, у Скали класа представља нацрт преко ког се производе објекти. Да би се од класе креирао објекат, користи се кључна реч \textit{new}. У коду \ref{lst:scala_oop_class_instance} је приказан  пример дефиниције и инстанцирања класе (напомена: усправна линија у Скала интерпретеру представља нови ред док ознака $@$ праћена знаковима након назива класе представља инстанцу класе у меморији).
 
-\begin{lstlisting}[language=Scala, caption={Дефиниција и инстанцирање класе у Скали}, label={lst:scala_oop_class_instance}]
+\begin{lstlisting}[language=Scala, caption={Дефиниција и инстанцирање класе у Скали}, label={lst:scala_oop_class_instance}, basicstyle=\small]
 scala> class MyClass {
      | }
 
@@ -418,7 +417,7 @@ val mc: MyClass = MyClass@e700eba
 
 Унутар класе се дефинишу поља (енг. \textit{fields}) и методе (енг. \textit{methods}), који се заједно једним именом називају чланови (енг. \textit{members}) \cite{scala_prog}. Поља су променљиве које се дефинишу са \textit{val} или \textit{var} док су методи функције које описују неко понашање и дефинишу се на исти начин као и обичне функције.
 
-\begin{lstlisting}[language=Scala, caption={Чланови класе}, label={lst:scala_oop_members_class}]
+\begin{lstlisting}[language=Scala, caption={Чланови класе}, label={lst:scala_oop_members_class}, basicstyle=\small]
 scala> class MyClass {
      |  val field = 0
      |  def method() = print(field)
@@ -444,7 +443,7 @@ scala> mc.method()
 
 Пример \textit{private} приступа је приказан у коду \ref{lst:scala_oop_private_access}. Сваки покушај приступа приватној променљивој ван класе ће резултовати грешком.
 
-\begin{lstlisting}[language=Scala, caption={Пример \textit{private} правила приступа}, label={lst:scala_oop_private_access}]
+\begin{lstlisting}[language=Scala, caption={Пример правила приступа \textit{private}}, label={lst:scala_oop_private_access}, basicstyle=\small]
 scala> class MyClass {
      |  private val field = 0
      |  def method() = print(field)
@@ -461,7 +460,7 @@ class MyClass
 
 Поља се могу дефинисати ван тела класе, што је и Скалин стандард (к\^{о}д \ref{lst:scala_oop_field_outside}). Због тога се класа може написати уз помоћ мањег броја линија. 
 
-\begin{lstlisting}[language=Scala, caption={Дефиниција поља ван тела класе}, label={lst:scala_oop_field_outside}]
+\begin{lstlisting}[language=Scala, caption={Дефиниција поља ван тела класе}, label={lst:scala_oop_field_outside}, basicstyle=\small]
 scala> class MyClass(private val field: Int = 0) {
      |    def method() = print(field)
      |  }
@@ -473,7 +472,7 @@ scala> class MyClass(private val field: Int = 0) {
 
 У претходном примеру, поље \textit{field} поседује подразумевану вредност која ђе се том пољу увек доделити приликом инстанцирања класе \cite{scala_prog}. Међутим, она се не мора навести и, уколико је то случај, пољима се мора експлицитно доделити вредност приликом инстанцирања. Пример је приказан у коду \ref{lst:scala_oop_field_explicit}.
 
-\begin{lstlisting}[language=Scala, caption={Инстанцирање класе без подразумеваних вредности поља}, label={lst:scala_oop_field_explicit}]
+\begin{lstlisting}[language=Scala, caption={Инстанцирање класе без подразумеваних вредности поља}, label={lst:scala_oop_field_explicit}, basicstyle=\small]
 scala> class MyClass(private val field: Int) {
      |    def method() = print(field)
      |  }
@@ -492,7 +491,7 @@ val mc: MyClass = MyClass@7d332e20
 
 Наслеђивање се извршава на исти начин као у Јави, преко кључне речи \textit{extends} \cite{scala_prog}. Инстанцирање поља надкласе из подкласе се дефинише у самој дефиницији наслеђивања, након \textit{extends} (Пример \ref{lst:scala_oop_extends_example}).
 
-\begin{lstlisting}[language=Scala, caption={Наслеђивање у Скали}, label={lst:scala_oop_extends_example}]
+\begin{lstlisting}[language=Scala, caption={Наслеђивање у Скали}, label={lst:scala_oop_extends_example}, basicstyle=\small]
 // nadklasa
 scala> class MyClass(private val field: Int) {
      |    def method() = print(field)
@@ -517,7 +516,7 @@ class MyExtendedClass
 
 Апстрактне класе се дефинишу коришћењем кључне речи \textit{abstract} која се наводи пре речи \textit{class} која означава класу, на исти начин као у Јави \cite{scala_prog}. Апстрактне класе се не могу инстанцирати, али се могу наследити од стране других класа.
 
-\begin{lstlisting}[language=Scala, caption={Апстрактна класа у Скали}, label={lst:scala_oop_abstract_class_example}]
+\begin{lstlisting}[language=Scala, caption={Апстрактна класа у Скали}, label={lst:scala_oop_abstract_class_example}, basicstyle=\small]
 scala> abstract class MyAbstractClass {
      | }
 class MyAbstractClass
@@ -538,7 +537,7 @@ class MyAbstractClass
 
 За разлику од Јаве, у Скали не постоје статичка поља. Уместо тога постоје синглтон објекти (енг. \textit{singleton object}) \cite{scala_prog}. Дефинишу се на исти начин као и класе, с тим што се користи кључна реч \textit{object} уместо \textit{class}. Добили су име по томе што представљају класу која има тачно једну инстанцу. Сви чланови објекта се могу посматрати као статички чланови у Јава класи.
 
-\begin{lstlisting}[language=Scala, caption={Коришћење синглтон објекта}, label={lst:scala_oop_object_example}]
+\begin{lstlisting}[language=Scala, caption={Коришћење синглтон објекта}, label={lst:scala_oop_object_example}, basicstyle=\small]
 scala> object MyObject {
      |   def hello() = print("Hello from object")
      | }
@@ -571,7 +570,7 @@ Hello from object
 
 Да би се Скала апликација покренула потребно је дефинисати објекат који у себи садржи \textit{main()} метод \cite{scala_prog}. Тај метод представља улазну тачку у сваку Скала апликацију.
 
-\begin{lstlisting}[language=Scala, caption={Пример метода \textit{main}}, label={lst:scala_oop_main_method}]
+\begin{lstlisting}[language=Scala, caption={Пример метода \textit{main}}, label={lst:scala_oop_main_method}, basicstyle=\small]
 scala> object Main {
      |  def main(args: Array[String]): Unit = {
      |      print("Hello")
@@ -586,7 +585,7 @@ scala> object Main {
 
 Унутар \textit{trait}-а се декларишу и дефинишу поља и методи које класе које га имплементирају могу користити.
 
-\begin{lstlisting}[language=Scala, caption={Скала \textit{trait}}, label={lst:scala_oop_trait_example}]
+\begin{lstlisting}[language=Scala, caption={Скала \textit{trait}}, label={lst:scala_oop_trait_example}, basicstyle=\small]
 scala> trait MyTrait {
      |   def myMethod(): Unit
      |   val x: Int = 10
@@ -596,7 +595,7 @@ trait MyTrait
 
 \noindent \textit{Trait} се додаје класи на исти начин као када се означава наследство, помоћу речи \textit{extends}. 
 
-\begin{lstlisting}[language=Scala, caption={Додавање \textit{trait}-а класи}, label={lst:scala_oop_traits_extends_example}]
+\begin{lstlisting}[language=Scala, caption={Додавање \textit{trait}-а класи}, label={lst:scala_oop_traits_extends_example}, basicstyle=\small]
 scala> class MyClass extends MyTrait
 class MyClass
 
@@ -609,7 +608,7 @@ val res0: Int = 10
 
 Уколико класа којој се додељује \textit{trait} већ наслеђује неку класу или неки други \textit{trait}, додељивање се мора извршити преко кључне речи \textit{with} \cite{scala_prog}. Сваки нови \textit{trait} који се додаје у овом случају се мора додати након нове речи \textit{with}. Примери су приказани у коду \ref{lst:scala_oop_extends_traits_with}.
 
-\begin{lstlisting}[language=Scala, caption={Наслеђивање више \textit{trait}-ова}, label={lst:scala_oop_extends_traits_with}]
+\begin{lstlisting}[language=Scala, caption={Наслеђивање више \textit{trait}-ова}, label={lst:scala_oop_extends_traits_with}, basicstyle=\small]
 scala> class MyExtendedClass extends MyClass with MyTrait1 with MyTrait2
 class MyExtendedClass
 
@@ -619,7 +618,7 @@ class MyExtendedTraits
 
 Скала \textit{trait} се може користити и као тип, а вредност променљиве тог типа мора бити класа која наслеђује тај \textit{trait}.
 
-\begin{lstlisting}[language=Scala, caption={\textit{Trait} као тип}, label={lst:scala_oop_traits_types}]
+\begin{lstlisting}[language=Scala, caption={\textit{Trait} као тип}, label={lst:scala_oop_traits_types}, basicstyle=\small]
 scala> trait MyTrait
 trait MyTrait
 
@@ -680,7 +679,7 @@ val mc: MyTrait = MyClass@339cedbb
 
 Скала низ (енг. \textit{array}) је мутабилна структура која представља низ података \cite{scala_prog}. Мутабилна је у смислу да се вредности елемената у низу могу мењати, док је број елемената фиксиран. Сваки низ садржи елементе истог типа и може се креирати навођењем иницијалних елемената или његове дужине. Уколико се наведе дужина, сви елементи ће бити иницијализовани на подразумевану вредност жељеног типа.
 
-\begin{lstlisting}[language=Scala, caption={Инстанцирање низа у Скали}, label={lst:scala_coll_array_example}]
+\begin{lstlisting}[language=Scala, caption={Инстанцирање низа у Скали}, label={lst:scala_coll_array_example}, basicstyle=\small]
 scala> val a1 = Array(1, 2, 3)
 val a1: Array[Int] = Array(1, 2, 3)
 
@@ -692,7 +691,7 @@ val a2: Array[Int] = Array(0, 0, 0)
 
 Елементу низа се приступа слично као у Јави, са тим што се уместо угластих заграда користе обичне. На сличан начин се извршава и измена једног елемента.
 
-\begin{lstlisting}[language=Scala, caption={Приступ и измена елемента низа}, label={lst:scala_coll_array_get_set}]
+\begin{lstlisting}[language=Scala, caption={Приступ и измена елемента низа}, label={lst:scala_coll_array_get_set}, basicstyle=\small]
 scala> val a = Array(1, 2, 3)
 val a: Array[Int] = Array(1, 2, 3)
 
@@ -712,7 +711,7 @@ val res1: Array[Int] = Array(100, 2, 3)
 
 Инстанцира се навођењем елемената. Приступ елементу листе се извршава на исти начин као и у случају низа. Пошто су листе имутабилне, измена вредности елемената није дозвољена.
 
-\begin{lstlisting}[language=Scala, caption={Пример листе у Скали}, label={lst:scala_coll_lists_example}]
+\begin{lstlisting}[language=Scala, caption={Пример листе у Скали}, label={lst:scala_coll_lists_example}, basicstyle=\small]
 scala> val l = List("a", "b", "c")
 val l: List[String] = List(a, b, c)
 
@@ -763,7 +762,7 @@ scala> l(0) = "try"
 
 Имутабилна колекција која садржи елементе различитог типа се назива \textit{n}-торка (енг. \textit{Tuple}) \cite{scala_prog}. Ова структура података се може користити када је потребно вратити више различитих вредности функције. \textit{Tuple} се инстанцира навођењем елемената између заграда. Елементу се приступа оператором \_Х где је \textit{Х} редни број елемента унутар \textit{n}-торке.
 
-\begin{lstlisting}[language=Scala, caption={Пример \textit{N}-торке у Скали}, label={lst:scala_coll_tuple_example}]
+\begin{lstlisting}[language=Scala, caption={Пример \textit{N}-торке у Скали}, label={lst:scala_coll_tuple_example}, basicstyle=\small]
 scala> val t = (1, "string123", Array(1, 2, 3))
 val t: (Int, String, Array[Int]) = (1,string123,Array(1, 2, 3))
 
@@ -781,7 +780,7 @@ val res1: Array[Int] = Array(1, 2, 3)
 
 Дефинишу се навођењем низа кључ-вредност парова, раздвојених знаком $\rightarrow$. Сви кључеви и све вредности међусобно морају бити истог типа. Приступ вредностима се врши преко назива кључа, методом $()$.
 
-\begin{lstlisting}[language=Scala, caption={Пример мапе у Скали}, label={lst:scala_app_maps_example}]
+\begin{lstlisting}[language=Scala, caption={Пример мапе у Скали}, label={lst:scala_app_maps_example}, basicstyle=\small]
 scala> val m1 = Map("k1" -> "v1", "k2" -> "v2")
 val m1: scala.collection.Map[String,String] = Map(k1 -> v1, k2 -> v2)
 
@@ -794,7 +793,7 @@ val res0: String = v1
 
 \begin{comment}
 
-\begin{lstlisting}[language=Scala, caption={Измена и додавање елемента код мутабилних и имутабилних мапа}, label={lst:scala_coll_maps_mutable_immutable}]
+\begin{lstlisting}[language=Scala, caption={Измена и додавање елемента код мутабилних и имутабилних мапа}, label={lst:scala_coll_maps_mutable_immutable}, basicstyle=\small]
 // mutabilna mapa
 scala> val mutableM = mutable.Map("k1" -> "v1")
 val mutableM: scala.collection.mutable.Map[String,String] = HashMap(k1 -> v1)
@@ -827,7 +826,7 @@ scala> immutableM("k2") = "vred2" // dodavanje elementa
 
 Поклапање образаца (енг. \textit{pattern matching}) је честа карактеристика функционалних језика. Слична је наредби \textit{switch} из Јаве, али нуди више могућности од ње \cite{scala_prog}. Састоји се од селектора, који представља израз или променљиву, кључне речи \textit{match} и низа случајева унутар витичастих заграда. Сваки случај се састоји од знака $=>$ који се налази између вредности са којом се селектор поклапа и кључне речи \textit{case} са леве стране и израза који ће бити резултат поклапања са десне.
 
-\begin{lstlisting}[language=Scala, caption={Поклапање образаца у Скали}, label={lst:scala_coll_patt_match}]
+\begin{lstlisting}[language=Scala, caption={Поклапање образаца у Скали}, label={lst:scala_coll_patt_match}, basicstyle=\small]
 selector match {
 	case value1 => result1
 	case value2 => result2
@@ -848,7 +847,7 @@ selector match {
 
 Поклапање образаца је веома моћан механизам и користи се у великом броју случајева. Један од њих је поклапање константи и приказан је у коду \ref{lst:scala_patt_match_match_const_example}. Поред поклапања константи, поклапање образаца се може користити за поклапање вредности променљивих, поклапање типова или поклапање конструктора.
 
-\begin{lstlisting}[language=Scala, caption={Поклапање константи}, label={lst:scala_patt_match_match_const_example}]
+\begin{lstlisting}[language=Scala, caption={Поклапање константи}, label={lst:scala_patt_match_match_const_example}, basicstyle=\small]
 scala> def describe(x: Any) = x match {
      | case 5 => "five"
      | case "hello" => "hi!"
@@ -864,7 +863,7 @@ val res2: String = something else
 
 У претходном примеру је искоришћена ознака $\_$. Назива се џокер (енг. \textit{wildcard}) и поклапа се са било којом вредности селектора.
 
-\begin{lstlisting}[language=Scala, caption={Џокер у поклапању образаца}, label={lst:scala_patt_match_wildcard}]
+\begin{lstlisting}[language=Scala, caption={Џокер у поклапању образаца}, label={lst:scala_patt_match_wildcard}, basicstyle=\small]
 scala> def describe(x: Int) = x match {
      | case 10 => "x je 10"
      | case _ => "x nije 10"
@@ -1413,7 +1412,7 @@ $$ k_2, list(v_2) \rightarrow reduce(k_2, list(v_2)) \rightarrow (k_3, v_3) $$
 \begin{description} 
 	\item[\textit{select},] конструише нови \textit{DataFrame} са подскупом колона почетног;
 	\item[\textit{filter},] конструише нови \textit{DataFrame} са редовима почетног који задовољавају задати услов;
-	\item[\textit{withColumn},] конструише нови \textit{DataFrame} додавањем колоне на почетни;
+	\item[\textit{withColumn},] конструише нови \textit{DataFrame} додавањем колоне на почетни -- вредности нове колоне се генеришу функцијом која је прослељена као аргумент овој трансформацији;
 		\item[\textit{join},] спаја два \textit{DataFrame}-а у један на основу заједничких вредности колона.
 \end{description}
 
@@ -1425,6 +1424,50 @@ $$ k_2, list(v_2) \rightarrow reduce(k_2, list(v_2)) \rightarrow (k_3, v_3) $$
 \end{figure}
 
 Примери акција \textit{DataFrame}-а су \textit{collect}, која трансформише \textit{DataFrame} у структуру података програмског језика у коме се \textit{Spark} користи и \textit{show}, која се користи за испис \textit{DataFrame}-а на стандардни излаз \cite{spark_guide}. Поред њих постоје и многе друге.
+
+\subsection{Кориснички дефинисане функције}
+\label{subsec:spark_udf_section}
+
+Одређене трансформације као аргумент примају функцију коју користе да би добиле резултате. Једна таква трансформацијa је \textit{withColumn} која генерише нову колону у односу на повратну вредност функције која јој се прослеђује. \textit{Spark} садржи велики број уграђених функција које се могу користити и оне се налазе унутар \textit{org.apache.spark.sql.functions} модула \cite{spark_builtin_func}. Уколико је потребно користити функционалност коју \textit{Spark} нема уграђену, може се користити кориснички дефинисина функција (енг. \textit{user defined function}), скрађено \textit{udf}.
+
+\textit{Udf} је Скала функција која је регистрoвана од стране \textit{Spark}-а наредбом \textit{udf}, којој се прослеђују Скала функција, повратни тип и типови аргумената функције. Пример креирања \textit{udf}-а и његовог коришћења у \textit{withColumn} трансформацији је приказан у коду \ref{lst:spark_udf_usage_example}.
+
+\begin{lstlisting}[caption={Пример коришћења \textit{udf}-а}, language=Scala, label={lst:spark_udf_usage_example}]
+val someFunction: (arg_type1, arg_type2) => ret_type_1 = (x: arg_type_1, y: arg_type_2) => {
+  // function body
+}
+
+val udfRegistered = udf[ret_type_1, arg_type_1, arg_type_2](someFunction)
+
+someDataFrame
+  .withColumn("col_name", udfRegistered(arg1, arg2)) 
+\end{lstlisting}
+
+Честo се дешава да конструисан \textit{udf} користи променљиве које су креиране ван његовог тела, као у коду \ref{lst:spark_udf_broadcast_no}. Овакав приступ није добра пракса због тога што ће се низ \textit{a} слати извршиоцима сваки пут када се ова операција изврши, што може знатно успорити извршавање.
+
+\begin{lstlisting}[caption={Пример коришћења променљиве дефинисане ван тела \textit{udf}-а}, language=Scala, label={lst:spark_udf_broadcast_no}]
+val a: Array[Int] = Array(1, 2, 3, 4, 5)
+
+val checkFunc: (Int) => Boolean = (x: Int) => {
+  a.contains(x)
+}
+
+val udfRegistered = udf[Boolean, Int](checkFunc)
+\end{lstlisting}
+
+Да би се избегло слање података сваки пут, могу се користити \textit{broadcast} променљиве \cite{spark_broadcast}. Оне се кеширају у извршиоцима и увек су доступне, чиме се избегава беспотребно слање података. \textit{Broadcast} променљиве се креирају наредбом \textit{broadcast} објекта \textit{SparkContext} и њиховој вредности се приступа преко кључне речи \textit{value}. Ове променљиве се могу користити само за читање података. У коду  \ref{lst:spark_udf_broadcast_yes} се налази измењен к\^{о}д \ref{lst:spark_udf_broadcast_no} тако да користи \textit{broadcast} променљиву.
+
+\begin{lstlisting}[caption={Пример коришћења \textit{broadcast} променљиве}, language=Scala, label={lst:spark_udf_broadcast_yes}]
+val a: Array[Int] = spark.sparkContext.broadcast(
+  Array(1, 2, 3, 4, 5)
+)
+
+val checkFunc: (Int) => Boolean = (x: Int) => {
+  a.value.contains(x)
+}
+
+val udfRegistered = udf[Boolean, Int](checkFunc)
+\end{lstlisting}
 
 \subsection{Разлика између \textit{DataFrame}-а и \textit{RDD}-ја}
 \label{subsec:spark_df_vs_rdd}
@@ -1465,6 +1508,39 @@ $$ k_2, list(v_2) \rightarrow reduce(k_2, list(v_2)) \rightarrow (k_3, v_3) $$
   \caption{Ток извршавања \textit{Spark DataFrame}-a}
   \label{fig:sprk_ex_plns}
 \end{figure}
+
+\subsection{Измена броја партиција}
+\label{subsec:spark_repartition}
+
+За сваку апстракцију података, \textit{Spark} иницијално креира одређен број партиција које она садржи. На пример, уколико се \textit{DataFrame} креира читањем фајла, број партиција ће бити одређен или бројем партиција у фајлу, уколико фајл формат садржи такву информацију, или параметром \textit{Spark} конфигурације \textit{spark.files.maxPartitionBytes} \cite{spark_conf}, који одређује максималну величину партиције. Подразумевана вредност параметра је 128\textit{MB}. Поред тога, параметар \textit{spark.default.parallelism} \cite{spark_conf} одређује колико партиција ће имати апстракција која је резултат \textit{join} или \textit{reduceByKey} трансформација. \textit{DataFrame} који настаје од \textit{RDD}-ја позивом функције  \textit{spark.createDataFrame} чији су аргументи \textit{RDD} и шема, ће имати исти број партиција као \textit{RDD} од ког настаје.
+
+Број постојећих партиција је битан због тога што се у једном тренутку, на једном извршиоцу, обрађује тачно једна партиција. Уколико је број партиција мањи од броја извршилаца, постојаће извршиоци који неће обрађивати податке, што значи да искоришћеност кластера није добра. Уколико је број партиција велики, извршавање ће се успорити због тежег распоређивања \textit{Spark} задатака. Такође, \textit{shuffle} операције постају доста скупље. 
+
+Из наведених разлога постоје трансформације које мењају број партиција. Те функције су \textit{repartition} и \textit{coalesce}. Друга се користи само у случају када је потребно смањити број трансформација. Предност ове трансформације је избегавање \textit{shuffle} операције, али не гарантује да ће подаци бити подељени подједнако. Са друге стране, \textit{repartition} ће увек применити \textit{shuffle} али податке по партицијама распоређује подједнако. \textit{Repartition} може поделити податке на два начина. Први је прослеђивањем жељеног броја партиција, а други је навођењем жељене колоне \textit{DataFrame}-а по чијим вредностима се извршава партиционисање.
+
+Поред њих, постоји и партиционисање фајла приликом уписа. Извршава се функцијом \textit{partitionBy} којој се наводе колоне по којима се извршава партиционисање. Фајл настао на овај начин групише редове које имају исте вредности у колонама по којима се врши партиционисање у заједничке поддиректоријуме. На пример, уколико \textit{DataFrame} садржи колоне које представљају годину и месец, назване редом \textit{year} и \textit{month} и остале колоне назване \textit{data}, приликом партиционисања при уписивању преко колона \textit{year} и \textit{month} ће настати фајл структура приказана у коду \ref{lst:spark_example_partitionBy_year_month}. Имена и вредности колона по којима се извршава партиционисање се налазе у називима поддиректоријума, док се подаци \textit{data} колона налазе у крајњим фајловима.
+
+\begin{lstlisting}[caption={Пример структуре излазног директоријума који настаје партиционисањем}, language=Scala, label={lst:spark_example_partitionBy_year_month}]
+|-- year=2022
+|   |-- month=12
+|   |   |-- part-00000-file-name.format
+|   |   |-- part-00001-file-name.format
+|   |-- month=11
+|   |   |-- part-00000-file-name.format
+|   |   |-- part-00001-file-name.format
+|   |-- month=etc
+|   |   |--etc
+|-- year=2021
+|   |-- month=12
+|   |   |-- part-00000-file-name.format
+|   |   |-- part-00001-file-name.format
+|   |-- month=11
+|   |   |-- part-00000-file-name.format
+|   |   |-- part-00001-file-name.format
+|   |-- month=etc
+|   |   |--etc
+|-- year=etc
+\end{lstlisting}
 
 \section{Остале компоненте \textit{Spark}-а}
 \label{sec:spark_components}
@@ -1880,6 +1956,9 @@ WHERE {
 \chapter{Опис апликације}
 \label{chp:app}
 
+% TODO: dodaj spark sekcije za UDF i repartition
+% takodje dodaj poseban pasus performanse
+
 У овом поглављу ће детаљно бити описана израђена апликација за дистрибуирану обраду и графички приказ геопросторних података. Опис апликације укључује опис коришћених података, компоненти и технологија. Апликација је названа \textit{geo-locator} и налази се на адреси \textit{https://github.com/davgav123/geo}.
 
 Намена апликације је да филтрира геопросторне податке за државе Европе на такав начин да издвоји одређене битне локације, попут болница, апотека, ресторана и хотела. Издвојене локације за сваку државу се складиште и приказују на захтев корисника. 
@@ -1889,7 +1968,7 @@ WHERE {
 \section{Рачунарство у облаку}
 \label{sec:cloud}
 
-Kako је скуп \textit{OSM} података превелики да би се обрадио локално, у изради апликације је коришћен Облак (енг. \textit{Cloud}). Извршавање на Облаку (енг. \textit{Cloud Computing}) \cite{cloud_computing} представља закупљивање хардвера и софтвера које нуди провајдер, на захтев, преко интернета, где се плаћање извршава по количини искоришћених ресурса. На пример, преко Облака је могуће закупити базу података која ће преко интернета бити доступна одмах и плаћање ће се извршавати док год се та база податка користи. Коришћење услуга Облака је приказано на слици \ref{fig:cloud_comp_example}.
+Kako је скуп \textit{OSM} података превелики да би се обрадио локално, у изради апликације је коришћен облак (енг. \textit{cloud}). Извршавање на oблаку (енг. \textit{cloud computing}) \cite{cloud_computing} представља закупљивање хардвера и софтвера које нуди провајдер, на захтев, преко интернета, где се плаћање извршава по количини искоришћених ресурса. На пример, преко Облака је могуће закупити базу података која ће преко интернета бити доступна одмах и плаћање ће се извршавати док год се та база податка користи. Коришћење услуга Облака је приказано на слици \ref{fig:cloud_comp_example}.
 
 \begin{figure}[!ht]
   \centering
@@ -1909,14 +1988,14 @@ Kako је скуп \textit{OSM} података превелики да би с
 \section{Подаци}
 \label{sec:osm_spark_podaci}
 
-У изради апликације су коришћена два скупа података. Први скуп представља \textit{OSM} податке Европе и у њему се налазе информације о географским локацијама. На вебу се налази на вебсајту \textit{geofabrik.de} \cite{geofabrik}. Изабрани \textit{OSM} скуп података је у \textit{osm.pbf} (енг. \textit{OSM Protocolbuffer Binary Format}) формату \cite{osm_pbf_format}, који је стандард за \textit{OSM} податке. Пошто \textit{Apache Spark} нема уграђену функционалност за читање података у \textit{PBF} формату, подаци се морају пребацити у неки други формат, за који постоји једноставна интеграција са \textit{Spark}-ом. Један од тих формата је формат отвореног кода, дизајниран за брзо читање и уписивање података, \textit{Apache Parquet} \cite{apache_parquet}. Фајл \textit{ОSM PBF} формата се може изменити у \textit{parquet} коришћењем апликације \textit{osm-parquetizer} \cite{osm_parquetizer}. Ова апликације прима \textit{OSM} скуп у \textit{PBF} формату и као резултат има три скупа у \textit{parquet} формату, по један за сваки од \textit{OSM} елемената, чворове, путање и релације. Како су за израду \textit{geo-locator} апликације потребне само локације са описима, које садрже \textit{OSM} чворови, релације и путање се могу одбацити. Укупна величина резултујућег скупа \textit{OSM} чворова који представљају Европу је око 60 гигабајта.
+У изради апликације су коришћена два скупа података. Први скуп представља \textit{OSM} податке Европе и у њему се налазе информације о географским локацијама. Изабрани \textit{OSM} скуп података је у формату \textit{osm.pbf} (енг. \textit{OSM Protocolbuffer Binary Format}) \cite{osm_pbf_format}, који је стандард за \textit{OSM} податке. Пошто \textit{Apache Spark} нема уграђену функционалност за читање података у \textit{PBF} формату, подаци се морају пребацити у неки други формат, за који постоји једноставна интеграција са \textit{Spark}-ом. Један од тих формата је формат отвореног кода, дизајниран за брзо читање и уписивање података, \textit{Apache Parquet} \cite{apache_parquet}. Фајл \textit{ОSM PBF} формата се може изменити у \textit{parquet} коришћењем апликације \textit{osm-parquetizer} \cite{osm_parquetizer}. Ова апликација прима \textit{OSM} скуп у \textit{PBF} формату и као резултат има три фајла у \textit{parquet} формату. Резултујући фајлови представљају одвојено  \textit{OSM} чворове (са \textit{node} суфиксом), путање (са \textit{way} суфиксом) и релације (са \textit{relation} суфиксом) почетног \textit{PBF} фајла. Како су за израду \textit{geo-locator} апликације потребне само локације са описима, које садрже \textit{OSM} чворови, релације и путање се могу одбацити. Укупна величина резултујућег скупа \textit{OSM} чворова који представљају Европу је око 60 гигабајта.
 
 Други скуп, \textit{GeoNames} \cite{geonames} садржи информације о државама света, укључујући њихове границе, популацију, главни град, валуту, позивни број и слично. Границе држава \textit{GeoNames} скупа су представљене полигонима којима су темена локације на географској мапи. Уколико се држава састоји из више целина, на пример острва, границе су представљене мултиполигоном чији су делови полигони који представљају једну целину државе. У супротном, границе су представљене једним полигоном. \textit{GeoNames} скуп се састоји из два фајла. Први, \textit{shapes\_all\_low}, садржи границе држава, док други, \textit{country\_info}, садржи опште информације о државама, уључујући њихово име. Колона која их спаја представља јединствени идентификатор државе и назива се \textit{geoNameId}.
 
 \section{Архитектура апликације}
 \label{sec:app_aphi}
 
-Апликација се састоји од 3 компоненте (слика \ref{fig:app_components}). Прва, компонента за обраду података, \textit{geo-processor}, чита податке \textit{OSM} и \textit{GeoNames} скупа са локације на \textit{S3} сервису, обрађује их помоћу Скале, \textit{Spark}-а и \textit{EMR} сервиса, и након тога резултате уписује назад на \textit{S3}. 
+Апликација се састоји од три компоненте (слика \ref{fig:app_components}). Прва, компонента за обраду података, \textit{geo-processor}, чита податке \textit{OSM} и \textit{GeoNames} скупа са локације на \textit{S3} сервису, обрађује их помоћу Скале, \textit{Spark}-а и \textit{EMR} сервиса, и након тога резултате уписује назад на \textit{S3}. 
 
 Друга компонента, названа \textit{geo-backend} представља сервер, који на захтев клијента чита обрађене податке и прослеђује их клијенту. Због високе цене обраде, подаци се не обрађују на сваки захтев клијента, већ се читају складиштени, већ обрађени подаци. Сервер апликација је написана у програмском језику Скала, коришћењем библиотеке \textit{Akka} \cite{scala_akka}, уз помоћ које се креирају сервер и постојећи \textit{http} методи.
 
@@ -1942,25 +2021,25 @@ Kako је скуп \textit{OSM} података превелики да би с
 Проблем одређивања припадности локације држави је еквивалентан проблему одређивања припадности тачке полигону, где је локација тачка, а граница државе полигон. Како је проблем припадности тачке полигону веома заступљен у рачунарској графици, постоји велики број алгоритама који га решавају. У овом раду су испробана три алгоритма и њихова имплементација се може пронаћи унутар \textit{Polygon} класе \textit{geo-processor} компоненте. Ти алгоритми су:
 
 \begin{itemize}
-	\item \textit{Ray casting} алгоритам \cite{inside_polygon};
+	\item Алгоритам \textit{Ray casting} \cite{inside_polygon};
 	\item алгоритам заснован на сумирању углова \cite{inside_polygon};
-	\item алгоритам доступан у оквиру Јава \textit{awt} библиотеке, унутар \textit{Polygon} класе \cite{java_awt_polygon}.
+	\item алгоритам доступан у оквиру Јава \textit{awt} библиотеке, унутар \textit{java.awt.Polygon} класе \cite{java_awt_polygon}.
 \end{itemize}
 
 %\textit{Ray casting} алгоритам \cite{inside_polygon}, алгоритам који се заснива на сумирању углова \cite{inside_polygon} и алгоритам доступан у оквиру Јава \textit{awt} библиотеке, унутар \textit{Polygon} класе \cite{java_awt_polygon}.
 
-\textit{Ray casting} алгоритам исцртава хоризонталне дужи из жељене тачке, такве да јој се други крај налази изван полигона. Након тога се пребројава број пресека исцртане дужи са свим страницама полигона. Уколико је број пресека паран, тачка се налази ван полигона, а уколико је непаран, тачка се налази у полигону. Из примера алгоритма приказаног на слици \ref{fig:ray_cast_algo_example} се може закључити да се тачке \textit{А} и \textit{Д} налазе унутар полигона, док су тачке \textit{Б} и \textit{Ц} изван. Недостатак алгоритма \textit{Ray casting} је појава грешака приликом одређивања припадности тачака које се налазе близу ивица полигона. %Може се користити за одређивање припадности тачке свакој врсти полигона.
+Алгоритам \textit{Ray casting} исцртава хоризонталне дужи из жељене тачке, такве да јој се други крај налази изван полигона. Након тога се пребројава број пресека исцртане дужи са свим страницама полигона. Уколико је број пресека паран, тачка се налази ван полигона, а уколико је непаран, тачка се налази у полигону. Из примера алгоритма приказаног на слици \ref{fig:ray_cast_algo_example} се може закључити да се тачке \textit{А} и \textit{Д} налазе унутар полигона, док су тачке \textit{Б} и \textit{Ц} изван. Недостатак алгоритма \textit{Ray casting} је појава грешака приликом одређивања припадности тачака које се налазе близу ивица полигона. %Може се користити за одређивање припадности тачке свакој врсти полигона.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.55\textwidth]{pictures/ray_cast_pic_example.png}
-  \caption{\textit{Ray casting} алгоритам}
+  \caption{Алгоритам \textit{Ray casting}}
   \label{fig:ray_cast_algo_example}
 \end{figure}
 
-Алгоритам заснован на сумирању углова сабира углове између жељене тачке и сваког пара темена полигона. Уколико је сума $2\pi$ онда се тачка налази унутар полигона, а уколико није онда се налази изван. Овај алгоритам функционише за све врсте полигона. Као и  \textit{ray casting}, овај алгоритам може погрешно одредити припадност за тачке близу ивица полигона.
+Алгоритам заснован на сумирању углова сабира углове између жељене тачке и сваког пара темена полигона. Уколико је сума $2\pi$ онда се тачка налази унутар полигона, а уколико није онда се налази изван. Овај алгоритам функционише за све врсте полигона. Као и  \textit{Ray casting}, овај алгоритам може погрешно одредити припадност за тачке близу ивица полигона.
 
-Алгоритми су тестирани над \textit{OSM} подацима који представљају Црну Гору и Словенију. Локације скупова су приказане црвеном бојом на слици \ref{fig:all_map_slo_mon_example}. Оба скупа података садрже одређен број локација на мапи које не припадају државама које представљају, што их чини повољним за тестирање. Добијени резултати припадности локација се једноставно могу проверити исцртавањем на географској мапи.
+Алгоритми су тестирани над \textit{OSM} подацима који представљају Црну Гору и Словенију. Локације из скупова су приказане црвеном бојом на слици \ref{fig:all_map_slo_mon_example}. Оба скупа података садрже одређен број локација на мапи које не припадају државама које представљају, што их чини повољним за тестирање. Добијени резултати припадности локација се једноставно могу проверити исцртавањем на географској мапи.
 
 \begin{figure}[!ht]
   \centering
@@ -1969,23 +2048,23 @@ Kako је скуп \textit{OSM} података превелики да би с
   \label{fig:all_map_slo_mon_example}
 \end{figure}
 
-Резултати добијени применом алгоритама на поменуте скупове су приказани у табели \ref{tab:tabla_rez_poly_cont_algor} и означавају удео локација које се налазе унутар граница у односу на цео скуп, за сваки алгоритам. Резултати су слични, али алгоритам заснован на сабирању углова додељује већи број тачака границама држава у односу на остала два.
+%Резултати добијени применом алгоритама на поменуте скупове су приказани у табели \ref{tab:tabla_rez_poly_cont_algor} и означавају удео локација које се налазе унутар граница у односу на цео скуп, за сваки алгоритам. Резултати су слични, али алгоритам заснован на сабирању углова додељује већи број тачака границама држава у односу на остала два.
 
-\begin{table}[h!]
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|} \hline
-\textbf{ } & \textbf{Удео локација које} & \textbf{Удео локација које} \\
-\textbf{Алгоритам} & \textbf{припадају Црној Гори} & \textbf{припадају Словенији} \\ \hline
-\textit{Ray casting} & 0.775 & 0.950 \\ \hline
-Библиотека \textit{Awt} & 0.757 & 0.951 \\ \hline
-Сумирање углова & 0.775 & 0.956 \\ \hline
-\end{tabular}
-\caption{Удео локација које се налазе унутар границе држава}
-\label{tab:tabla_rez_poly_cont_algor}
-\end{center}
-\end{table}
+%\begin{table}[h!]
+%\begin{center}
+%\begin{tabular}{|c|c|c|c|c|} \hline
+%\textbf{ } & \textbf{Удео локација које} & \textbf{Удео локација које} \\
+%\textbf{Алгоритам} & \textbf{припадају Црној Гори} \textbf{припадају Словенији} \\ \hline
+%\textit{Ray casting} & 0.775 & 0.950 \\ \hline
+%Библиотека \textit{Awt} & 0.757 & 0.951 \\ \hline
+%Сумирање углова & 0.775 & 0.956 \\ \hline
+%\end{tabular}
+%\caption{Удео локација које се налазе унутар границе држава}
+%\label{tab:tabla_rez_poly_cont_algor}
+%\end{center}
+%\end{table}
 
-Иако су резултати за алгоритме добри, постоје одређени недостаци. Сваки алгоритам је погрешно одредио припадност малом броју локација које се налазе близу обала мора. Поред тога, код сваког алгоритма постоје мање грешке за локације близу граница са другим државама. За разлику од друга два алгоритма, \textit{Ray casting} је погрешно одредио припадност одређеном броју тачака на југоистоку Словеније. Због добијених резултата, у изради апликације је коришћен алгоритам заснован на сумирању углова. Резултати изабраног алгоритма се налазе на слици \ref{fig:not_slo_mon_example} за локације ван граница држава и на слици \ref{fig:slo_mon_example} за локације унутар граница.
+Добијени резултати за сваки алгоритам су углавном добри али постоје одређени недостаци. Сваки алгоритам је погрешно одредио припадност малом броју локација које се налазе близу обала мора. Поред тога, код сваког алгоритма постоје мање грешке за локације близу граница са другим државама. За разлику од друга два алгоритма, \textit{Ray casting} је погрешно одредио припадност одређеном броју тачака на југоистоку Словеније. Због добијених резултата, у изради апликације је коришћен алгоритам заснован на сумирању углова. Резултати изабраног алгоритма се налазе на слици \ref{fig:not_slo_mon_example} за локације ван граница држава и на слици \ref{fig:slo_mon_example} за локације унутар граница.
 
 \begin{figure}[!ht]
   \centering
@@ -2004,11 +2083,12 @@ Kako је скуп \textit{OSM} података превелики да би с
 \section{Обрада геопросторних података \textit{Spark}-ом}
 \label{sec:osm_spark_obrada}
 
-Након припреме података, трансформисања \textit{OSM} фајла из \textit{OSM PBF} формата у \textit{parquet} формат и постављања фајла на \textit{S3} локацију, може се почети са дистрибуираном обрадом података. Компонента апликације која обрађује податке је \textit{geo-processor}. Написана је у верзији 2.12.12 програмског језика Скала коришћењем верзије 3.1.2 алата \textit{Apache Spark}. Верзије су изабране због компатибилности. Изабрана верзија \textit{Spark}-а је компатибилна са коришћеном верзијом \textit{AWS} сервиса, док је верзија Скале компатибилна са верзијом \textit{Spark}-а.
+Након трансформисања \textit{OSM} фајла из формата \textit{OSM PBF} у формат \textit{parquet} и постављања \textit{parquet} фајла на \textit{S3}, може се почети са дистрибуираном обрадом података. Компонента апликације која обрађује податке је \textit{geo-processor}. Написана је у верзији 2.12.12 програмског језика Скала коришћењем верзије 3.1.2 алата \textit{Apache Spark}. Верзије су изабране због компатибилности. Изабрана верзија \textit{Spark}-а је компатибилна са коришћеном верзијом \textit{AWS} сервиса, док је верзија Скале компатибилна са верзијом \textit{Spark}-а.
 
-Подаци се обрађују на верзији 6.4.0 \textit{EMR} кластера. Одабрана верзија садржи инсталиране верзије 3.1.2 \textit{Spark}-а и 3.2.1 \textit{Hadoop}-а. Кластер се састоји од 4 машине од којих је једна именски чвор, док су остале чворови података. Свака од машина садржи 8 језгара процесора и 32 гигабајта радне меморије. \textit{Spark} је конфигурисан тако да има 6 извршилаца са по 4 језгра процесора и 16 гигабајта меморије. Као менаџер ресурса се користи \textit{Apache Yarn}. Укупно извршавање обраде података је око 40 сати. Испробане су и друге конфигурације \textit{EMR} кластера и \textit{Spark}-а, али нису допринеле побољшању временског извршавања обраде података. 
+Подаци се обрађују на верзији 6.4.0 \textit{EMR} кластера. Одабрана верзија садржи инсталиране верзије 3.1.2 \textit{Spark}-а и 3.2.1 \textit{Hadoop}-а. Кластер се састоји од четири машине од којих је једна именски чвор, док су остале чворови података. Свака од машина садржи осам језгара процесора и тридесет два гигабајта радне меморије. \textit{Spark} је конфигурисан тако да има шест извршилаца са по четири језгра процесора и шеснаест гигабајта меморије. Као менаџер ресурса се користи \textit{Apache Yarn}.
+Трајање обраде података, које укључује и читање и упис обрађених података на \textit{S3} је осам сати и тридесет седам минута.
 
-Изворни к\^{о}д намењен за обраду података се налази унутар \textit{geo} модула компоненте \textit{geo-processor}, у класи \textit{GeoDataProcessor}. Обрада се може поделити на два дела. Први чита податке и одређује која локација скупа припада којој држави, док друга за сваку државу филтрира жељену врсту локација након чега врши упис података. Оба дела су представљена у функцији \textit{processGeoData}, која као аргументе прима иницијализовану инстанцу \textit{Spark}-а, локацију скупа геопросторних података које треба обрадити и локацију у којој ће коначан резултат бити уписан. Приказ позива функције се налази у класи \textit{Main} компоненте \textit{geo-processor} и приказан је у коду \ref{lst:app_code_main_processGeoData}. Путање представљају локације на сервису \textit{S3}, где је \textit{geo-master-496542722941} име кофе, док остатак путање представља путању до фајла унутар кофе.
+Изворни к\^{о}д намењен за обраду података се налази унутар модуле \textit{geo} компоненте \textit{geo-processor}, у класи \textit{GeoDataProcessor}. Обрада се може поделити на два дела. Први чита податке и одређује која локација скупа припада којој држави, док друга за сваку државу филтрира жељену врсту локација након чега врши упис података. Оба дела су представљена у функцији \textit{processGeoData}, која као аргументе прима иницијализовану инстанцу \textit{Spark}-а, локацију скупа геопросторних података које треба обрадити и локацију у коју ће коначан резултат бити уписан. Приказ позива функције се налази у класи \textit{Main} компоненте \textit{geo-processor} и приказан је у коду \ref{lst:app_code_main_processGeoData}. Путање представљају локације на сервису \textit{S3}, где је \textit{geo-master-496542722941} име кофе, док остатак путање представља путању до фајла унутар кофе.
 
 \begin{lstlisting}[caption={Позивање функције која започиње обраду података}, language=Scala, label={lst:app_code_main_processGeoData}]
 processGeoData(
@@ -2052,15 +2132,15 @@ def getNodes(spark: SparkSession, pathToCountryFile: String): DataFrame = {
 }
 \end{lstlisting}
 
-Након учитавања података, потребно је доделити им одговарајуће локације држава. Да би се тај корак извршио, морају се учитати и обрадити подаци \textit{GeoNames} скупа, који се састоје из два фајла, сачувана на сервису \textit{S3}. Први је \textit{shapes\_all\_low} који је у \textit{Tab Separated Values} формату, скраћено \textit{TSV}, и садржи две колоне. Прва је \textit{geoNameId}, док је друга \textit{geoJSON}, у \textit{JSON} формату. \textit{JSON} садржи два кључа и први је ознака, названа \textit{type}, која показује да ли су границе представљене једним полигоном (ознака \textit{Polygon}) или са више полигона (ознака \textit{MultiPolygon}). Други \textit{JSON} кључ, назван \textit{coordinates}, садржи координате које означавају полигоне. Пример редова овог скупа се налази у коду \ref{lst:app_code_shapes_all_low_example}.
+Након учитавања података, потребно је доделити одговарајућу државу за сваку локацију. Да би се тај корак извршио, морају се учитати и обрадити подаци \textit{GeoNames} скупа, који се састоје из два фајла, сачувана на сервису \textit{S3}. Први је \textit{shapes\_all\_low} који је у формату \textit{Tab Separated Values}, скраћено \textit{TSV}, и садржи две колоне. Прва је \textit{geoNameId}, док је друга \textit{geoJSON}, у формату \textit{JSON}. \textit{JSON} садржи два кључа и први је ознака, названа \textit{type}, која показује да ли су границе представљене једним полигоном (ознака \textit{Polygon}) или са више полигона (ознака \textit{MultiPolygon}). Други \textit{JSON} кључ, назван \textit{coordinates}, садржи листу координата које означавају полигоне. Пример редова овог скупа се налази у коду \ref{lst:app_code_shapes_all_low_example}.
 
-\begin{lstlisting}[caption={Упрошћени пример редова \textit{shapes\_all\_low} скупа}, language=Scala, label={lst:app_code_shapes_all_low_example}]
+\begin{lstlisting}[caption={Упрошћени пример редова скупа \textit{shapes\_all\_low}}, language=Scala, label={lst:app_code_shapes_all_low_example}]
 geoNameId	geoJSON
 49518	    {"type":"Polygon","coordinates":[[[29.96,-2.327],...,[29.438,-2.798]]]}
 51537	    {"type":"MultiPolygon","coordinates":[[[[42.322,-0.659],...,[43.451,11.491]]]]}
 \end{lstlisting}
 
-Да би се информације из \textit{geoJSON} колоне извукле у засебне колоне, потребно је издвојити ту колону, направити нови \textit{Spark DataFrame} од ње и додати \textit{geoNameId} колону. Процес трансформације \textit{geoJSON} колоне се налази у \textit{prepareBorderData} функцији и приказан je у коду \ref{lst:app_code_prepare_borders}. Исти процес је приказан и на слици \ref{fig:app_code_transofrm_prepare_borders}. Први корак је прочитати фајл у \textit{DataFrame} и након тога од њега креирати нови, пребацивањем \textit{geoJSON} колоне у засебан \textit{DataFrame}. На такав начин се добија \textit{DataFrame} са две колоне, \textit{type} и \textit{coordinates}. На њега се трансформацијом \textit{withColumn} додаје још једна колона која ће се користити у спајању и која за сваки ред има вредност његовог редног броја. Након тога се из почетно прочитаног фајла, издваја \textit{geoNameId} колона, трансформацијом \textit{drop}, којом се брише \textit{geoJSON} колона и тако се конструише још један нови \textit{DataFrame}. На њега се трансформацијом \textit{withColumn} додаје колона за спајање, која у за сваки ред има вредност његовог редног броја. Након тога се два добијена \textit{DataFrame}-а спајају преко колоне за спајање и колона за спајање се брише. Резултат је \textit{DataFrame} са три колоне, \textit{geoNameId}, \textit{type} и \textit{coordinates}.
+Да би се информације из колоне \textit{geoJSON} извукле у засебне колоне, потребно је издвојити ту колону, направити нови \textit{DataFrame} од ње и додати колону \textit{geoNameId}. Процес трансформације \textit{geoJSON} колоне се налази у \textit{prepareBorderData} функцији и приказан je у коду \ref{lst:app_code_prepare_borders}. Исти процес је приказан и на слици \ref{fig:app_code_transofrm_prepare_borders}. Први корак је прочитати фајл у \textit{DataFrame} и након тога од њега креирати нови, пребацивањем \textit{geoJSON} колоне у засебан \textit{DataFrame}. На такав начин се добија \textit{DataFrame} са две колоне, \textit{type} и \textit{coordinates}. На њега се трансформацијом \textit{withColumn} додаје још једна колона која ће се користити у спајању и која за сваки ред има вредност његовог редног броја. Након тога се из почетно прочитаног фајла \textit{shapes\_all\_low}, издваја \textit{geoNameId} колона, трансформацијом \textit{drop}, којом се брише \textit{geoJSON} колона и тако се конструише још један нови \textit{DataFrame}. На њега се трансформацијом \textit{withColumn} додаје колона за спајање, која за сваки ред има вредност његовог редног броја. Након тога се два добијена \textit{DataFrame}-а спајају преко колоне за спајање и колона за спајање се брише. Резултат је \textit{DataFrame} са три колоне, \textit{geoNameId}, \textit{type} и \textit{coordinates}.
 
 \begin{figure}[!ht]
   \centering
@@ -2126,53 +2206,57 @@ private def prepareBorderData(spark: SparkSession): DataFrame = {
 }
 \end{lstlisting}
 
-За одређивање припадности локације држави се конструише засебна корисничка функција (енг. \textit{user defined function}) скраћено \textit{udf}. \textit{Udf} се у \textit{Spark}-у конструише као регуларна Скала фунцкија, с тим што њени аргументи морају бити истог типа као и типови колона \textit{DataFrame}-а који јој се прослеђују, Функција која географској дужини и ширини додељује државу је приказана у коду \ref{lst:app_code_belongstocountry}. Листа \textit{iterableBorders} садржи полигоне \textit{GeoNames} скупа који представљају границе, док функција \textit{isInsideBorder} за сваку локацију проверава којој држави припада тако што итерира кроз сваку границу и проверава припадност алгоритмом заснованим на сумирању углова. Кориснички дефинисана функција се региструје позивом \textit{Spark} функције \textit{org.apache.spark.sql.functions.udf} и након тога се може користити у трансформацијама.
+% промењен УДФ описан у спарк секцији. Коришћене броадцаст варс
+
+За одређивање припадности локације држави, конструише се \textit{udf}, приказан у коду \ref{lst:app_code_belongstocountry}. Улога \textit{udf}-а је да за прослеђене географску ширину и дужину, одреди којој држави припадају. Повратна вредност је име државе, а уколико локација не припада ниједној држави, враћа се вредност ,,$-$``. Листа \textit{iterableBorders} је \textit{broadcast} променљива и садржи полигоне \textit{GeoNames} скупа који представљају границе, док функција \textit{isInsideBorder} за сваку локацију проверава којој држави припада тако што итерира кроз сваку границу и проверава припадност алгоритмом заснованим на сумирању углова.
 
 \begin{lstlisting}[caption={Функција која додељује државу локацији}, language=Scala, label={lst:app_code_belongstocountry}]
-
 val belongsToCountryFunction: (Double, Double) => String = (lat: Double, lon: Double) => {
-      var belongs_to = "-"
-      for ((country, borders) <- iterableBorders) {
-        if (isInsideBorder(lat, lon, borders)) {
-          belongs_to = country
-        }
-      }
+  var belongs_to = "-"
+  for ((country, borders) <- iterableBorders.value) {
+    if (isInsideBorder(lat, lon, borders)) {
+      belongs_to = country
+    }
+   }
 
-      belongs_to
+  belongs_to
 }
 \end{lstlisting}
 
-Процес додељивања државе локацији се извршава унутар функције приказане у коду \ref{lst:app_code_mapcoordstocountry}. На крају се из скупа избацују све локације којима није додељена држава. Резултујући \textit{DataFrame} ове функције садржи локацију, тачније географску ширину и дужину, \textit{OSM} тагове као и ознаку којој држави локација припада. Његова шема је приказана у коду \ref{lst:app_code_countrydf_schema}.
+Процес додељивања државе локацији се извршава унутар функције приказане у коду \ref{lst:app_code_mapcoordstocountry}. Након извршеног додељивања, из \textit{DataFrame}-а се избацују све локације којима није додељена држава. На крају се извршава партиционисање података у односу на државу, трансформацијом \textit{repartition}. Резултујући \textit{DataFrame} ове функције садржи локацију, тачније географску ширину и дужину, \textit{OSM} тагове, као и ознаку којој држави локација припада. Његова шема је приказана у коду \ref{lst:app_code_countrydf_schema}.
 
 \begin{lstlisting}[caption={Функција \textit{mapCoordinatesToCountry}}, language=Scala, label={lst:app_code_mapcoordstocountry}]
 def mapCoordinatesToCountry(spark: SparkSession, countryFilePath: String): DataFrame = {
-    val iterableBorders = makeBordersIterable(prepareBorderData(spark))
+  val iterableBorders = spark.sparkContext.broadcast(
+    makeBordersIterable(prepareBorderData(spark))
+  )
 
-    val belongsToCountryFunction: (Double, Double) => String = (lat: Double, lon: Double) => {
-      var belongs_to = "-"
-      for ((country, borders) <- iterableBorders) {
-        if (isInsideBorder(lat, lon, borders)) {
-          belongs_to = country
-        }
+  val belongsToCountryFunction: (Double, Double) => String = (lat: Double, lon: Double) => {
+    var belongs_to = "-"
+    for ((country, borders) <- iterableBorders.value) {
+      if (isInsideBorder(lat, lon, borders)) {
+        belongs_to = country
       }
-
-      belongs_to
     }
 
-    val belongsToCountry = udf[String, Double, Double](belongsToCountryFunction)
-
-    val osmData = getNodes(spark, countryFilePath)
-      .withColumn(
-        "country",
-        belongsToCountry(
-          col("latitude"),
-          col("longitude")
-        )
-      )
-
-    osmData
-      .filter(col("country") =!= lit("-"))
+    belongs_to
   }
+
+  val belongsToCountry = udf[String, Double, Double](belongsToCountryFunction)
+
+  val osmData = getNodes(spark, countryFilePath)
+    .withColumn(
+      "country",
+      belongsToCountry(
+        col("latitude"),
+        col("longitude")
+      )
+    )
+
+  osmData
+    .filter(col("country") =!= lit("-"))
+    .repartition(col("country"))
+}
 \end{lstlisting}
 
 \begin{lstlisting}[caption={Шема \textit{DataFrame}-а након додељивања држава локацијама}, language=Scala, label={lst:app_code_countrydf_schema}]
@@ -2208,35 +2292,30 @@ countryDF
   )
 \end{lstlisting}
 
-Следећи корак је филтрирање низа вредности тагова. Слично као код одређивања припадности локације држави, за филтрирање жељених локацијa се користи функција дефинисана од стране корисника, \textit{udf}. Функција је приказана у коду \ref{lst:app_code_filter_tag_vals_func} и функционише тако што тражи пресек између жељених врста локација које се налазе у променљивој \textit{conditions} и низа вредости тагова. Уколико пресек не постоји, функција враћа вредност \textit{x}, а уколико постоји функција враћа врсту локације. Резултат је нова колона названа \textit{condition}. Након одређивања врсте локације, трансформацијом \textit{filter} се уклањају сви редови који садрже вредност \textit{x}. Све операције за филтрирање података се налазе унутар функције \textit{applyFilters} приказане у коду \ref{lst:app_code_apply_filters}.
+Следећи корак је филтрирање добијеног низа вредности тагова. Слично као код одређивања припадности локације држави, за филтрирање жељених локацијa се користи \textit{udf}, приказан у коду \ref{lst:app_code_filter_tag_vals_func}. Функционише тако што тражи пресек између жељених врста локација које се налазе у \textit{broadcast} променљивој \textit{conditions} и низа вредости тагова. Уколико пресек не постоји, функција враћа вредност ,,\textit{x}``, а уколико постоји функција враћа врсту локације. Резултат је нова колона названа \textit{condition}. Након одређивања врсте локације, трансформацијом \textit{filter} се уклањају сви редови који садрже вредност ,,\textit{x}``. Све операције за филтрирање података се налазе унутар функције \textit{applyFilters} приказане у коду \ref{lst:app_code_apply_filters}.
 
 \begin{lstlisting}[caption={Функција која одређује да ли је локација жељеног типа}, language=Scala, label={lst:app_code_filter_tag_vals_func}]
 val filterTagValues: Array[String] => String = (tagValues: Array[String]) => {
-  val conditions = Set(
-    "hospital", "pharmacy", "hotel"
-    // ...
-  )
-
-  val intersection = tagValues.toSet.intersect(conditions)
+  val intersection = tagValues.toSet.intersect(conditions.value)
   if (intersection.isEmpty) {
     "x"
   } else {
     intersection.head
-  }
+   }
 }
 \end{lstlisting}
 
 \begin{lstlisting}[caption={Функција \textit{applyFilters}}, language=Scala, label={lst:app_code_apply_filters}]
-
-def applyFilters(countryDF: DataFrame): DataFrame = {
-  val filterTagValues: Array[String] => String = (tagValues: Array[String]) => {
-    val conditions = Set(
+def applyFilters(spark: SparkSession, countryDF: DataFrame): DataFrame = {
+  val conditions = spark.sparkContext.broadcast(
+    Set(
       "hospital", "pharmacy", "hotel",
       "hostel", "bar", "cafe", "pub",
       "nightclub", "restaurant", "parking"
-    )
+  ))
 
-    val intersection = tagValues.toSet.intersect(conditions)
+  val filterTagValues: Array[String] => String = (tagValues: Array[String]) => {
+    val intersection = tagValues.toSet.intersect(conditions.value)
     if (intersection.isEmpty) {
       "x"
     } else {
@@ -2258,8 +2337,7 @@ def applyFilters(countryDF: DataFrame): DataFrame = {
 }
 \end{lstlisting}
 
-Након филтрирања, добијене податке треба сачувати. Чување се извршава у функцији \textit{processGeoData} (к\^{о}д \ref{lst:app_code_process_geo_data}), позваној у коду \ref{lst:app_code_main_processGeoData}. Из података се прво извлаче жељене колоне, а затим се подаци чувају у \textit{parquet} формату. Пре чувања, подаци се партиционишу функцијом \textit{partitionBy}.
-Партиционисање се извршава по прослеђеним колонама и функционише тако што се подаци који имају исту вредност изабране колоне групишу у заједнички поддиректоријум. Пример структуре у којој се подаци за државе Шпанију и Португал за болнице и хотеле чувају оваквом врстом партиционисања се налази у коду \ref{lst:app_code_partition_by_countries}. Географске ширина и дужина се налазе у крајњим \textit{parquet} фајловима, док се информације о држави и жељеној локацији налазе у именима директоријума који садрже \textit{parquet} фајлове. Након чувања, подаци су спремни и могу се користити за приказивање на географској мапи.
+Након филтрирања, добијене податке треба сачувати. Чување се извршава у функцији \textit{processGeoData} (к\^{о}д \ref{lst:app_code_process_geo_data}), позваној у коду \ref{lst:app_code_main_processGeoData}. Из података се прво извлаче жељене колоне, а затим се подаци чувају у \textit{parquet} формату. Пре чувања, подаци се партиционишу по колонама \textit{country} и \textit{condition} функцијом \textit{partitionBy}. Пример структуре излазног директоријума за државе Шпанију и Португал и за локације болница и хотела се налази у коду \ref{lst:app_code_partition_by_countries} Географске ширина и дужина се налазе у крајњим \textit{parquet} фајловима, док се информације о држави и жељеној локацији налазе у именима директоријума који садрже \textit{parquet} фајлове. Након чувања, подаци су спремни и могу се користити за приказивање на географској мапи.
 
 \begin{lstlisting}[caption={Функција \textit{processGeoData}}, language=Scala, label={lst:app_code_process_geo_data}]
 def processGeoData(spark: SparkSession, pathToDataFile: String, pathToOutFile: String): Unit = {
@@ -2299,14 +2377,13 @@ def processGeoData(spark: SparkSession, pathToDataFile: String, pathToOutFile: S
 \section{Сервер апликације}
 \label{sec:app_server}
 
-Улога сервера апликације је да покрене сервер, прима \textit{GET} захтеве клијента, обради их и пошаље резултат. Креирање сервера и обрада \textit{GET} захтева је имплементирана преко \textit{http} модула \textit{Akka} библиотеке, док се обрада извршава преко \textit{Spark}-а. Креирање \textit{GET} захтева је приказано у коду \ref{lst:app_code_create_get}. Извршава се преко \textit{path} функције, чији је аргумент ниска која означава путању до захтева. Параметри захтева се задају функцијом \textit{parameters} док је повратна вредност функције одговор на захтев. У креираној функцији одговор је у \textit{JSON} формату. Улога \textit{Spark} кода у функцији \textit{readData} је да прочита жељене локације креиране од стране \textit{geo-processor} компоненте и пребаци их у низ, који се шаље као одговор клијенту.
+Улога сервера апликације је да покрене сервер, прима \textit{GET} захтеве клијента, обради их и пошаље резултат. Креирање сервера и обрада \textit{GET} захтева је имплементирана преко \textit{http} модула библиотеке \textit{Akka}, док се обрада извршава преко \textit{Spark}-а. Креирање \textit{GET} захтева је приказано у коду \ref{lst:app_code_create_get}. Извршава се преко функције \textit{path}, чији је аргумент ниска која означава путању до захтева. Параметри захтева се задају функцијом \textit{parameters} док је повратна вредност функције одговор на захтев. У креираној функцији одговор је у формату \textit{JSON}. Улога \textit{Spark} кода у функцији \textit{readData} је да прочита жељене локације креиране од стране компоненте \textit{geo-processor} и пребаци их у низ, који се шаље као одговор клијенту.
 
 \begin{lstlisting}[caption={Имплементација функције која прима и обрађује \textit{GET} захтев}, language=Scala, label={lst:app_code_create_get}]
 val route: Route = path("selection") {
   concat {
     cors() {
       get {
-        //selection?country=[COUNTRY]&param=[PARAM]
         parameters('country.as[String], 'param.as[String]) { (country, param) =>
           complete {
             val coords = readData(spark, country, param)
@@ -2330,7 +2407,7 @@ def readData(spark: SparkSession, country: String, cond: String): Array[Array[Do
 }
 \end{lstlisting}
 
-На крају се направљена путања везује за инстанцу сервера, функцијом \textit{bind}. Сервер се налази на локацији \textit{localhost}, на порту \textit{8080} и покреће се функцијом \textit{newServerAt}, објекта \textit{Http} \textit{Akka} библиотеке \cite{using_akka_http}. Имплементација сервера је приказана у коду \ref{lst:app_code_server_sturtup}.
+На крају се направљена путања везује за инстанцу сервера, функцијом \textit{bind}. Сервер се налази на локацији \textit{localhost}, на порту \textit{8080} и покреће се функцијом \textit{newServerAt}, објекта \textit{Http} библиотеке \textit{Akka} \cite{using_akka_http}. Имплементација сервера је приказана у коду \ref{lst:app_code_server_sturtup}.
 
 \begin{lstlisting}[caption={Имплементација сервера}, language=Scala, label={lst:app_code_server_sturtup}]
 val bindingFuture = Http().newServerAt("localhost", 8080)
@@ -2350,21 +2427,21 @@ bindingFuture
 \section{Клијент апликације}
 \label{sec:app_client}
 
-Клијент шаље \textit{GET} захтеве серверу и приказује резултат на географској мапи. Слање захтева се извршава уносом жељених параметара и притиском на дугме \textit{Submit} (слика \ref{fig:app_code_request_bar_front}). Притиском на дугме се креира \textit{http} захтев ка адреси сервера. За слање захтева се користи \textit{XMLHttpRequest} објекат. Када сервер пошаље резултате кленту, он исцртава локације црвеном бојом на мапи.
+Клијент шаље \textit{GET} захтеве серверу и приказује резултат на географској мапи. Слање захтева се извршава уносом жељених параметара и притиском на дугме \textit{Submit} (слика \ref{fig:app_code_request_bar_front}). Притиском на дугме се креира \textit{http} захтев ка адреси сервера. За слање захтева се користи objekat \textit{XMLHttpRequest}. Када сервер пошаље резултате клијенту, он исцртава локације црвеном бојом на мапи.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=1\textwidth]{pictures/frontend_request_bar.png}
-  \caption{Место за унос и слање захтева на кленту}
+  \caption{Место за унос и слање захтева ка серверу}
   \label{fig:app_code_request_bar_front}
 \end{figure}
 
-За исцртавање мапе се користи \textit{leaflet} библотека. Иницијално се приказује мапа целе Европе, али се при исцртавању жељених локација мапа увеличава на приказ изабране државе.
+За исцртавање мапе се користи библиотека \textit{leaflet}. Иницијално се приказује мапа целе Европе, али се при исцртавању жељених локација мапа увеличава на приказ изабране државе.
 
 \section{Приказ резултата}
 \label{sec:rezultat}
 
-У овој секцији су приказане исцртане локације за насумично изабране државе и жељене локације. Приказ клијентске странице са резултатима за изабране локације се налази на сликама \ref{fig:app_code_italy_hotel}, \ref{fig:app_code_greece_restaurants}, \ref{fig:app_code_uk_pubs} и \ref{fig:app_code_switzerland_pharmacies}.
+У овој секцији су приказани примери крајњег резултата рада апликације. У примерима на сликама \ref{fig:app_code_italy_hotel}, \ref{fig:app_code_greece_restaurants}, \ref{fig:app_code_uk_pubs} и \ref{fig:app_code_switzerland_pharmacies} је приказана клијентска страница апликације са исцртаним локацијама. Приказане државе и локације су изабране да би се илустровале различите опције које корисник може да изабере. 
 
 \begin{figure}[!ht]
   \centering
@@ -2394,6 +2471,15 @@ bindingFuture
   \label{fig:app_code_switzerland_pharmacies}
 \end{figure}
 
+Одређивање припадности локација држави је било успешно за већину држава Европе. Међутим, како алгоритми за одређивање припадности тачке полигону нису савршени, дошло је до појаве грешака код мањих држава. Алгоритам је потпуно занемарио Сан Марино, и доделио све тачке које му припадају Италији (слика \ref{fig:app_code_san_marino_italy}). Такође, појављују се грешке код државе Монако, чији је велики број тачака припојен Француској. Припадност локација за остале мање државе Европе (Луксембург, Малта, Андора и Лихтенштајн) је одређена без грешака.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{pictures/san_marino_italy_errors.png}
+  \caption{Сан Марино када се одабере приказ ресторана у Италији}
+  \label{fig:app_code_san_marino_italy}
+\end{figure}
+
 \chapter{Закључак}
 \label{chp:zakljucak}
 
@@ -2403,7 +2489,7 @@ bindingFuture
 
 Имплементирана је апликација за дистрибуирану обраду скупа геопросторних података \textit{OpenStreetMap}. Обрада се извршава на \textit{HDFS}-у имплементираном од стране \textit{AWS}-а, сервису \textit{EMR}. За обраду података се користе \textit{Apache Spark} и програмски језик Скала. Намена апликације је да филтрира геопросторне податке тако што ће за сваку државу европе издвојити локације здравствених објеката, хотела, хостела, барова, ресторана и других битних туристичких локација које се унутар ње налазе, да би се те локације касније приказале на географској мапи. За приказ локација на географској мапи се користи језик \textit{JavaScript} и библиотека \textit{Leaflet}.
 
-Апликацијом је постигнут жељени резултат, иако перформансе нису задовољавајуће. Време извршавања \textit{Spark} апликације је дуже од иницијално очекиваног. Разлог томе може бити велики број \textit{Shuffle} операција, што значи да апликација троши много времена у пребацивању података између машина које врше обраду. Такође, због перформанси је смањен број понуђених опција за жељене локације и у конструисаној апликацији их има десет, мање од иницијално жељеног броја. Изостављене су локације попут религијских објеката, музеја и других туристичких атракција.
+Апликацијом је постигнут жељени резултат, иако се појављују грешке за локације малих држава Европе, Сан Марина и Андоре. Време извршавања обраде података је задовољавајуће, али је потребно истражити да ли је могуће побољшање перформанси. Број понуђених опција за жељене локације садржи десет врста локација, али се јадноставно може проширити, на пример додавањем религијских објеката, музеја и других туристичких атракција. Клијент и сервер апликације су једноставни и имају добре перформансе.
 
 Постоји неколико начина на које се апликација може унапредити. На пример, поред филтрирања локација по државама, филтрирање се може извршити и по регијама држава или градовима. Такође, могуће је и пратити тренутну локацију корисника и на основу ње приказивати филтриране локације. Да би подаци увек били ажурни потребно је направити аутоматизован систем који ће реаговати на објављивање сваке нове верзије \textit{OpenStreetMap} скупа и поново га филтрирати. Такође, потребно је истражити да ли је могуће унапређење перформанси коришћењем других технологија за дистрибуирану обраду података уместо \textit{Spark}-а, попут  \textit{Apache Sedona}-е \cite{apache_sedona}.
 

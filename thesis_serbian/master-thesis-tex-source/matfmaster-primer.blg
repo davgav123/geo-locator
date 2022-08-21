@@ -3,13 +3,13 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: matfmaster-primer.aux
 The style file: plain.bst
 Database file #1: matfmaster-primer.bib
-Warning--to sort, need author or key in geofabrik
+Illegal end of database file---line 325 of file matfmaster-primer.bib
+ :  note={online at: https://spark.apache.org/docs/1.6.1/api/java/org/apache/spark/broadcast/Broadcast.html}
+ :                                                                                                          
+I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in osm_pbf_format
 Warning--to sort, need author or key in geonames
 Warning--to sort, need author or key in leaflet
-Warning--empty author in geofabrik
-Warning--empty journal in geofabrik
-Warning--empty year in geofabrik
 Warning--empty author in geonames
 Warning--empty journal in geonames
 Warning--empty year in geonames
@@ -25,6 +25,12 @@ Warning--empty journal in apache_parquet
 Warning--empty year in apache_parquet
 Warning--empty journal in apache_sedona
 Warning--empty year in apache_sedona
+Warning--empty journal in spark_broadcast
+Warning--empty year in spark_broadcast
+Warning--empty journal in spark_builtin_func
+Warning--empty year in spark_builtin_func
+Warning--empty journal in spark_conf
+Warning--empty year in spark_conf
 Warning--empty journal in emr
 Warning--empty year in emr
 Warning--empty journal in s3
@@ -77,45 +83,45 @@ Warning--empty journal in spark_streaming
 Warning--empty year in spark_streaming
 Warning--empty publisher in hadoop_beginner
 Warning--empty publisher in hadoop_learning
-You've used 37 entries,
+You've used 39 entries,
             2118 wiz_defined-function locations,
-            628 strings with 7125 characters,
-and the built_in function-call counts, 7777 in all, are:
-= -- 704
-> -- 265
+            633 strings with 7279 characters,
+and the built_in function-call counts, 8224 in all, are:
+= -- 744
+> -- 285
 < -- 0
-+ -- 113
-- -- 76
-* -- 425
-:= -- 1381
-add.period$ -- 110
-call.type$ -- 37
-change.case$ -- 145
++ -- 121
+- -- 82
+* -- 444
+:= -- 1472
+add.period$ -- 116
+call.type$ -- 39
+change.case$ -- 154
 chr.to.int$ -- 0
-cite$ -- 111
-duplicate$ -- 378
-empty$ -- 654
-format.name$ -- 76
-if$ -- 1522
+cite$ -- 115
+duplicate$ -- 398
+empty$ -- 687
+format.name$ -- 82
+if$ -- 1605
 int.to.chr$ -- 0
-int.to.str$ -- 37
-missing$ -- 41
-newline$ -- 187
-num.names$ -- 66
-pop$ -- 265
+int.to.str$ -- 39
+missing$ -- 43
+newline$ -- 197
+num.names$ -- 72
+pop$ -- 280
 preamble$ -- 1
-purify$ -- 112
+purify$ -- 119
 quote$ -- 0
-skip$ -- 230
+skip$ -- 242
 stack$ -- 0
-substring$ -- 185
+substring$ -- 195
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 140
-warning$ -- 74
-while$ -- 66
-width$ -- 39
-write$ -- 333
-(There were 74 warnings)
+type$ -- 148
+warning$ -- 76
+while$ -- 72
+width$ -- 41
+write$ -- 351
+(There was 1 error message)
