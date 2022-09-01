@@ -17,7 +17,7 @@
 \contentsline {subsection}{Синглтон објекти}{13}{section*.8}%
 \contentsline {subsubsection}{Метод \textit {main}}{14}{section*.9}%
 \contentsline {subsection}{Својствa}{14}{section*.10}%
-\contentsline {section}{\numberline {2.8}Скала колекције}{16}{section.2.8}%
+\contentsline {section}{\numberline {2.8}Колекције}{16}{section.2.8}%
 \contentsline {subsection}{Низови}{16}{section*.11}%
 \contentsline {subsection}{Листе}{17}{section*.12}%
 \contentsline {subsection}{Торке}{17}{section*.13}%
@@ -57,7 +57,7 @@
 \contentsline {section}{\numberline {5.2}Чворови}{53}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Путање}{53}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Релације}{54}{section.5.4}%
-\contentsline {chapter}{\chapternumberline {6}Опис апликације}{56}{chapter.6}%
+\contentsline {chapter}{\chapternumberline {6}Опис апликације \textit {Geo-locator}}{56}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Рачунарство у облаку}{56}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Подаци}{58}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Архитектура апликације}{58}{section.6.3}%
